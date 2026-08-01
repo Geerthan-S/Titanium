@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-labelledby="title description">
+  <title id="title">Image placeholder</title>
+  <desc id="description">Neutral placeholder for pending clinic photography.</desc>
+  <rect width="1200" height="800" fill="#efece6"/>
+  <path d="M0 570C190 430 350 490 510 370C700 226 880 370 1200 150V800H0Z" fill="#ddeae5"/>
+  <circle cx="885" cy="255" r="120" fill="#f6f3ee"/>
+  <path d="M160 585H1040" stroke="#075647" stroke-opacity=".18" stroke-width="3"/>
+</svg>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Approved patient testimonials for Titanium Roots Dental Clinic.">
+  <title>Testimonials | Titanium Roots</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/pages/testimonials.css">
+</head>
+<body data-page="testimonials">
+  <div data-component="page-loader"></div>
+  <div data-component="navbar"></div>
+  <main id="main-content">
+    <section class="testimonials-hero">
+      <div class="container">
+        <p class="section-eyebrow">Patient experiences</p>
+        <h1>Stories Shared With <span>Consent</span></h1>
+        <p>Read feedback reviewed and approved by the clinic before publication.</p>
+      </div>
+    </section>
+    <section class="container testimonials-page" aria-labelledby="testimonials-title">
+      <div class="section-heading">
+        <p class="section-eyebrow">Testimonials</p>
+        <h2 id="testimonials-title">What Our Patients Share</h2>
+      </div>
+      <div class="testimonials-page__grid" data-testimonials-grid></div>
+      <section class="testimonials-empty" data-testimonials-empty hidden aria-labelledby="testimonials-empty-title">
+        <span class="testimonials-empty__mark" aria-hidden="true"><i data-lucide="shield-check"></i></span>
+        <p class="section-eyebrow">Shared responsibly</p>
+        <h3 id="testimonials-empty-title">Patient stories will appear after consent and review.</h3>
+        <p>We publish feedback only after patient consent and clinic approval. No demonstration reviews are shown as real experiences.</p>
+        <div class="testimonials-empty__actions">
+          <button class="button" type="button" data-modal-open="appointment-modal">Book an Appointment <i data-lucide="calendar-days" aria-hidden="true"></i></button>
+          <a class="text-link" href="/contact.html">Contact the Clinic <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </section>
+      <section class="testimonials-error" data-testimonials-error hidden role="status" aria-labelledby="testimonials-error-title">
+        <h3 id="testimonials-error-title">Patient stories are temporarily unavailable.</h3>
+        <p>Please try again shortly or contact the clinic if you need help.</p>
+        <a class="text-link" href="/contact.html">Contact the Clinic <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+      </section>
+    </section>
+  </main>
+  <div data-component="consultation-banner"></div>
+  <div data-component="footer"></div>
+  <div data-component="appointment-modal"></div>
+  <div data-component="floating-contact"></div>
+  <script type="module" src="/assets/js/app.js"></script>
+</body>
+</html>

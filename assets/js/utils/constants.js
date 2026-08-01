@@ -1,0 +1,20 @@
+export const SITE_CONFIG = Object.freeze({
+  clinicName: 'Titanium Roots Dental Clinic',
+  phone: '+91 98765 43210',
+  whatsapp: '+919876543210',
+  whatsappMessage: 'Hello Titanium Roots Dental Clinic,\n\nI would like to enquire about booking a dental consultation.\n\nPlease contact me with the available appointment timings.',
+  email: 'info@titaniumroots.com',
+  address: '123, Dental Care Street, Anna Nagar, Chennai, Tamil Nadu – 600001',
+  timings: 'Mon – Fri: 9:00 AM – 8:00 PM · Sat: 9:00 AM – 6:00 PM · Sun: 10:00 AM – 4:00 PM',
+  footerDescription: 'Thoughtful dental care shaped around comfort, clarity, and every patient visit.',
+  social: { instagram: '#', facebook: '#', linkedin: '#' },
+  navigation: [
+    { label: 'Home', href: '/index.html', page: 'home' },
+    { label: 'About', href: '/about.html', page: 'about' },
+    { label: 'Treatments', href: '/treatments.html', page: 'treatments' },
+    { label: 'Doctors', href: '/doctors.html', page: 'doctors' },
+    { label: 'Testimonials', href: '/testimonials.html', page: 'testimonials' },
+    { label: 'Blog', href: '/blog.html', page: 'blog' },
+    { label: 'Contact', href: '/contact.html', page: 'contact' },
+  ],
+});

@@ -1,0 +1,14 @@
+/* Shared guardrails for treatment-card content density. */
+.treatment-card h3 {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.treatment-card__content > p:not(.treatment-card__category) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}

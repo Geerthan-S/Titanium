@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Meet the dental team at Titanium Roots Dental Clinic and explore doctor qualifications, specializations, experience and consultation information.">
+    <meta property="og:title" content="Dental Doctors | Titanium Roots Dental Clinic">
+    <meta property="og:description"
+        content="Meet the dental team at Titanium Roots Dental Clinic and explore doctor qualifications, specializations, experience and consultation information.">
+    <meta property="og:image" content="/assets/images/placeholders/clinic-neutral.svg">
+    <link rel="canonical" href="https://example.com/doctors.html">
+    <title>Dental Doctors | Titanium Roots Dental Clinic</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/pages/doctors.css">
+</head>
+
+<body data-page="doctors">
+    <div data-component="page-loader"></div>
+    <div data-component="navbar"></div>
+    <main id="main-content" data-page="doctors">
+        <section class="doctors-hero" aria-labelledby="doctors-hero-title">
+            <div class="doctors-hero__background" aria-hidden="true"></div>
+            <div class="container doctors-hero__grid">
+                <div class="doctors-hero__content">
+                    <div class="doctors-breadcrumb-shell" data-component="breadcrumb"></div>
+                    <p class="section-eyebrow" data-doctors-hero-eyebrow>Our Dental Team</p>
+                    <h1 id="doctors-hero-title" data-doctors-hero-heading>Meet the Specialists Behind Every
+                        <span>Confident Smile</span></h1>
+                    <p data-doctors-hero-copy>Our dental team brings together thoughtful treatment planning, clear
+                        communication and a patient-first approach to support comfortable dental experiences.</p>
+                    <div class="doctors-hero__actions"><button class="button" type="button"
+                            data-modal-open="appointment-modal" data-treatment-interest="General consultation">Book
+                            Consultation <i data-lucide="calendar-days" aria-hidden="true"></i></button><a
+                            class="button button--secondary" href="#" target="_blank" rel="noopener noreferrer"
+                            data-whatsapp-link>WhatsApp Consultation <i data-lucide="message-circle"
+                                aria-hidden="true"></i></a></div>
+                </div>
+                <div class="doctors-hero__visual" data-doctors-hero-visual>
+                    <div class="doctors-hero__outline" aria-hidden="true"></div>
+                    <div class="doctors-hero__media"><img class="media-placeholder"
+                            src="/assets/images/placeholders/clinic-neutral.svg" width="1600" height="1200"
+                            alt="Placeholder for an approved Titanium Roots dental team photograph">
+                        <div class="doctors-hero__promise" data-doctors-hero-promise></div>
+                    </div>
+                </div>
+                <div class="doctor-statistics" data-doctor-statistics
+                    aria-label="Dental team information pending confirmation"></div>
+            </div>
+        </section>
+        <section class="featured-doctors doctors-section" aria-labelledby="featured-title" data-doctors-reveal-section>
+            <div class="container">
+                <div class="doctors-section-heading">
+                    <div>
+                        <p class="section-eyebrow">Featured Specialists</p>
+                        <h2 id="featured-title">Dental Care Guided by <span>Understanding</span></h2>
+                    </div>
+                    <div class="doctors-carousel__controls"><button class="icon-button" type="button"
+                            aria-label="Previous featured doctors" data-featured-prev><i data-lucide="arrow-left"
+                                aria-hidden="true"></i></button><button class="icon-button" type="button"
+                            aria-label="Next featured doctors" data-featured-next><i data-lucide="arrow-right"
+                                aria-hidden="true"></i></button></div>
+                </div>
+                <div class="featured-doctors__track" data-featured-doctors></div>
+            </div>
+        </section>
+        <section class="doctor-directory doctors-section" aria-labelledby="directory-title" data-doctors-reveal-section>
+            <div class="container">
+                <div class="doctors-section-heading">
+                    <div>
+                        <p class="section-eyebrow">Meet Our Specialists</p>
+                        <h2 id="directory-title">Our Dental <span>Professionals</span></h2>
+                    </div>
+                    <p class="doctor-directory__count" data-doctor-count aria-live="polite"></p>
+                </div>
+                <div class="doctor-directory__controls"><label class="doctor-search"><span
+                            class="visually-hidden">Search doctors</span><i data-lucide="search"
+                            aria-hidden="true"></i><input type="search" placeholder="Search by doctor or specialization"
+                            data-doctor-search></label>
+                    <div class="doctor-filter-list" role="group" aria-label="Filter doctors by specialty"
+                        data-doctor-filters></div><button class="text-button" type="button" data-doctor-reset>Reset
+                        filters</button>
+                </div>
+                <div class="doctor-grid" data-doctor-grid></div>
+                <p class="doctor-directory__empty" hidden data-doctor-empty>No temporary doctor profiles match this
+                    search. Reset filters to view all profiles.</p>
+            </div>
+        </section>
+        <section class="doctors-why doctors-section" aria-labelledby="doctors-why-title" data-doctors-reveal-section>
+            <div class="container">
+                <div class="doctors-section-heading doctors-section-heading--center">
+                    <p class="section-eyebrow">Why Choose Our Team</p>
+                    <h2 id="doctors-why-title">Thoughtful Expertise. <span>Patient-First Care.</span></h2>
+                </div>
+                <div class="doctors-why__grid" data-doctors-why></div>
+            </div>
+        </section>
+        <section class="doctors-journey doctors-section" aria-labelledby="doctors-journey-title"
+            data-doctors-reveal-section>
+            <div class="container">
+                <div class="doctors-section-heading">
+                    <div>
+                        <p class="section-eyebrow">Your Consultation Journey</p>
+                        <h2 id="doctors-journey-title">What to Expect When <span>You Visit</span></h2>
+                    </div>
+                </div>
+                <ol class="doctors-timeline" data-doctors-journey></ol>
+            </div>
+        </section>
+        <section class="doctors-availability doctors-section" aria-labelledby="availability-title"
+            data-doctors-reveal-section>
+            <div class="container doctors-availability__grid">
+                <div>
+                    <p class="section-eyebrow">Consultation Availability</p>
+                    <h2 id="availability-title">Plan Your <span>Visit</span></h2>
+                    <p>Consultation availability will be confirmed during appointment booking.</p>
+                    <form class="availability-form" data-availability-form><label>Preferred doctor<select name="doctor"
+                                data-availability-doctor></select></label><label>Preferred day<select name="day">
+                                <option>Day to be confirmed</option>
+                                <option>Weekday preference</option>
+                                <option>Weekend preference</option>
+                            </select></label>
+                        <div><button class="button" type="button" data-availability-book>Book Appointment <i
+                                    data-lucide="calendar-days" aria-hidden="true"></i></button><a
+                                class="button button--secondary" href="#" target="_blank" rel="noopener noreferrer"
+                                data-whatsapp-link>WhatsApp Enquiry <i data-lucide="message-circle"
+                                    aria-hidden="true"></i></a></div>
+                    </form>
+                </div>
+                <div class="doctors-faq">
+                    <p class="section-eyebrow">Frequently Asked Questions</p>
+                    <h2>Choosing the Right <span>Dental Consultation</span></h2>
+                    <div class="faq-list" data-doctors-faq></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <section class="modal doctor-profile-modal" id="doctor-profile-modal" role="dialog" aria-modal="true"
+        aria-hidden="true" aria-labelledby="doctor-profile-title" hidden data-modal>
+        <div class="modal__dialog doctor-modal__dialog card" role="document"><button class="modal__close" type="button"
+                aria-label="Close doctor profile" data-modal-close><i data-lucide="x" aria-hidden="true"></i></button>
+            <div data-doctor-modal-content></div>
+        </div>
+    </section>
+    <div data-component="consultation-banner"></div>
+    <div data-component="footer"></div>
+    <div data-component="appointment-modal"></div>
+    <div data-component="floating-contact"></div>
+    <script type="module" src="/assets/js/app.js"></script>
+</body>
+
+</html>

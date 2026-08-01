@@ -1,0 +1,21 @@
+<section class="modal" id="appointment-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="appointment-modal-title" hidden data-modal>
+  <div class="modal__dialog card" role="document">
+    <button class="modal__close" type="button" aria-label="Close appointment dialog" data-modal-close><i data-lucide="x" aria-hidden="true"></i></button>
+    <p class="modal__eyebrow">Titanium Roots</p>
+    <h2 id="appointment-modal-title">Book a consultation</h2>
+    <p>Share your preference and our team will contact you to confirm a suitable time.</p>
+    <form class="appointment-form" data-appointment-form novalidate>
+      <input type="hidden" name="doctor">
+      <label class="form-honeypot" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off"></label>
+      <label>Patient name<input name="name" autocomplete="name" required></label>
+      <label>Mobile number<input name="phone" type="tel" autocomplete="tel" required inputmode="tel"></label>
+      <label>Treatment interest<select name="treatment" required><option value="">Select an interest</option><option>General consultation</option><option>Dental Implants</option><option>Root Canal Treatment</option><option>Orthodontics</option><option>Cosmetic Dentistry</option><option>Teeth Whitening</option><option>Crowns and Bridges</option><option>Pediatric Dentistry</option><option>Gum Treatment</option><option>Restorative treatment</option><option>Cosmetic dentistry</option></select></label>
+      <label>Preferred date<input name="date" type="date" required></label>
+      <label>Message<textarea name="message" rows="3"></textarea></label>
+      <label class="contact-consent"><input name="consent" type="checkbox" required><span>I consent to the clinic contacting me about this request.</span></label>
+      <p class="form-status" aria-live="polite" data-form-status></p>
+      <button class="button" type="submit">Request appointment <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+      <p class="appointment-form__reply-time"><i data-lucide="message-circle" aria-hidden="true"></i>We’ll reply on WhatsApp within 5 minutes.</p>
+    </form>
+  </div>
+</section>

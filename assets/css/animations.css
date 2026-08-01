@@ -1,0 +1,6 @@
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+}
+
+@keyframes loader-progress { 0% { transform: translateX(-120%); } 70%, 100% { transform: translateX(260%); } }
+@keyframes header-settle { from { transform: translateY(-10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }

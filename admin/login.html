@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Secure Titanium Roots clinic CMS login.">
+    <title>Admin Login | Titanium Roots</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/pages/admin.css">
+</head>
+<body data-admin-page="login">
+    <a class="skip-link" href="#admin-content">Skip to login</a>
+    <main class="admin-login" id="admin-content">
+        <section class="admin-login__brand" aria-labelledby="admin-login-brand-title">
+            <div class="admin-login__brand-inner">
+                <span class="admin-login__mark"><i data-lucide="heart-pulse" aria-hidden="true"></i></span>
+                <p class="admin-login__eyebrow">Titanium Roots Dental Clinic</p>
+                <h1 id="admin-login-brand-title">Care, content, and clinic enquiries in one calm workspace.</h1>
+                <p>Manage clinic website content, enquiries, media, settings and publishing from one protected workspace.</p>
+                <div class="admin-login__assurance"><i data-lucide="shield-check" aria-hidden="true"></i><span><strong>Protected access</strong>Authentication and administrator authorization are managed by Supabase.</span></div>
+            </div>
+        </section>
+        <section class="admin-login__form-panel" aria-labelledby="admin-login-title">
+            <form class="admin-login-form" data-admin-login-form novalidate>
+                <p class="admin-login-form__eyebrow">Clinic CMS</p>
+                <h2 id="admin-login-title">Welcome back</h2>
+                <p>Sign in with your authorized clinic administrator account.</p>
+                <div class="admin-error-summary" role="alert" tabindex="-1" hidden data-login-error></div>
+                <label>Email address<input name="email" type="email" autocomplete="username" placeholder="admin@titaniumroots.com" required></label>
+                <label>Password<span class="admin-password-field"><input name="password" type="password" autocomplete="current-password" required><button type="button" data-password-toggle aria-label="Show password"><i data-lucide="eye" aria-hidden="true"></i></button></span></label>
+                <div class="admin-login-form__options admin-login-form__options--end"><button class="admin-text-button" type="button" data-forgot-password>Forgot password?</button></div>
+                <button class="admin-button admin-button--primary admin-login-form__submit" type="submit" data-login-submit><span>Sign in to CMS</span><i data-lucide="arrow-right" aria-hidden="true"></i></button>
+                <p class="admin-login-form__notice"><i data-lucide="lock-keyhole" aria-hidden="true"></i>Your password is handled by Supabase Auth and is never stored by this website.</p>
+                <a class="admin-login-form__website" href="/index.html"><i data-lucide="arrow-left" aria-hidden="true"></i>Return to website</a>
+            </form>
+        </section>
+    </main>
+    <script type="module" src="/assets/js/pages/admin.js"></script>
+</body>
+</html>
