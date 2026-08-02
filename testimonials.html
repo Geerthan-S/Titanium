@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,40 +8,244 @@
   <title>Testimonials | Titanium Roots</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/pages/treatments.css">
   <link rel="stylesheet" href="/assets/css/pages/testimonials.css">
 </head>
+
 <body data-page="testimonials">
   <div data-component="page-loader"></div>
   <div data-component="navbar"></div>
   <main id="main-content">
-    <section class="testimonials-hero">
-      <div class="container">
-        <p class="section-eyebrow">Patient experiences</p>
-        <h1>Stories Shared With <span>Consent</span></h1>
-        <p>Read feedback reviewed and approved by the clinic before publication.</p>
+    <!-- 1. TESTIMONIALS HERO -->
+    <section class="testimonials-hero" aria-labelledby="testimonials-hero-title">
+      <div class="container testimonials-hero__grid">
+        <div class="testimonials-hero__content">
+          <p class="section-eyebrow">PATIENT EXPERIENCES</p>
+          <h1 id="testimonials-hero-title">Care Built on Comfort, Clarity and <span>Trust.</span></h1>
+          <p>Every patient experience at Titanium Roots begins with attentive listening, clear communication, and
+            personalised dental care.</p>
+          <p class="testimonials-hero__trust-note" style="color:var(--color-muted); font-size:0.875rem;">Genuine patient
+            stories and smile transformations are shared only after verification, moderation, and patient consent.
+            Patient privacy and consent are respected at every stage.</p>
+          <div class="testimonials-hero__actions" style="margin-top:2rem; display:flex; gap:16px;">
+            <button class="button" type="button" data-modal-open="appointment-modal"
+              data-treatment-interest="General consultation">Book a Consultation <i data-lucide="calendar-days"
+                aria-hidden="true"></i></button>
+            <a class="button button--secondary" href="#share-feedback">Share Your Experience</a>
+          </div>
+        </div>
       </div>
     </section>
-    <section class="container testimonials-page" aria-labelledby="testimonials-title">
-      <div class="section-heading">
-        <p class="section-eyebrow">Testimonials</p>
-        <h2 id="testimonials-title">What Our Patients Share</h2>
-      </div>
-      <div class="testimonials-page__grid" data-testimonials-grid></div>
-      <section class="testimonials-empty" data-testimonials-empty hidden aria-labelledby="testimonials-empty-title">
-        <span class="testimonials-empty__mark" aria-hidden="true"><i data-lucide="shield-check"></i></span>
-        <p class="section-eyebrow">Shared responsibly</p>
-        <h3 id="testimonials-empty-title">Patient stories will appear after consent and review.</h3>
-        <p>We publish feedback only after patient consent and clinic approval. No demonstration reviews are shown as real experiences.</p>
-        <div class="testimonials-empty__actions">
-          <button class="button" type="button" data-modal-open="appointment-modal">Book an Appointment <i data-lucide="calendar-days" aria-hidden="true"></i></button>
-          <a class="text-link" href="/contact.html">Contact the Clinic <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+
+    <!-- 2. FEATURED PATIENT STORY (Conditional) -->
+    <section class="testimonials-featured" data-testimonials-featured hidden aria-labelledby="featured-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-eyebrow">FEATURED PATIENT STORY</p>
+          <h2 id="featured-title">A Patient Experience Shaped by Clear Communication and Personalised Care.</h2>
         </div>
-      </section>
-      <section class="testimonials-error" data-testimonials-error hidden role="status" aria-labelledby="testimonials-error-title">
+        <div class="featured-story__container" data-testimonials-featured-mount></div>
+      </div>
+    </section>
+
+    <!-- 3. PATIENT STORIES COLLECTION (Conditional) -->
+    <section class="container testimonials-page" aria-labelledby="testimonials-title" data-testimonials-collection
+      hidden>
+      <div class="section-heading">
+        <h2 id="testimonials-title">Experiences Shared by Our <span>Patients.</span></h2>
+        <p class="testimonials-subtitle" style="max-width: 600px;">Every patient journey is different. These stories
+          reflect the communication, care, and individual attention provided throughout the Titanium Roots experience.
+        </p>
+      </div>
+      <!-- Grid used by testimonials.js -->
+      <div class="testimonials-page__grid" data-testimonials-grid></div>
+      <section class="testimonials-error" data-testimonials-error hidden role="status"
+        aria-labelledby="testimonials-error-title">
         <h3 id="testimonials-error-title">Patient stories are temporarily unavailable.</h3>
         <p>Please try again shortly or contact the clinic if you need help.</p>
-        <a class="text-link" href="/contact.html">Contact the Clinic <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        <a class="text-link" href="/contact.html">Contact the Clinic <i data-lucide="arrow-right"
+            aria-hidden="true"></i></a>
       </section>
+    </section>
+
+    <!-- 4. VIDEO TESTIMONIALS (Conditional) -->
+    <section class="testimonials-video" data-testimonials-videos hidden aria-labelledby="videos-title">
+      <div class="container">
+        <div class="section-heading">
+          <h2 id="videos-title">Patient Stories, in <span>Their Own Words.</span></h2>
+          <p style="max-width: 600px;">Watch approved patients share their experience of consultation, communication,
+            treatment, and care at Titanium Roots.</p>
+        </div>
+        <div class="video-rail" data-testimonials-video-mount></div>
+      </div>
+    </section>
+
+    <!-- 5. LAUNCH EMPTY STATE (Conditional) -->
+    <!-- Display this only when there are no approved written or video testimonials. -->
+    <section class="container testimonials-empty" data-testimonials-empty aria-labelledby="testimonials-empty-title">
+      <div class="testimonials-empty__content" style="text-align:center; padding:4rem 0;">
+        <span class="testimonials-empty__mark" aria-hidden="true"
+          style="font-size:2rem; color:var(--color-primary); margin-bottom:1rem; display:inline-block;"><i
+            data-lucide="shield-check"></i></span>
+        <h3 id="testimonials-empty-title" style="font-size:1.75rem; margin-bottom:1rem;">Patient Stories Will Be Shared
+          Soon.</h3>
+        <p style="max-width:600px; margin: 0 auto 0.5rem; color:var(--color-text);">Titanium Roots is beginning its
+          journey of providing modern, responsible, and comfort-focused dental care.</p>
+        <p style="max-width:600px; margin: 0 auto 2rem; color:var(--color-text);">As patients choose to share their
+          experiences, approved testimonials will appear here after verification, moderation, and consent.</p>
+        <div class="testimonials-empty__actions" style="display:flex; justify-content:center; gap:16px;">
+          <a class="button" href="/about.html">Experience Titanium Roots <i data-lucide="arrow-right"
+              aria-hidden="true"></i></a>
+          <button class="button button--secondary" type="button" data-modal-open="appointment-modal">Book a Consultation
+            <i data-lucide="calendar-days" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. WHAT PATIENTS CAN EXPECT -->
+    <section class="testimonials-principles" aria-labelledby="principles-title"
+      style="padding: 4rem 0; background:var(--color-background-soft);">
+      <div class="container">
+        <div class="section-heading" style="margin-bottom: 2.5rem; max-width: 700px;">
+          <p class="section-eyebrow">OUR CARE APPROACH</p>
+          <h2 id="principles-title">A Patient Experience Designed Around <span>What Matters.</span></h2>
+        </div>
+        <div class="principles-grid"
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px;">
+          <div class="principle-card">
+            <h3 style="font-size:1.2rem; margin-bottom:0.5rem;">Clear Explanations</h3>
+            <p style="color:var(--color-text);">We explain examination findings, treatment options, expected stages, and
+              estimated costs before treatment begins.</p>
+          </div>
+          <div class="principle-card">
+            <h3 style="font-size:1.2rem; margin-bottom:0.5rem;">Personalised Planning</h3>
+            <p style="color:var(--color-text);">Every care plan is developed around the patient’s clinical needs,
+              comfort, priorities, and oral-health goals.</p>
+          </div>
+          <div class="principle-card">
+            <h3 style="font-size:1.2rem; margin-bottom:0.5rem;">Pain-Conscious Care</h3>
+            <p style="color:var(--color-text);">Thoughtful communication, modern techniques, and comfort-focused
+              protocols help make dental visits easier to manage.</p>
+          </div>
+          <div class="principle-card">
+            <h3 style="font-size:1.2rem; margin-bottom:0.5rem;">Continued Support</h3>
+            <p style="color:var(--color-text);">Aftercare guidance and follow-up recommendations support recovery and
+              long-term oral health.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. BEFORE-AND-AFTER TRANSFORMATIONS (Conditional) -->
+    <section class="treatments-transformations treatments-section" aria-labelledby="transformations-title" hidden
+      data-treatments-reveal-section style="padding:4rem 0;">
+      <div class="container">
+        <div class="treatments-section-heading" style="margin-bottom: 1.5rem;">
+          <div>
+            <h2 id="transformations-title"
+              style="font-size: 2.4rem; color: var(--color-heading); font-family: var(--font-heading);">Smile
+              Transformation Gallery</h2>
+          </div>
+        </div>
+        <p class="treatments-consent-note" style="color:var(--color-text); max-width:600px; margin-bottom: 24px;">
+          Verified before-and-after cases are displayed only after treatment completion, clinical review, and written
+          patient consent.</p>
+        <div class="transformation-grid" data-transformations
+          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;"></div>
+        <p class="treatment-disclaimer" style="margin-top:24px; font-size:0.75rem; color:var(--color-muted);">Treatment
+          outcomes vary between individuals and depend on clinical condition, treatment planning, and patient-specific
+          factors.</p>
+      </div>
+    </section>
+
+    <!-- 8. SHARE YOUR EXPERIENCE -->
+    <section id="share-feedback" class="testimonials-feedback" aria-labelledby="feedback-title" style="padding:4rem 0;">
+      <div class="container"
+        style="max-width:800px; padding:3rem; background:rgba(255, 255, 255, 0.4); backdrop-filter:blur(12px); border-radius:12px; border:1px solid rgba(255, 255, 255, 0.3);">
+        <div class="section-heading" style="text-align:center;">
+          <h2 id="feedback-title">Already Visited <span>Titanium Roots?</span></h2>
+          <p style="margin:1rem auto; max-width:500px;">Your feedback helps us understand your experience and continue
+            improving the care we provide.</p>
+        </div>
+        <div class="feedback-actions" style="display:flex; justify-content:center; gap:16px; margin-top:2rem;">
+          <a class="button" href="/contact.html">Share Private Feedback <i data-lucide="mail"
+              aria-hidden="true"></i></a>
+          <!-- Verified Google Review Link Pending -->
+          <button class="button button--secondary" disabled aria-label="Leave a Google Review (Available Soon)">Leave a
+            Google Review <i data-lucide="external-link" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. CONSENT AND PRIVACY -->
+    <section class="testimonials-privacy" aria-labelledby="privacy-title" style="padding:4rem 0;">
+      <div class="container privacy-panel" style="max-width:800px;">
+        <p class="section-eyebrow">YOUR STORY. YOUR CHOICE.</p>
+        <h2 id="privacy-title" style="margin-bottom:1.5rem;">Patient Experiences Are Shared Only with
+          <span>Permission.</span></h2>
+        <div class="privacy-content" style="color:var(--color-text); line-height:1.75;">
+          <p style="margin-bottom:1.5rem;">Testimonials, photographs, videos, and treatment details are never published
+            automatically. Patients can choose what information may be displayed and may request that approved content
+            be updated or removed.</p>
+          <ul style="display:grid; grid-template-columns:1fr 1fr; gap:12px; list-style-type:disc; padding-left:20px;">
+            <li>Consent before publication</li>
+            <li>Patient-controlled display name</li>
+            <li>Optional photo and video permission</li>
+            <li>Private feedback option</li>
+            <li>Testimonial withdrawal support</li>
+            <li>Clinical-information minimisation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. OPTIONAL TESTIMONIALS FAQS -->
+    <section class="testimonials-faq" aria-labelledby="faq-title"
+      style="padding:4rem 0; background:var(--color-background-soft);">
+      <div class="container" style="max-width:800px;">
+        <div class="section-heading" style="text-align:center; margin-bottom:2rem;">
+          <h2 id="faq-title">Testimonial <span>FAQs</span></h2>
+        </div>
+        <div class="faq-accordion" style="display:flex; flex-direction:column; gap:16px;">
+          <details class="faq-item" style="background:white; padding:1.5rem; border-radius:8px;">
+            <summary class="faq-trigger" style="font-weight:600; cursor:pointer;" aria-expanded="false"
+              aria-controls="faq-1">Are all testimonials genuine? </summary>
+            <div id="faq-1" class="faq-answer" style="margin-top:1rem; color:var(--color-text);">
+              <p>Yes. Testimonials are displayed only after verification, moderation, and patient consent.</p>
+            </div>
+          </details>
+          <details class="faq-item" style="background:white; padding:1.5rem; border-radius:8px;">
+            <summary class="faq-trigger" style="font-weight:600; cursor:pointer;" aria-expanded="false"
+              aria-controls="faq-2">Can I submit feedback without publishing it? </summary>
+            <div id="faq-2" class="faq-answer" style="margin-top:1rem; color:var(--color-text);">
+              <p>Yes. Patients may provide private feedback without granting permission for public display.</p>
+            </div>
+          </details>
+          <details class="faq-item" style="background:white; padding:1.5rem; border-radius:8px;">
+            <summary class="faq-trigger" style="font-weight:600; cursor:pointer;" aria-expanded="false"
+              aria-controls="faq-3">Can I withdraw a testimonial later? </summary>
+            <div id="faq-3" class="faq-answer" style="margin-top:1rem; color:var(--color-text);">
+              <p>Yes. Patients may contact the clinic to request that approved testimonial content be updated or
+                removed.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. FINAL CONSULTATION CTA -->
+    <section class="final-cta" aria-labelledby="cta-title" style="padding:4rem 0; text-align:center;">
+      <div class="container cta-panel">
+        <h2 id="cta-title" style="margin-bottom:1rem;">Begin Your Care Journey with <span>Confidence.</span></h2>
+        <p style="margin:0 auto 2rem; max-width:600px; color:var(--color-text);">Speak with our dental team, discuss
+          your concerns, and receive clear guidance based on your individual oral-health needs.</p>
+        <div class="cta-actions" style="display:flex; justify-content:center; gap:16px;">
+          <button class="button" type="button" data-modal-open="appointment-modal">Book an Appointment <i
+              data-lucide="calendar-days" aria-hidden="true"></i></button>
+          <a class="button button--secondary" href="#" target="_blank" rel="noopener noreferrer" data-whatsapp-link>Chat
+            on WhatsApp <i data-lucide="message-circle" aria-hidden="true"></i></a>
+        </div>
+      </div>
     </section>
   </main>
   <div data-component="consultation-banner"></div>
@@ -49,4 +254,5 @@
   <div data-component="floating-contact"></div>
   <script type="module" src="/assets/js/app.js"></script>
 </body>
+
 </html>

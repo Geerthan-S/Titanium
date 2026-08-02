@@ -8,7 +8,34 @@ let lastTrigger = null;
 export function initializeModals() {
   if (document.body.dataset.modalsInitialized) return;
   document.body.dataset.modalsInitialized = 'true';
+
   document.addEventListener('click', (event) => {
+    // Tab switching
+    const tabBtn = event.target.closest('.tab-button');
+    if (tabBtn) {
+      const tabsContainer = tabBtn.closest('.modal__tabs');
+      const modal = tabBtn.closest('.modal');
+      const targetId = tabBtn.dataset.tabTarget;
+
+      if (tabsContainer && modal && targetId) {
+        tabsContainer.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active', 'aria-selected="true"'));
+        tabBtn.classList.add('active');
+        tabBtn.setAttribute('aria-selected', 'true');
+
+        modal.querySelectorAll('.tab-content').forEach(content => {
+          content.hidden = true;
+          content.classList.remove('active');
+        });
+
+        const targetForm = modal.querySelector(`[id="${targetId}"]`);
+        if (targetForm) {
+          targetForm.hidden = false;
+          targetForm.classList.add('active');
+        }
+      }
+      return;
+    }
+
     const opener = event.target.closest('[data-modal-open]');
     if (opener) {
       lastTrigger = opener;
@@ -22,17 +49,19 @@ export function initializeModals() {
     const modal = event.target.closest('[data-modal]');
     if (modal && (event.target === modal || event.target.closest('[data-modal-close]'))) closeModal(modal, lastTrigger);
   });
+
   document.addEventListener('keydown', (event) => {
     const modal = document.querySelector('[data-modal]:not([hidden])');
     if (!modal) return;
     if (event.key === 'Escape') { closeModal(modal, lastTrigger); return; }
     if (event.key !== 'Tab') return;
-    const focusable = [...modal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')].filter((element) => !element.hidden);
+    const focusable = [...modal.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')].filter((element) => !element.hidden && !element.closest('[hidden]'));
     if (!focusable.length) return;
     const first = focusable[0]; const last = focusable.at(-1);
     if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
     if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
   });
+
   document.querySelectorAll('[data-appointment-form]').forEach((form) => form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const status = form.querySelector('[data-form-status]');
@@ -45,20 +74,40 @@ export function initializeModals() {
     status.textContent = 'Sending your request…';
     status.className = 'form-status';
     const data = new FormData(form);
+
+    // Resolve Inquiry Type to Supabase Schema
+    const inqType = data.get('inquiry_type');
+    let mappedEnquiry = 'general';
+    let baseMessage = data.get('message') || '';
+
+    if (inqType === 'Book Appointment') {
+      mappedEnquiry = 'appointment';
+    } else if (inqType === 'Emergency') {
+      mappedEnquiry = 'callback';
+      baseMessage = `[URGENT EMERGENCY]\n${baseMessage}`;
+    } else if (inqType === 'Leave Feedback') {
+      mappedEnquiry = 'general';
+      const rating = data.get('rating') || '0';
+      baseMessage = `[FEEDBACK SUBMISSION - Rating: ${rating}/5]\n${baseMessage}`;
+    } else if (inqType === 'Treatment Info') {
+      mappedEnquiry = 'general';
+      baseMessage = `[Treatment Info Request]\n${baseMessage}`;
+    }
+
     try {
       await submitAppointmentRequest({
         name: data.get('name'),
         phone: data.get('phone'),
-        enquiryType: 'appointment',
+        enquiryType: mappedEnquiry,
         treatment: data.get('treatment'),
         doctor: data.get('doctor'),
         preferredDate: data.get('date'),
-        message: data.get('message'),
+        message: baseMessage,
         source: 'website',
         consent: data.get('consent') === 'on',
       });
-      await recordAnalyticsEvent({ eventType: 'appointment_submit', pagePath: location.pathname }).catch(() => {});
-      status.textContent = 'Thank you. Your appointment request has been sent.';
+      await recordAnalyticsEvent({ eventType: 'appointment_submit', pagePath: location.pathname }).catch(() => { });
+      status.textContent = 'Thank you. Your request has been securely sent.';
       status.className = 'form-status is-success';
       form.reset();
     } catch (error) {

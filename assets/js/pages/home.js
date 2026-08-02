@@ -93,7 +93,7 @@ function renderFeaturedTreatments() {
   const grid = document.querySelector('[data-featured-treatments]');
   if (!grid) return;
   grid.innerHTML = featuredTreatments.length
-    ? featuredTreatments.map(({ name, shortDescription, image, imageAlt, slug }) => `<article class="treatment-card"><img src="${image ? publicMediaUrl(image) : placeholderImage}" alt="${escapeHtml(imageAlt || name)}"><div class="treatment-card__content"><h3>${escapeHtml(name)}</h3><p>${escapeHtml(shortDescription)}</p><div><a class="text-link" href="/treatments.html#${encodeURIComponent(slug)}">Learn More <i data-lucide="arrow-right" aria-hidden="true"></i></a></div></div></article>`).join('')
+    ? featuredTreatments.map(({ name, shortDescription, image, imageAlt, slug }) => `<article class="treatment-card"><img src="${image ? publicMediaUrl(image) : placeholderImage}" alt="${escapeHtml(imageAlt || name)}"><div class="treatment-card__content"><h3>${escapeHtml(name)}</h3><p>${escapeHtml(shortDescription)}</p><div><a class="text-link" href="/treatments/${encodeURIComponent(slug)}.html">Learn More <i data-lucide="arrow-right" aria-hidden="true"></i></a></div></div></article>`).join('')
     : '<p class="content-empty">Treatment information will be available soon.</p>';
 }
 

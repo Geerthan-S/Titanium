@@ -23,7 +23,15 @@ export async function currentAuthenticatedUser() {
 }
 
 export async function isCmsAdmin(user) {
-  return Boolean(user);
+  if (!user) return false;
+  const { data, error } = await requireSupabase()
+    .from('cms_admins')
+    .select('user_id')
+    .eq('user_id', user.id)
+    .eq('is_active', true)
+    .maybeSingle();
+  if (error) return false;
+  return data?.user_id === user.id;
 }
 
 export async function signOutAdministrator() {

@@ -64,13 +64,11 @@ test('migration never seeds fake identities or private records', async () => {
   assert.doesNotMatch(source, /service_role|database_password/i);
 });
 
-test('latest authorization migration permits real authenticated users without the CMS allowlist', async () => {
+test('latest authorization migration restores the active CMS allowlist', async () => {
   const sources = await allSql();
-  const authorization = sources.find((source) => /auth\.jwt\(\)[\s\S]*is_anonymous/i.test(source));
-  assert.ok(authorization, 'expected a migration that authorizes non-anonymous Supabase Auth users');
-  assert.match(authorization, /create or replace function public\.is_cms_admin\(\)/i);
-  assert.match(authorization, /\(select auth\.uid\(\)\) is not null/i);
-  assert.doesNotMatch(authorization, /from public\.cms_admins/i);
-  assert.doesNotMatch(authorization, /security definer/i);
-  assert.match(sources.join('\n'), /revoke all on function public\.is_cms_admin\(\) from anon/i);
+  const authorization = sources.find((source) => /create or replace function public\.is_cms_admin\(\)[\s\S]*from public\.cms_admins/i.test(source));
+  assert.ok(authorization, 'expected an authorization migration backed by cms_admins');
+  assert.match(authorization, /user_id = \(select auth\.uid\(\)\)/i);
+  assert.match(authorization, /and is_active/i);
+  assert.doesNotMatch(authorization, /auth\.jwt\(\)[\s\S]*is_anonymous/i);
 });

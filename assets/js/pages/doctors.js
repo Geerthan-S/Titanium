@@ -3,7 +3,7 @@ import { createIcons } from 'lucide';
 import { ICON_SET } from '../components/icons.js';
 import { openModal } from '../components/modal.js';
 import { publicMediaUrl } from '../data/media-repository.js';
-import { escapeHtml } from '../data/record-mappers.js';
+import { escapeHtml, richTextSegments } from '../data/record-mappers.js';
 import { loadPublicContent, onPublicContent, subscribePublicContent } from '../data/public-content-store.js';
 import { SITE_CONFIG } from '../utils/constants.js';
 
@@ -52,14 +52,14 @@ export async function initializeDoctors() {
   onPublicContent('doctors', ({ status, data }) => {
     if (status !== 'ready') return;
     doctors = data;
-    renderFeatured();
+
     renderFilters();
     renderDirectory();
     renderAvailability();
   });
   subscribePublicContent('doctors');
   renderHero();
-  renderFeatured();
+
   renderFilters();
   renderDirectory();
   renderTrust();
@@ -68,7 +68,25 @@ export async function initializeDoctors() {
   renderFaqs();
   createIcons({ icons: ICON_SET });
   bindInteractions();
+  initializeHistoryNavigation();
   initializeAnimations();
+}
+
+function initializeHistoryNavigation() {
+  const checkPath = () => {
+    const match = window.location.pathname.match(/^\/doctors\/([^./]+)\.html$/);
+    if (!match) return;
+    const slug = match[1];
+    const doctor = doctors.find((d) => String(d.slug) === slug);
+    if (doctor) {
+      renderProfileModal(doctor);
+      openModal(document.querySelector('#doctor-profile-modal'));
+    }
+  };
+
+  window.addEventListener('popstate', checkPath);
+  setTimeout(checkPath, 50);
+  window.__checkDoctorPath = checkPath;
 }
 
 function renderHero() {
@@ -89,34 +107,33 @@ function renderHero() {
 function doctorCard(doctor, featured = false) {
   const image = doctor.portrait ? publicMediaUrl(doctor.portrait) : portrait;
   const experience = doctor.experience ? `${doctor.experience}+ years experience` : 'Ask about experience';
+  const availabilityText = String(doctor.availability || 'Available on request').replace(/\r?\n/g, ' &middot; ');
+
   return `<article class="${featured ? 'featured-doctor-card' : 'doctor-card'}">
     <div class="doctor-card__media"><img src="${image}" width="1200" height="900" loading="lazy" alt="${safe(doctor.imageAlt || doctor.name)}"></div>
     <div class="doctor-card__content">
       <h3>${safe(doctor.name)}</h3>
       <p>${safe(doctor.designation)}</p><p>${safe(doctor.qualification)}</p><p>${safe(doctor.specialization)}</p>
-      <span class="doctor-card__experience"><i data-lucide="stethoscope" aria-hidden="true"></i>${safe(experience)}</span>
+      <div style="display:flex; flex-direction:column; gap:4px; margin: 7px 0 10px;">
+        <span class="doctor-card__experience" style="margin:0;"><i data-lucide="stethoscope" aria-hidden="true"></i>${safe(experience)}</span>
+        <span class="doctor-card__experience" style="margin:0;"><i data-lucide="clock" aria-hidden="true"></i>${availabilityText}</span>
+      </div>
       <div class="doctor-card__actions">
-        <button class="text-link" type="button" data-doctor-profile="${safe(doctor.id)}">View Profile <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+        <a class="text-link" href="/doctors/${safe(doctor.slug)}.html">View Profile <i data-lucide="arrow-right" aria-hidden="true"></i></a>
         <button class="button" type="button" data-modal-open="appointment-modal" data-doctor-selection="${safe(doctor.name)}" data-treatment-interest="General consultation">Book Appointment <i data-lucide="calendar-days" aria-hidden="true"></i></button>
       </div>
     </div>
   </article>`;
 }
 
-function renderFeatured() {
-  const mount = document.querySelector('[data-featured-doctors]');
-  const section = mount?.closest('.featured-doctors');
-  const featured = doctors.filter((doctor) => doctor.featured);
-  if (section) section.hidden = !featured.length;
-  if (mount) mount.innerHTML = featured.map((doctor) => doctorCard(doctor, true)).join('');
-}
+
 
 function renderFilters() {
   const mount = document.querySelector('[data-doctor-filters]');
   if (!mount) return;
   const filters = ['All Doctors', ...new Set(doctors.flatMap(specialtiesFor))];
   if (!filters.includes(activeFilter)) activeFilter = 'All Doctors';
-  mount.innerHTML = filters.map((filter) => `<button type="button" data-doctor-filter="${safe(filter)}" aria-pressed="${filter === activeFilter}">${safe(filter)}</button>`).join('');
+  mount.innerHTML = filters.map((filter) => `<button type="button" data-doctor-filter="${safe(filter)}" aria-pressed="${filter === activeFilter}">${safe(filter)}</button>`).join('') + `<button class="text-button" type="button" data-doctor-reset style="margin-left:8px; align-self:center;">Reset filters</button>`;
 }
 
 function renderDirectory() {
@@ -156,12 +173,13 @@ function renderFaqs() {
 
 function bindInteractions() {
   document.addEventListener('click', (event) => {
-    const profile = event.target.closest('[data-doctor-profile]');
-    if (profile) {
-      const doctor = doctors.find((item) => String(item.id) === profile.dataset.doctorProfile);
-      if (doctor) {
-        renderProfileModal(doctor);
-        openModal(document.querySelector('#doctor-profile-modal'), profile);
+    const link = event.target.closest('a[href^="/doctors/"]');
+    if (link && !event.ctrlKey && !event.metaKey) {
+      const match = link.getAttribute('href').match(/^\/doctors\/([^./]+)\.html$/);
+      if (match) {
+        event.preventDefault();
+        window.history.pushState(null, '', link.getAttribute('href'));
+        if (window.__checkDoctorPath) window.__checkDoctorPath();
       }
     }
     const filter = event.target.closest('[data-doctor-filter]');
@@ -185,8 +203,7 @@ function bindInteractions() {
     searchTerm = event.target.value.trim().toLowerCase();
     renderDirectory();
   });
-  document.querySelector('[data-featured-prev]')?.addEventListener('click', () => document.querySelector('[data-featured-doctors]')?.scrollBy({ left: -320, behavior: 'smooth' }));
-  document.querySelector('[data-featured-next]')?.addEventListener('click', () => document.querySelector('[data-featured-doctors]')?.scrollBy({ left: 320, behavior: 'smooth' }));
+
 }
 
 function renderProfileModal(doctor) {
@@ -202,7 +219,7 @@ function renderProfileModal(doctor) {
       <div><dt>Registration</dt><dd>${safe(doctor.registrationNumber)}</dd></div>
       <div><dt>Availability</dt><dd>${safe(doctor.availability)}</dd></div>
     </dl>
-    <h3>About</h3><p>${safe(doctor.biography)}</p><h3>Treatment philosophy</h3><p>${safe(doctor.philosophy)}</p><p class="doctor-modal__note">${safe(doctor.consultation)}</p>
+    <h3>About</h3>${richTextSegments(doctor.biography)}<h3>Treatment philosophy</h3>${richTextSegments(doctor.philosophy)}<p class="doctor-modal__note">${safe(doctor.consultation)}</p>
     <div class="doctor-modal__actions"><button class="button" type="button" data-modal-open="appointment-modal" data-doctor-selection="${safe(doctor.name)}">Book Appointment <i data-lucide="calendar-days" aria-hidden="true"></i></button><a class="button button--secondary" href="https://wa.me/${SITE_CONFIG.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(message)}" target="_blank" rel="noopener noreferrer">WhatsApp Consultation <i data-lucide="message-circle" aria-hidden="true"></i></a></div>`;
   createIcons({ icons: ICON_SET });
 }

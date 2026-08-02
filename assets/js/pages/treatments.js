@@ -59,9 +59,28 @@ export async function initializeTreatments() {
   renderJourney();
   renderTransformations();
   renderFaqs();
+  renderFaqs();
   createIcons({ icons: ICON_SET });
   initializeInteractions();
+  initializeHistoryNavigation();
   initializeAnimations();
+}
+
+function initializeHistoryNavigation() {
+  const checkPath = () => {
+    const match = window.location.pathname.match(/^\/treatments\/([^./]+)\.html$/);
+    if (!match) return;
+    const slug = match[1];
+    const treatment = treatments.find((t) => String(t.slug) === slug);
+    if (treatment) {
+      renderTreatmentModal(treatment);
+      openModal(document.querySelector('#treatment-detail-modal'));
+    }
+  };
+
+  window.addEventListener('popstate', checkPath);
+  setTimeout(checkPath, 50);
+  window.__checkTreatmentPath = checkPath;
 }
 
 function renderHero() {
@@ -83,7 +102,7 @@ function renderTreatments() {
       <div class="treatment-card__media"><img src="${treatment.image ? publicMediaUrl(treatment.image) : placeholder}" width="1200" height="900" loading="lazy" alt="${safe(treatment.imageAlt || treatment.name)}"></div>
       <div class="treatment-card__content"><p class="treatment-card__category">${safe(treatment.category)}</p><h3>${safe(treatment.name)}</h3><p>${safe(treatment.shortDescription)}</p>
         <dl><div><dt>Duration</dt><dd>${cardDuration(treatment)}</dd></div><div><dt>Visits</dt><dd>${cardVisits(treatment)}</dd></div><div><dt>Price</dt><dd>${priceLabel(treatment)}</dd></div></dl>
-        <div class="treatment-card__actions"><button class="button button--secondary treatment-card__details" type="button" data-treatment-detail="${safe(treatment.id)}">View Details</button><button class="button treatment-card__booking" type="button" data-modal-open="appointment-modal" data-treatment-interest="${safe(treatment.name)}">Book Appointment <i data-lucide="calendar-days" aria-hidden="true"></i></button></div>
+        <div class="treatment-card__actions"><a class="button button--secondary treatment-card__details" href="/treatments/${safe(treatment.slug)}.html">View Details</a><button class="button treatment-card__booking" type="button" data-modal-open="appointment-modal" data-treatment-interest="${safe(treatment.name)}">Book Appointment <i data-lucide="calendar-days" aria-hidden="true"></i></button></div>
       </div>
     </article>`).join('')
     : '<p class="content-empty">Treatment information will be available soon.</p>';
@@ -104,7 +123,38 @@ function renderTransformations() {
   const section = mount?.closest('section');
   const withImages = treatments.filter((treatment) => treatment.image).slice(0, 5);
   if (section) section.hidden = !withImages.length;
-  if (mount) mount.innerHTML = withImages.map((treatment) => `<article class="transformation-card"><div class="transformation-media"><img src="${publicMediaUrl(treatment.image)}" width="1200" height="900" loading="lazy" alt="${safe(treatment.imageAlt || treatment.name)}"></div><h3>${safe(treatment.name)}</h3></article>`).join('');
+
+  if (mount) mount.innerHTML = withImages.map((treatment) => {
+    const src = publicMediaUrl(treatment.image);
+    const alt = safe(treatment.imageAlt || treatment.name);
+    return `
+    <article class="transformation-card">
+      <div class="transformation-slider" data-before-after>
+        <img class="transformation-slider__before" src="${src}" width="1200" height="900" loading="lazy" alt="Before ${alt}">
+        <img class="transformation-slider__after" src="${src}" width="1200" height="900" loading="lazy" alt="After ${alt}">
+        <input type="range" min="0" max="100" value="50" class="transformation-slider__range" aria-label="Compare before and after">
+        <div class="transformation-slider__divider"></div>
+        <div class="transformation-labels">
+          <span>Before</span>
+          <span>After</span>
+        </div>
+      </div>
+      <h3>${safe(treatment.name)}</h3>
+    </article>`;
+  }).join('');
+
+  // Bind slider interactions
+  document.querySelectorAll('[data-before-after]').forEach((slider) => {
+    const range = slider.querySelector('input[type="range"]');
+    const afterImg = slider.querySelector('.transformation-slider__after');
+    const divider = slider.querySelector('.transformation-slider__divider');
+
+    range.addEventListener('input', (e) => {
+      const val = e.target.value;
+      afterImg.style.clipPath = `polygon(${val}% 0, 100% 0, 100% 100%, ${val}% 100%)`;
+      divider.style.left = `${val}%`;
+    });
+  });
 }
 
 function renderFaqs() {
@@ -114,14 +164,16 @@ function renderFaqs() {
 
 function initializeInteractions() {
   document.addEventListener('click', (event) => {
-    const detailButton = event.target.closest('[data-treatment-detail]');
-    if (detailButton) {
-      const treatment = treatments.find((item) => String(item.id) === detailButton.dataset.treatmentDetail);
-      if (treatment) {
-        renderTreatmentModal(treatment);
-        openModal(document.querySelector('#treatment-detail-modal'), detailButton);
+    const link = event.target.closest('.treatment-card__details, a[href^="/treatments/"]');
+    if (link && !event.ctrlKey && !event.metaKey) {
+      const match = link.getAttribute('href').match(/^\/treatments\/([^./]+)\.html$/);
+      if (match) {
+        event.preventDefault();
+        window.history.pushState(null, '', link.getAttribute('href'));
+        if (window.__checkTreatmentPath) window.__checkTreatmentPath();
       }
     }
+
     const faqButton = event.target.closest('.faq-item button');
     if (faqButton) toggleFaq(faqButton);
   });

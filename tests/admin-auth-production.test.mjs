@@ -12,12 +12,14 @@ test('admin authentication uses Supabase and contains no demo credential accepta
   assert.doesNotMatch(auth, /loginDemo|getDemoSession|sessionStorage|six-character demo/i);
 });
 
-test('every authenticated Supabase user is accepted without a CMS allowlist lookup', async () => {
+test('CMS access requires an active administrator membership', async () => {
   const auth = await read('assets/js/admin/admin-auth.js');
   const repository = await read('assets/js/data/auth-repository.js');
   for (const source of [auth, repository]) {
-    assert.match(source, /function isCmsAdmin\(user\)[\s\S]*return Boolean\(user\)/);
-    assert.doesNotMatch(source, /\.from\(['"]cms_admins['"]\)/);
+    assert.match(source, /\.from\(['"]cms_admins['"]\)/);
+    assert.match(source, /\.eq\(['"]user_id['"], user\.id\)/);
+    assert.match(source, /\.eq\(['"]is_active['"], true\)/);
+    assert.doesNotMatch(source, /function isCmsAdmin\(user\)[\s\S]*return Boolean\(user\)/);
   }
 });
 

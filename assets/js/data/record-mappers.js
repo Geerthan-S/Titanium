@@ -93,6 +93,15 @@ export function escapeHtml(value = '') {
     .replaceAll("'", '&#039;');
 }
 
+export function richTextSegments(value = '') {
+  return String(value ?? '')
+    .split(/\r?\n\s*\r?\n/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean)
+    .map((paragraph) => `<p>${escapeHtml(paragraph).replace(/\r?\n/g, '<br>')}</p>`)
+    .join('');
+}
+
 export function mapDoctorFromDatabase(row = {}) {
   return {
     id: row.id,
@@ -252,6 +261,9 @@ export function mapTestimonialFromDatabase(row = {}) {
     rating: row.rating,
     review: row.review,
     image: row.image_path,
+    videoUrl: row.video_url,
+    videoThumbnail: row.video_thumbnail_url,
+    publicationPermission: row.publication_permission,
     source: row.source,
     consentStatus: uiStatus(row.consent_status),
     consentAt: row.consent_at,

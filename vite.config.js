@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { resolve, relative } from 'node:path';
 import { defineConfig } from 'vite';
 
@@ -76,7 +76,40 @@ function seoMetadataPlugin() {
   };
 }
 
+function treatmentPages() {
+  const dir = resolve(rootDirectory, 'treatments');
+  if (!existsSync(dir)) return {};
+  const entries = {};
+  readdirSync(dir).forEach((file) => {
+    if (file.endsWith('.html')) {
+      entries[`treatment_${file.replace('.html', '')}`] = resolve(dir, file);
+    }
+  });
+  return entries;
+}
+
+function doctorPages() {
+  const dir = resolve(rootDirectory, 'doctors');
+  if (!existsSync(dir)) return {};
+  const entries = {};
+  readdirSync(dir).forEach((file) => {
+    if (file.endsWith('.html')) {
+      entries[`doctor_${file.replace('.html', '')}`] = resolve(dir, file);
+    }
+  });
+  return entries;
+}
+
 export default defineConfig({
+  server: {
+    proxy: {
+      '/supabase-proxy': {
+        target: process.env.VITE_SUPABASE_URL || 'https://pqvhwlflwodbpcmpzetk.supabase.co',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/supabase-proxy/, '')
+      }
+    }
+  },
   plugins: [seoMetadataPlugin(), componentAssetsPlugin()],
   build: {
     rollupOptions: {
@@ -84,7 +117,9 @@ export default defineConfig({
         home: resolve(rootDirectory, 'index.html'),
         about: resolve(rootDirectory, 'about.html'),
         treatments: resolve(rootDirectory, 'treatments.html'),
+        ...treatmentPages(),
         doctors: resolve(rootDirectory, 'doctors.html'),
+        ...doctorPages(),
         testimonials: resolve(rootDirectory, 'testimonials.html'),
         blog: resolve(rootDirectory, 'blog.html'),
         contact: resolve(rootDirectory, 'contact.html'),
