@@ -1,0 +1,6 @@
+Puppeteer Error Trace:  Error: net::ERR_CONNECTION_REFUSED at http://localhost:4173/contact
+    at navigate (file:///E:/Titanium-main/node_modules/puppeteer-core/lib/puppeteer/cdp/Frame.js:185:27)
+    at async Deferred.race (file:///E:/Titanium-main/node_modules/puppeteer-core/lib/puppeteer/util/Deferred.js:33:20)
+    at async CdpFrame.goto (file:///E:/Titanium-main/node_modules/puppeteer-core/lib/puppeteer/cdp/Frame.js:151:25)
+    at async CdpPage.goto (file:///E:/Titanium-main/node_modules/puppeteer-core/lib/puppeteer/api/Page.js:576:20)
+    at async file:///E:/Titanium-main/test-contact-tabs.mjs:14:9

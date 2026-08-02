@@ -163,35 +163,106 @@ body[data-page="contact"] .contact-hero h1 {
     font-weight: 600;
 }
 
-.contact-modes {
+/* Unified Multi-Form Tabs */
+.modal__tabs {
     display: flex;
-    flex-wrap: wrap;
+    overflow-x: auto;
     gap: .58rem;
     margin: 1.55rem 0 1.65rem;
+    padding-bottom: 4px;
+    scrollbar-width: none;
 }
 
-.contact-modes button {
+.modal__tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-button {
+    flex: 0 0 auto;
     min-height: 36px;
     padding: .48rem .88rem;
-    border: 1px solid #dcded8;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    /* V6 Glassmorphism delicate border */
     border-radius: 999px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.5);
+    /* V6 Frost */
     color: #343d37;
     font: 700 .72rem/1 var(--font-body);
+    white-space: nowrap;
     cursor: pointer;
-    transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 160ms ease;
+    transition: all 160ms ease;
 }
 
-.contact-modes button:hover {
-    border-color: var(--contact-green);
-    transform: translateY(-1px);
+.tab-button:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
 }
 
-.contact-modes button[aria-pressed="true"] {
-    border-color: var(--contact-green);
+.tab-button.active {
     background: var(--contact-green);
     color: #fff;
+    border-color: var(--contact-green);
     box-shadow: 0 6px 16px rgba(77, 114, 79, .2);
+}
+
+/* Hide non-active form contents */
+.tab-content[hidden] {
+    display: none !important;
+}
+
+/* Form Headings & Specifics */
+.form-header h2 {
+    color: var(--contact-green);
+    font-size: clamp(1.75rem, 3vw, 2.45rem);
+    letter-spacing: -.025em;
+    margin-bottom: .25rem;
+}
+
+.form-header p {
+    color: #363d37;
+    font-size: .82rem;
+    font-weight: 600;
+    margin-bottom: 1.55rem;
+}
+
+/* Emergency Form Elements */
+.emergency-actions-banner {
+    display: flex;
+    gap: 12px;
+    margin: 15px 0 25px;
+    flex-wrap: wrap;
+}
+
+.emergency-actions-banner .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.65rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid var(--color-warning, #d97706);
+    background: #fdf5e7;
+    color: #78350f;
+}
+
+.emergency-actions-banner .button svg {
+    width: 16px;
+    height: 16px;
+    color: #d97706;
+}
+
+.emergency-notice {
+    background: #fffbe4;
+    border-left: 4px solid #f59e0b;
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: #78350f;
+    border-radius: 4px;
+    margin-bottom: 20px;
 }
 
 .contact-form-grid {
@@ -832,6 +903,7 @@ body[data-page="contact"] .site-footer__newsletter {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .contact-modes button,
     .contact-submit,
     .contact-form-grid input,
