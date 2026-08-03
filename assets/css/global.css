@@ -6,7 +6,30 @@
 @import url("./layout.css");
 @import url("./components.css");
 
-body { min-width: 320px; background: var(--color-background); color: var(--color-body); }
+html {
+  font-family: var(--font-body);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-body);
+}
+
+body {
+  min-width: 320px;
+  margin: 0;
+  background: linear-gradient(180deg, var(--color-background) 0%, var(--color-surface) 100%);
+  color: var(--color-body);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
 .form-honeypot {
   position: absolute !important;
   width: 1px !important;
