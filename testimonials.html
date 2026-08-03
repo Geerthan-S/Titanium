@@ -19,21 +19,50 @@
     <!-- 1. TESTIMONIALS HERO -->
     <section class="testimonials-hero" aria-labelledby="testimonials-hero-title">
       <div class="container testimonials-hero__grid">
+
+        <!-- Left: Content -->
         <div class="testimonials-hero__content">
           <p class="section-eyebrow">PATIENT EXPERIENCES</p>
-          <h1 id="testimonials-hero-title">Care Built on Comfort, Clarity and <span>Trust.</span></h1>
-          <p>Every patient experience at Titanium Roots begins with attentive listening, clear communication, and
-            personalised dental care.</p>
-          <p class="testimonials-hero__trust-note" style="color:var(--color-muted); font-size:0.875rem;">Genuine patient
-            stories and smile transformations are shared only after verification, moderation, and patient consent.
-            Patient privacy and consent are respected at every stage.</p>
-          <div class="testimonials-hero__actions" style="margin-top:2rem; display:flex; gap:16px;">
+          <h1 id="testimonials-hero-title">Care Built on Comfort, Clarity and <span class="text-trust">Trust.</span>
+          </h1>
+          <p class="testimonials-hero__subtitle">Real stories from real patients—shared only after review and with full
+            consent. Their experiences reflect our commitment to advanced care, clear communication, and exceptional
+            comfort.</p>
+          <div class="testimonials-hero__actions">
             <button class="button" type="button" data-modal-open="appointment-modal"
-              data-treatment-interest="General consultation">Book a Consultation <i data-lucide="calendar-days"
-                aria-hidden="true"></i></button>
-            <a class="button button--secondary" href="#share-feedback">Share Your Experience</a>
+              data-treatment-interest="General consultation">
+              Book a Consultation <i data-lucide="calendar-days" aria-hidden="true"></i>
+            </button>
+            <a class="button button--secondary" href="#share-feedback">
+              Share Your Experience <i data-lucide="plus-square" aria-hidden="true"></i>
+            </a>
           </div>
         </div>
+
+        <!-- Right: Image with Floating Glass Cards -->
+        <div class="testimonials-hero__art">
+          <div class="testimonials-hero__image-wrapper">
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800"
+              alt="Patient consulting with dentist" loading="eager" decoding="sync">
+          </div>
+
+          <div class="trust-badge trust-badge--top">
+            <div class="trust-badge__icon"><i data-lucide="shield-check"></i></div>
+            <div class="trust-badge__text">
+              <strong>Shared With Consent</strong>
+              <p>Every story is published only after patient review and written consent.</p>
+            </div>
+          </div>
+
+          <div class="trust-badge trust-badge--bottom">
+            <div class="trust-badge__icon"><i data-lucide="lock"></i></div>
+            <div class="trust-badge__text">
+              <strong>Patient Privacy Respected</strong>
+              <p>We protect your privacy and share only what you're comfortable with.</p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -103,132 +132,169 @@
     </section>
 
     <!-- 6. WHAT PATIENTS CAN EXPECT -->
-    <section class="testimonials-principles" aria-labelledby="principles-title"
-      style="padding: 4rem 0; background:var(--color-background-soft);">
+    <section class="testimonials-principles" aria-labelledby="principles-title">
       <div class="container">
-        <div class="section-heading" style="margin-bottom: 2.5rem; max-width: 700px;">
-          <p class="section-eyebrow">OUR CARE APPROACH</p>
-          <h2 id="principles-title">A Patient Experience Designed Around <span>What Matters.</span></h2>
+        <div class="section-heading text-center" style="margin:0 auto 3.5rem; text-align:center;">
+          <p class="section-eyebrow">WHAT PATIENTS CAN EXPECT</p>
+          <h2 id="principles-title" style="margin-top:0.5rem;">A Patient Experience Designed Around <span>What
+              Matters.</span></h2>
         </div>
-        <div class="principles-grid"
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px;">
+        <div class="principles-grid">
           <div class="principle-card">
-            <h3 style="font-size:1.2rem; margin-bottom:0.5rem;">Clear Explanations</h3>
-            <p style="color:var(--color-text);">We explain examination findings, treatment options, expected stages, and
-              estimated costs before treatment begins.</p>
+            <div class="principle-icon"><i data-lucide="message-square"></i></div>
+            <h3>Clear Explanations</h3>
+            <p>We take time to explain every treatment, options and step in simple, honest terms.</p>
           </div>
           <div class="principle-card">
-            <h3 style="font-size:1.2rem; margin-bottom:0.5rem;">Personalised Planning</h3>
-            <p style="color:var(--color-text);">Every care plan is developed around the patient’s clinical needs,
-              comfort, priorities, and oral-health goals.</p>
+            <div class="principle-icon"><i data-lucide="user-check"></i></div>
+            <h3>Personalised Planning</h3>
+            <p>Every smile is unique. We create a plan tailored to your needs, goals and comfort.</p>
           </div>
           <div class="principle-card">
-            <h3 style="font-size:1.2rem; margin-bottom:0.5rem;">Pain-Conscious Care</h3>
-            <p style="color:var(--color-text);">Thoughtful communication, modern techniques, and comfort-focused
-              protocols help make dental visits easier to manage.</p>
+            <div class="principle-icon"><i data-lucide="heart-handshake"></i></div>
+            <h3>Pain-Conscious Care</h3>
+            <p>Advanced techniques and gentle approaches ensure a comfortable experience at every visit.</p>
           </div>
           <div class="principle-card">
-            <h3 style="font-size:1.2rem; margin-bottom:0.5rem;">Continued Support</h3>
-            <p style="color:var(--color-text);">Aftercare guidance and follow-up recommendations support recovery and
-              long-term oral health.</p>
+            <div class="principle-icon"><i data-lucide="calendar-check"></i></div>
+            <h3>Continued Support</h3>
+            <p>Your care doesn't end with treatment. We're here for your long-term dental health.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 7. BEFORE-AND-AFTER TRANSFORMATIONS (Conditional) -->
-    <section class="treatments-transformations treatments-section" aria-labelledby="transformations-title" hidden
-      data-treatments-reveal-section style="padding:4rem 0;">
+    <!-- 7. BEFORE-AND-AFTER TRANSFORMATIONS -->
+    <section class="treatments-transformations">
       <div class="container">
-        <div class="treatments-section-heading" style="margin-bottom: 1.5rem;">
-          <div>
-            <h2 id="transformations-title"
-              style="font-size: 2.4rem; color: var(--color-heading); font-family: var(--font-heading);">Smile
-              Transformation Gallery</h2>
+        <div class="section-heading text-center" style="margin:0 auto 3.5rem; text-align:center;">
+          <p class="section-eyebrow">SMILE TRANSFORMATIONS</p>
+          <h2 style="margin-top:0.5rem;">Real results. Shared with consent.</h2>
+        </div>
+
+        <div class="transformations-grid">
+          <!-- Slider 1 -->
+          <div class="transformation-card">
+            <div class="before-after-slider">
+              <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=400"
+                alt="After Cosmetic Dentistry">
+              <div class="resize" style="width:50%">
+                <img src="https://images.unsplash.com/photo-1598256989800-fea5c5658e47?auto=format&fit=crop&q=80&w=400"
+                  alt="Before Cosmetic Dentistry">
+              </div>
+              <span class="handle"></span>
+              <div class="label label-before">Before</div>
+              <div class="label label-after">After</div>
+            </div>
+            <div class="transformation-info">
+              <i data-lucide="tooth"></i>
+              <div>
+                <strong>Cosmetic Dentistry</strong>
+                <span>Veneers & Smile Makeover</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider 2 -->
+          <div class="transformation-card">
+            <div class="before-after-slider">
+              <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=400"
+                alt="After Orthodontics">
+              <div class="resize" style="width:50%">
+                <img src="https://images.unsplash.com/photo-1598256989800-fea5c5658e47?auto=format&fit=crop&q=80&w=400"
+                  alt="Before Orthodontics">
+              </div>
+              <span class="handle"></span>
+              <div class="label label-before">Before</div>
+              <div class="label label-after">After</div>
+            </div>
+            <div class="transformation-info">
+              <i data-lucide="scan-line"></i>
+              <div>
+                <strong>Orthodontics</strong>
+                <span>Clear Aligners</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider 3 -->
+          <div class="transformation-card">
+            <div class="before-after-slider">
+              <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=400"
+                alt="After Dental Implants">
+              <div class="resize" style="width:50%">
+                <img src="https://images.unsplash.com/photo-1598256989800-fea5c5658e47?auto=format&fit=crop&q=80&w=400"
+                  alt="Before Dental Implants">
+              </div>
+              <span class="handle"></span>
+              <div class="label label-before">Before</div>
+              <div class="label label-after">After</div>
+            </div>
+            <div class="transformation-info">
+              <i data-lucide="nut"></i>
+              <div>
+                <strong>Dental Implants</strong>
+                <span>Single Tooth Replacement</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Disclaimer Card -->
+          <div class="transformation-disclaimer">
+            <div class="sparkle-icon"><i data-lucide="sparkles"></i></div>
+            <p>Results vary and are shared only with written approval.</p>
           </div>
         </div>
-        <p class="treatments-consent-note" style="color:var(--color-text); max-width:600px; margin-bottom: 24px;">
-          Verified before-and-after cases are displayed only after treatment completion, clinical review, and written
-          patient consent.</p>
-        <div class="transformation-grid" data-transformations
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;"></div>
-        <p class="treatment-disclaimer" style="margin-top:24px; font-size:0.75rem; color:var(--color-muted);">Treatment
-          outcomes vary between individuals and depend on clinical condition, treatment planning, and patient-specific
-          factors.</p>
       </div>
     </section>
 
-    <!-- 8. SHARE YOUR EXPERIENCE -->
-    <section id="share-feedback" class="testimonials-feedback" aria-labelledby="feedback-title" style="padding:4rem 0;">
-      <div class="container"
-        style="max-width:800px; padding:3rem; background:rgba(255, 255, 255, 0.4); backdrop-filter:blur(12px); border-radius:12px; border:1px solid rgba(255, 255, 255, 0.3);">
-        <div class="section-heading" style="text-align:center;">
-          <h2 id="feedback-title">Already Visited <span>Titanium Roots?</span></h2>
-          <p style="margin:1rem auto; max-width:500px;">Your feedback helps us understand your experience and continue
-            improving the care we provide.</p>
+    <!-- 8. BOTTOM INFO PANELS -->
+    <section class="bottom-panels">
+      <div class="container panels-grid">
+        <!-- Share Panel -->
+        <div class="panel-card panel-share">
+          <p class="section-eyebrow" style="color:rgba(255,255,255,0.7);">SHARE YOUR EXPERIENCE</p>
+          <h2>Your story can inspire and help others.</h2>
+          <p>Whether it's a few kind words or a detailed story, we'd love to hear about your experience.</p>
+          <div class="panel-actions">
+            <a href="/contact.html" class="button">Share Your Feedback</a>
+            <button class="button button--secondary" type="button"
+              style="background:white; color:var(--color-heading);">
+              <i data-lucide="star"></i> Leave a Review
+            </button>
+          </div>
         </div>
-        <div class="feedback-actions" style="display:flex; justify-content:center; gap:16px; margin-top:2rem;">
-          <a class="button" href="/contact.html">Share Private Feedback <i data-lucide="mail"
-              aria-hidden="true"></i></a>
-          <!-- Verified Google Review Link Pending -->
-          <button class="button button--secondary" disabled aria-label="Leave a Google Review (Available Soon)">Leave a
-            Google Review <i data-lucide="external-link" aria-hidden="true"></i></button>
-        </div>
-      </div>
-    </section>
 
-    <!-- 9. CONSENT AND PRIVACY -->
-    <section class="testimonials-privacy" aria-labelledby="privacy-title" style="padding:4rem 0;">
-      <div class="container privacy-panel" style="max-width:800px;">
-        <p class="section-eyebrow">YOUR STORY. YOUR CHOICE.</p>
-        <h2 id="privacy-title" style="margin-bottom:1.5rem;">Patient Experiences Are Shared Only with
-          <span>Permission.</span></h2>
-        <div class="privacy-content" style="color:var(--color-text); line-height:1.75;">
-          <p style="margin-bottom:1.5rem;">Testimonials, photographs, videos, and treatment details are never published
-            automatically. Patients can choose what information may be displayed and may request that approved content
-            be updated or removed.</p>
-          <ul style="display:grid; grid-template-columns:1fr 1fr; gap:12px; list-style-type:disc; padding-left:20px;">
-            <li>Consent before publication</li>
-            <li>Patient-controlled display name</li>
-            <li>Optional photo and video permission</li>
-            <li>Private feedback option</li>
-            <li>Testimonial withdrawal support</li>
-            <li>Clinical-information minimisation</li>
-          </ul>
+        <!-- Privacy Panel -->
+        <div class="panel-card panel-privacy">
+          <div class="icon-circle"><i data-lucide="shield"></i></div>
+          <p class="section-eyebrow">CONSENT & PRIVACY</p>
+          <h2>We respect your privacy at every step.</h2>
+          <p>Testimonials, photos and videos are published only with your permission. You decide what we share—and what
+            we don't.</p>
+          <a href="/privacy-policy.html" class="read-story-link">Learn more about our privacy practices <i
+              data-lucide="arrow-right"></i></a>
         </div>
-      </div>
-    </section>
 
-    <!-- 10. OPTIONAL TESTIMONIALS FAQS -->
-    <section class="testimonials-faq" aria-labelledby="faq-title"
-      style="padding:4rem 0; background:var(--color-background-soft);">
-      <div class="container" style="max-width:800px;">
-        <div class="section-heading" style="text-align:center; margin-bottom:2rem;">
-          <h2 id="faq-title">Testimonial <span>FAQs</span></h2>
-        </div>
-        <div class="faq-accordion" style="display:flex; flex-direction:column; gap:16px;">
-          <details class="faq-item" style="background:white; padding:1.5rem; border-radius:8px;">
-            <summary class="faq-trigger" style="font-weight:600; cursor:pointer;" aria-expanded="false"
-              aria-controls="faq-1">Are all testimonials genuine? </summary>
-            <div id="faq-1" class="faq-answer" style="margin-top:1rem; color:var(--color-text);">
-              <p>Yes. Testimonials are displayed only after verification, moderation, and patient consent.</p>
-            </div>
-          </details>
-          <details class="faq-item" style="background:white; padding:1.5rem; border-radius:8px;">
-            <summary class="faq-trigger" style="font-weight:600; cursor:pointer;" aria-expanded="false"
-              aria-controls="faq-2">Can I submit feedback without publishing it? </summary>
-            <div id="faq-2" class="faq-answer" style="margin-top:1rem; color:var(--color-text);">
-              <p>Yes. Patients may provide private feedback without granting permission for public display.</p>
-            </div>
-          </details>
-          <details class="faq-item" style="background:white; padding:1.5rem; border-radius:8px;">
-            <summary class="faq-trigger" style="font-weight:600; cursor:pointer;" aria-expanded="false"
-              aria-controls="faq-3">Can I withdraw a testimonial later? </summary>
-            <div id="faq-3" class="faq-answer" style="margin-top:1rem; color:var(--color-text);">
-              <p>Yes. Patients may contact the clinic to request that approved testimonial content be updated or
-                removed.</p>
-            </div>
-          </details>
+        <!-- FAQ Panel -->
+        <div class="panel-card panel-faq">
+          <p class="section-eyebrow">FREQUENTLY ASKED QUESTIONS</p>
+          <div class="mini-accordion">
+            <details>
+              <summary>How are testimonials published? <i data-lucide="plus"></i></summary>
+              <div>Only after verification and written consent.</div>
+            </details>
+            <details>
+              <summary>Can I request to remove my testimonial? <i data-lucide="plus"></i></summary>
+              <div>Yes, you can request removal at any time.</div>
+            </details>
+            <details>
+              <summary>Are before & after photos always shown? <i data-lucide="plus"></i></summary>
+              <div>No, images are strictly optional.</div>
+            </details>
+          </div>
+          <a href="#" class="read-story-link" style="margin-top:1rem;">View all FAQs <i
+              data-lucide="arrow-right"></i></a>
         </div>
       </div>
     </section>

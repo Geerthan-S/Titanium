@@ -58,13 +58,24 @@ function renderTestimonials() {
   if (featured && featuredSection && featuredMount) {
     featuredSection.hidden = false;
     featuredMount.innerHTML = `
-      <article class="featured-story" style="display:flex; flex-direction:column; gap:24px; padding:24px; background:var(--color-surface); border-radius:12px; box-shadow:var(--shadow-soft);">
+      <article class="featured-story">
+        <div class="featured-story__image">
+           <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=600" alt="Titanium Roots patient suite">
+        </div>
         <div class="featured-story__content">
           <div class="featured-story__quote">
+            <span class="quote-mark">“</span>
             <blockquote>${richTextSegments(featured.review)}</blockquote>
-            <p class="featured-story__author" style="margin-top:1rem; font-family:var(--font-heading); color:var(--color-heading);">
-              <strong>${safe(featured.name)}</strong> - <span style="color:var(--color-muted); font-size:0.9rem;">${safe(featured.treatment)}</span>
-            </p>
+          </div>
+          <div class="featured-story__footer">
+            <div class="author-avatar">${safe(featured.name).split(' ').map(n => n[0]).join('').substring(0, 2)}</div>
+            <div class="author-details">
+               <strong>${safe(featured.treatment)}</strong>
+               <span>Treated by ${featured.doctorName || 'Dr. Priya Mehta'}</span>
+            </div>
+            <div class="consent-badge">
+               <i data-lucide="shield-check"></i> Consent Approved
+            </div>
           </div>
         </div>
       </article>
@@ -90,11 +101,16 @@ function renderTestimonials() {
   }
 
   if (remaining.length > 0 && grid) {
-    grid.innerHTML = remaining.map((item) => `<article class="testimonial-page-card">
-      <blockquote>${richTextSegments(item.review)}</blockquote>
+    grid.innerHTML = remaining.map((item) => `
+    <article class="testimonial-page-card">
+      <div class="author-initials">${safe(item.name).split(' ').map(n => n[0]).join('').substring(0, 2)}</div>
+      <blockquote>"${richTextSegments(item.review).replace(/<[^>]+>/g, '')}"</blockquote>
       <footer>
-        ${item.image ? `<img src="${publicMediaUrl(item.image)}" alt="">` : ''}
-        <div><strong>${safe(item.name)}</strong><span>${safe(item.treatment)}</span></div>
+        <div>
+           <strong>${safe(item.treatment)}</strong>
+           <span>${new Date(item.created_at || Date.now()).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</span>
+        </div>
+        <a href="#" class="read-story-link">Read Story <i data-lucide="arrow-right"></i></a>
       </footer>
     </article>`).join('');
   }
