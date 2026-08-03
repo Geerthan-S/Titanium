@@ -6,6 +6,8 @@
   <meta name="description" content="Titanium Roots Dental Clinic.">
   <title>Titanium Roots Dental Clinic</title>
   <link rel="icon" href="/favicon.ico">
+  <!-- Preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/assets/css/global.css">
   <link rel="stylesheet" href="/assets/css/pages/home.css">
 </head>
@@ -22,34 +24,38 @@
           <p class="home-hero__description" data-hero-copy>Where advanced technology meets gentle care. Experience dental excellence in a comfortable, luxurious environment.</p>
           <div class="home-hero__actions" data-hero-actions>
             <button class="button button--hero" type="button" data-modal-open="appointment-modal"><span>Book Your Appointment</span><i data-lucide="calendar-days" aria-hidden="true"></i></button>
-            <a class="button button--hero-secondary" href="#" target="_blank" rel="noopener noreferrer" data-whatsapp-link><i data-lucide="message-circle" aria-hidden="true"></i><span>Chat on WhatsApp</span><i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+            <a class="button button--hero-secondary" href="#" target="_blank" rel="noopener noreferrer" data-whatsapp-link><i data-lucide="message-circle" aria-hidden="true"></i><span>Chat on WhatsApp</span></a>
           </div>
           <ul class="home-hero__features" aria-label="Clinic commitments" data-hero-features>
-            <li><i data-lucide="scan-face" aria-hidden="true"></i><span>Advanced<br>Technology</span></li><li><i data-lucide="users-round" aria-hidden="true"></i><span>Expert<br>Team</span></li><li><i data-lucide="heart-handshake" aria-hidden="true"></i><span>Patient First<br>Approach</span></li>
+            <li><i data-lucide="scan-face" aria-hidden="true"></i><span>Advanced<br>Technology</span></li><li><i data-lucide="users-round" aria-hidden="true"></i><span>Expert<br>Team</span></li><li><i data-lucide="shield-check" aria-hidden="true"></i><span>Safe &amp;<br>Clean</span></li>
           </ul>
         </div>
-        <div class="home-hero__visual" data-hero-visual><div class="home-hero__image-outline" aria-hidden="true"></div><div class="home-hero__image-frame"><img src="/assets/images/home/clinic-reception.webp" alt="Titanium Roots clinic reception with seating and architectural lighting" width="1778" height="888"></div></div>
+        <div class="home-hero__visual" data-hero-visual>
+          <div class="home-hero__image-outline" aria-hidden="true"></div>
+          <div class="home-hero__image-frame">
+            <img src="/assets/images/home/clinic-reception.jpg" alt="Clinic reception area" loading="lazy" width="1400" height="900">
+          </div>
+        </div>
         <div class="home-hero__statistics" data-hero-statistics aria-label="Clinic highlights"></div>
       </div>
     </section>
 
     <section class="story-section section" aria-labelledby="story-title" data-reveal-section>
-      <div class="container story-section__grid"><div class="story-collage" data-reveal-image><img src="/assets/images/placeholders/clinic-neutral.svg" alt="Placeholder for an approved dental operatory image"><div class="story-collage__secondary"><img src="/assets/images/placeholders/clinic-neutral.svg" alt="Placeholder for an approved patient-care image"></div><div class="story-collage__stat"><i data-lucide="heart-handshake" aria-hidden="true"></i><strong>5000+</strong><span>Smiles transformed</span></div></div><div class="story-section__content"><p class="section-eyebrow">Our Story</p><h2 id="story-title">Creating Beautiful Smiles with<br><span>Advanced Care</span></h2><p>Titanium Roots is a modern dental clinic shaped around advanced dentistry, compassionate care, and patient comfort.</p><p>Every visit is designed to help patients feel informed, comfortable, and supported through their care.</p><dl class="story-principles"><div><dt><i data-lucide="heart-handshake" aria-hidden="true"></i>Our Mission</dt><dd>Attentive dental care centered on patient well-being.</dd></div><div><dt><i data-lucide="scan-face" aria-hidden="true"></i>Our Vision</dt><dd>Modern, approachable care in a welcoming clinic environment.</dd></div><div><dt><i data-lucide="sparkles" aria-hidden="true"></i>Our Values</dt><dd>Care, clarity, comfort, and respect for every patient.</dd></div></dl><a class="text-link" href="/about.html">Know More About Us <i data-lucide="arrow-right" aria-hidden="true"></i></a></div></div>
+      <div class="container story-section__grid"><div class="story-collage" data-reveal-image><img src="/assets/images/placeholders/clinic-neutral.svg" alt="Placeholder for clinic interior"></div>
     </section>
 
-    <section class="treatments-preview section" aria-labelledby="treatments-title" data-reveal-section><div class="container"><div class="section-heading"><div><p class="section-eyebrow">Featured Treatments</p><h2 id="treatments-title">Comprehensive Dental Care <span>for Every Smile</span></h2></div><a class="text-link" href="/treatments.html">View All Treatments <i data-lucide="arrow-right" aria-hidden="true"></i></a></div><div class="treatment-grid" data-featured-treatments></div></div></section>
+    <section class="treatments-preview section" aria-labelledby="treatments-title" data-reveal-section><div class="container"><div class="section-heading"><div><p class="section-eyebrow">Featured</p></div></div></div></section>
 
+    <section class="clinic-section section" aria-labelledby="clinic-title" data-reveal-section><div class="container clinic-section__grid"><div class="clinic-section__content"><p class="section-eyebrow">About Our Clinic</p></div></div></section>
 
-    <section class="clinic-section section" aria-labelledby="clinic-title" data-reveal-section><div class="container clinic-section__grid"><div class="clinic-section__content"><p class="section-eyebrow">Our Clinic</p><h2 id="clinic-title">Modern Clinic.<br><span>Designed for Your Comfort.</span></h2><p>Our clinic spaces are planned to make every stage of your dental visit feel considered and comfortable.</p><ul class="clinic-checklist"><li>Advanced Dental Operatories</li><li>Digital Imaging Support</li><li>Sterilization and Hygiene Standards</li><li>Comfortable Waiting Lounge</li><li>Modern Dental Equipment</li></ul><button class="button button--secondary" type="button" data-modal-open="clinic-tour-modal">Take a Virtual Tour <i data-lucide="play" aria-hidden="true"></i></button></div><div class="clinic-gallery" data-reveal-image><button class="clinic-gallery__main" type="button" data-modal-open="clinic-tour-modal" aria-label="Open virtual tour preview"><img data-clinic-gallery-main src="/assets/images/placeholders/clinic-neutral.svg" alt="Placeholder for a main clinic interior image"><span><i data-lucide="play" aria-hidden="true"></i></span></button><div class="clinic-gallery__supporting" data-clinic-gallery-supporting></div></div></div></section>
+    <section class="doctors-preview section" aria-labelledby="doctors-title" data-reveal-section><div class="container"><div class="section-heading"><div><p class="section-eyebrow">Meet Our Specialists</p></div></div></div></section>
 
-    <section class="doctors-preview section" aria-labelledby="doctors-title" data-reveal-section><div class="container"><div class="section-heading"><div><p class="section-eyebrow">Meet Our Specialists</p><h2 id="doctors-title">Our Expert <span>Doctors</span></h2></div><a class="text-link" href="/doctors.html">View All Doctors <i data-lucide="arrow-right" aria-hidden="true"></i></a></div><div class="doctor-grid" data-featured-doctors></div></div></section>
+    <section class="testimonials-preview section" aria-labelledby="testimonials-title" data-reveal-section><div class="container"><div class="section-heading"><div><p class="section-eyebrow">Patients</p></div></div></div></section>
 
-    <section class="testimonials-preview section" aria-labelledby="testimonials-title" data-reveal-section><div class="container"><div class="section-heading"><div><p class="section-eyebrow">Patient Testimonials</p><h2 id="testimonials-title">What Our Patients <span>Say</span></h2></div><div class="section-heading__actions"><button class="icon-button" type="button" aria-label="Previous testimonials" data-testimonial-prev><i data-lucide="arrow-left" aria-hidden="true"></i></button><button class="icon-button" type="button" aria-label="Next testimonials" data-testimonial-next><i data-lucide="arrow-right" aria-hidden="true"></i></button><a class="text-link" href="/testimonials.html">View All Testimonials <i data-lucide="arrow-right" aria-hidden="true"></i></a></div></div><div class="testimonial-track" data-testimonial-track tabindex="0" aria-label="Patient testimonial previews"></div></div></section>
-
-    <section class="blogs-preview section" aria-labelledby="blogs-title" data-reveal-section><div class="container"><div class="section-heading"><div><p class="section-eyebrow">From Our Blog</p><h2 id="blogs-title">Latest Dental <span>Insights</span></h2></div><a class="text-link" href="/blog.html">View All Blogs <i data-lucide="arrow-right" aria-hidden="true"></i></a></div><div class="blog-grid" data-latest-blogs></div></div></section>
+    <section class="blogs-preview section" aria-labelledby="blogs-title" data-reveal-section><div class="container"><div class="section-heading"><div><p class="section-eyebrow">From Our Blog</p></div></div></div></section>
   </main>
 
-  <section class="modal clinic-tour-modal" id="clinic-tour-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="clinic-tour-title" hidden data-modal><div class="modal__dialog card" role="document"><button class="modal__close" type="button" aria-label="Close virtual tour preview" data-modal-close><i data-lucide="x" aria-hidden="true"></i></button><p class="modal__eyebrow">Virtual Tour</p><h2 id="clinic-tour-title">Clinic tour preview</h2><p>Approved clinic tour media will be added here when it is available.</p></div></section>
+  <section class="modal clinic-tour-modal" id="clinic-tour-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="clinic-tour-title" hidden data-modal><div class="modal__dialog"></div></section>
   <div data-component="consultation-banner"></div>
   <div data-component="footer"></div>
   <div data-component="appointment-modal"></div>
