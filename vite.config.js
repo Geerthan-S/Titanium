@@ -1,6 +1,7 @@
-import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import { cpSync, existsSync, readFileSync, readdirSync, rmSync } from 'node:fs';
 import { resolve, relative } from 'node:path';
 import { defineConfig } from 'vite';
+import { cleanRoute, STATIC_ROUTES } from './assets/js/utils/route-manifest.js';
 
 const rootDirectory = resolve(import.meta.dirname);
 const componentDirectory = resolve(rootDirectory, 'components');
@@ -48,7 +49,14 @@ function seoMetadataPlugin() {
           return html;
         }
         const relativePath = relative(rootDirectory, context.filename || '').replaceAll('\\', '/');
-        const route = relativePath === 'index.html' ? '/' : `/${relativePath}`;
+        const generatedPath = relativePath.startsWith('.generated/')
+          ? relativePath.replace(/^\.generated\//, '')
+          : relativePath;
+        const route = generatedPath === 'index.html'
+          ? '/'
+          : generatedPath.endsWith('/index.html')
+            ? `/${generatedPath.replace(/\/index\.html$/, '/')}`
+            : `/${generatedPath}`;
         const record = cache.records?.find((item) => item.route === route);
         if (!record) return html;
         const robots = `${record.should_index ? 'index' : 'noindex'}, ${record.should_follow ? 'follow' : 'nofollow'}`;
@@ -76,28 +84,108 @@ function seoMetadataPlugin() {
   };
 }
 
-function treatmentPages() {
-  const dir = resolve(rootDirectory, 'treatments');
-  if (!existsSync(dir)) return {};
+function generatedPages(directory = resolve(rootDirectory, '.generated')) {
+  if (!existsSync(directory)) return {};
   const entries = {};
-  readdirSync(dir).forEach((file) => {
-    if (file.endsWith('.html')) {
-      entries[`treatment_${file.replace('.html', '')}`] = resolve(dir, file);
-    }
-  });
+  const walk = (current) => {
+    readdirSync(current, { withFileTypes: true }).forEach((entry) => {
+      const entryPath = resolve(current, entry.name);
+      if (entry.isDirectory()) {
+        walk(entryPath);
+        return;
+      }
+      if (entry.isFile() && entry.name === 'index.html') {
+        const key = relative(directory, entryPath)
+          .replaceAll('\\', '/')
+          .replace(/\/index\.html$/, '')
+          .replace(/^index\.html$/, 'home')
+          .replace(/[^a-z0-9]+/gi, '_') || 'home';
+        entries[`page_${key}`] = entryPath;
+      }
+      if (entry.isFile() && entry.name === '404.html') entries.notFound = entryPath;
+    });
+  };
+  walk(directory);
   return entries;
 }
 
-function doctorPages() {
-  const dir = resolve(rootDirectory, 'doctors');
-  if (!existsSync(dir)) return {};
-  const entries = {};
-  readdirSync(dir).forEach((file) => {
-    if (file.endsWith('.html')) {
-      entries[`doctor_${file.replace('.html', '')}`] = resolve(dir, file);
-    }
+function finalizeGeneratedOutputPlugin() {
+  return {
+    name: 'titanium-roots-finalize-generated-output',
+    writeBundle(options) {
+      const outputDirectory = options.dir || resolve(rootDirectory, 'dist');
+      const generatedOutput = resolve(outputDirectory, '.generated');
+      if (!existsSync(generatedOutput)) return;
+      cpSync(generatedOutput, outputDirectory, { recursive: true, force: true });
+      rmSync(generatedOutput, { recursive: true, force: true });
+    },
+  };
+}
+
+function fallbackPages() {
+  return {
+    home: resolve(rootDirectory, 'index.html'),
+    about: resolve(rootDirectory, 'about.html'),
+    treatments: resolve(rootDirectory, 'treatments.html'),
+    doctors: resolve(rootDirectory, 'doctors.html'),
+    testimonials: resolve(rootDirectory, 'testimonials.html'),
+    blog: resolve(rootDirectory, 'blog.html'),
+    contact: resolve(rootDirectory, 'contact.html'),
+    notFound: resolve(rootDirectory, '404.html'),
+  };
+}
+
+function publicPages() {
+  const generated = generatedPages();
+  return Object.keys(generated).length ? generated : fallbackPages();
+}
+
+function prettyRouteDevFallback() {
+  // Dev only: navbar/footer links use production pretty URLs (e.g. /about/, /blog/slug/),
+  // but the source files are flat (about.html, treatments.html, ...) until the static
+  // build generates the pretty-route directories. Rewrite those paths to the local
+  // HTML file so navigation works in `vite dev`.
+  const sourceByRoute = new Map();
+  STATIC_ROUTES.filter((route) => route.source.endsWith('.html')).forEach((route) => {
+    const pretty = cleanRoute(route.route);
+    sourceByRoute.set(pretty, `/${route.source}`);
+    if (pretty !== '/') sourceByRoute.set(pretty.replace(/\/$/, ''), `/${route.source}`);
   });
-  return entries;
+  return {
+    name: 'titanium-roots-pretty-route-dev-fallback',
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        const pathname = (req.url || '/').split('?')[0];
+        const source = sourceByRoute.get(pathname);
+        if (!source) return next();
+        req.url = source;
+        next();
+      });
+    }
+  };
+}
+
+import galleryApiHandler from './api/gallery.js';
+
+function galleryApiDevPlugin() {
+  return {
+    name: 'titanium-roots-gallery-api',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        const url = (req.url || '').split('?')[0];
+        if (url === '/api/gallery' || url.startsWith('/api/gallery/')) {
+          try {
+            await galleryApiHandler(req, res);
+          } catch (err) {
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: err.message }));
+          }
+        } else {
+          next();
+        }
+      });
+    }
+  };
 }
 
 export default defineConfig({
@@ -110,20 +198,11 @@ export default defineConfig({
       }
     }
   },
-  plugins: [seoMetadataPlugin(), componentAssetsPlugin()],
+  plugins: [galleryApiDevPlugin(), seoMetadataPlugin(), componentAssetsPlugin(), finalizeGeneratedOutputPlugin(), prettyRouteDevFallback()],
   build: {
     rollupOptions: {
       input: {
-        home: resolve(rootDirectory, 'index.html'),
-        about: resolve(rootDirectory, 'about.html'),
-        treatments: resolve(rootDirectory, 'treatments.html'),
-        ...treatmentPages(),
-        doctors: resolve(rootDirectory, 'doctors.html'),
-        ...doctorPages(),
-        testimonials: resolve(rootDirectory, 'testimonials.html'),
-        blog: resolve(rootDirectory, 'blog.html'),
-        contact: resolve(rootDirectory, 'contact.html'),
-        notFound: resolve(rootDirectory, '404.html'),
+        ...publicPages(),
         adminLogin: resolve(rootDirectory, 'admin/login.html'),
         adminResetPassword: resolve(rootDirectory, 'admin/reset-password.html'),
         adminDashboard: resolve(rootDirectory, 'admin/dashboard.html'),

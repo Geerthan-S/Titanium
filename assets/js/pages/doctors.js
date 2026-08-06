@@ -8,6 +8,12 @@ import { loadPublicContent, onPublicContent, subscribePublicContent } from '../d
 import { SITE_CONFIG } from '../utils/constants.js';
 
 const portrait = '/assets/images/placeholders/clinic-neutral.svg';
+const heroStatistics = [
+  { value: '10+', label: 'Years Experience', icon: 'stethoscope' },
+  { value: '5000+', label: 'Happy Patients', icon: 'heart-handshake' },
+  { value: '15+', label: 'Expert Doctors', icon: 'users-round' },
+  { value: '20+', label: 'Treatments', icon: 'badge-plus' },
+];
 const trustFeatures = [
   ['message-circle', 'Clear Communication', 'Treatment conversations are kept clear and considered.'],
   ['scan-face', 'Thoughtful Treatment Planning', 'Care options are discussed after examination.'],
@@ -44,6 +50,15 @@ export async function initializeDoctors() {
   if (document.body.dataset.doctorsInitialized) return;
   document.body.dataset.doctorsInitialized = 'true';
   document.querySelector('[data-breadcrumb-current]')?.replaceChildren('Doctors');
+
+  const statisticsPanel = document.querySelector('[data-doctor-statistics]');
+  if (statisticsPanel && !statisticsPanel.dataset.initialized) {
+    statisticsPanel.dataset.initialized = 'true';
+    statisticsPanel.innerHTML = heroStatistics.map(({ value, label, icon }) =>
+      `<article class="home-stat"><i data-lucide="${icon}" aria-hidden="true"></i><div><strong>${value}</strong><span>${label}</span></div></article>`
+    ).join('');
+  }
+
   try {
     doctors = await loadPublicContent('doctors');
   } catch {
@@ -108,19 +123,24 @@ function doctorCard(doctor, featured = false) {
   const image = doctor.portrait ? publicMediaUrl(doctor.portrait) : portrait;
   const experience = doctor.experience ? `${doctor.experience}+ years experience` : 'Ask about experience';
   const availabilityText = String(doctor.availability || 'Available on request').replace(/\r?\n/g, ' &middot; ');
+  const bioSnippet = String(doctor.biography || '').slice(0, 120);
+  const bioText = bioSnippet ? (bioSnippet.length < 120 ? bioSnippet : bioSnippet + '...') : '';
 
   return `<article class="${featured ? 'featured-doctor-card' : 'doctor-card'}">
-    <div class="doctor-card__media"><img src="${image}" width="1200" height="900" loading="lazy" alt="${safe(doctor.imageAlt || doctor.name)}"></div>
+    <div class="doctor-card__media">
+      <img src="${image}" width="1200" height="900" loading="lazy" alt="${safe(doctor.imageAlt || doctor.name)}">
+      ${doctor.designation ? `<span>${safe(doctor.designation)}</span>` : ''}
+    </div>
     <div class="doctor-card__content">
+      ${doctor.featured ? '<p class="doctor-card__status">Featured Specialist</p>' : ''}
       <h3>${safe(doctor.name)}</h3>
-      <p>${safe(doctor.designation)}</p><p>${safe(doctor.qualification)}</p><p>${safe(doctor.specialization)}</p>
-      <div style="display:flex; flex-direction:column; gap:4px; margin: 7px 0 10px;">
-        <span class="doctor-card__experience" style="margin:0;"><i data-lucide="stethoscope" aria-hidden="true"></i>${safe(experience)}</span>
-        <span class="doctor-card__experience" style="margin:0;"><i data-lucide="clock" aria-hidden="true"></i>${availabilityText}</span>
-      </div>
+      <p>${safe(doctor.specialization)}</p>
+      ${doctor.qualification ? `<p>${safe(doctor.qualification)}</p>` : ''}
+      ${bioText ? `<p>${safe(bioText)}</p>` : ''}
+      ${doctor.experience ? `<div class="doctor-card__experience"><i data-lucide="award" aria-hidden="true"></i><span>${experience}</span></div>` : ''}
       <div class="doctor-card__actions">
-        <a class="text-link" href="/doctors/${safe(doctor.slug)}.html">View Profile <i data-lucide="arrow-right" aria-hidden="true"></i></a>
-        <button class="button" type="button" data-modal-open="appointment-modal" data-doctor-selection="${safe(doctor.name)}" data-treatment-interest="General consultation">Book Appointment <i data-lucide="calendar-days" aria-hidden="true"></i></button>
+        <a class="button" href="/doctors/${safe(doctor.slug || doctor.name.toLowerCase().replace(/\s+/g, '-'))}.html">View Profile <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+        <button class="button button--secondary" type="button" data-modal-open="appointment-modal" data-doctor-selection="${safe(doctor.name)}">Book Appointment</button>
       </div>
     </div>
   </article>`;
@@ -130,10 +150,7 @@ function doctorCard(doctor, featured = false) {
 
 function renderFilters() {
   const mount = document.querySelector('[data-doctor-filters]');
-  if (!mount) return;
-  const filters = ['All Doctors', ...new Set(doctors.flatMap(specialtiesFor))];
-  if (!filters.includes(activeFilter)) activeFilter = 'All Doctors';
-  mount.innerHTML = filters.map((filter) => `<button type="button" data-doctor-filter="${safe(filter)}" aria-pressed="${filter === activeFilter}">${safe(filter)}</button>`).join('') + `<button class="text-button" type="button" data-doctor-reset style="margin-left:8px; align-self:center;">Reset filters</button>`;
+  if (mount) mount.innerHTML = '';
 }
 
 function renderDirectory() {

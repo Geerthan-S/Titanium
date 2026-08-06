@@ -9,6 +9,7 @@ export const PUBLIC_TABLES = Object.freeze({
   gallery: 'gallery_items',
   seo: 'seo_pages',
   settings: 'site_settings',
+  websiteAssets: 'website_assets',
 });
 
 const state = new Map();
@@ -54,7 +55,7 @@ export function subscribePublicContent(name) {
   const channel = requireSupabase()
     .channel(`public-${table}`)
     .on('postgres_changes', { event: '*', schema: 'public', table }, () => {
-      loadPublicContent(name, { force: true }).catch(() => {});
+      loadPublicContent(name, { force: true }).catch(() => { });
     })
     .subscribe();
   channels.set(name, channel);

@@ -26,48 +26,32 @@
       <div class="about-hero__background" aria-hidden="true"></div>
       <div class="container about-hero__grid">
         <div class="about-hero__content">
-          <div class="about-breadcrumb-shell" data-component="breadcrumb"></div>
-          <p class="section-eyebrow" data-about-hero-eyebrow>ABOUT TITANIUM ROOTS</p>
-          <h1 id="about-hero-title" data-about-hero-heading>Modern Dentistry, Thoughtfully Designed <span>Around
-              You.</span></h1>
-          <p class="about-hero__description" data-about-hero-copy>Titanium Roots Dental Clinic brings together modern
-            dental care, personalised treatment planning, and a calm patient experience.</p>
-          <p class="about-hero__description" data-about-hero-copy>From your first consultation to every follow-up visit,
-            our approach is built around clear communication, clinical responsibility, comfort, and long-term oral
-            health.</p>
-          <div class="hero-actions" data-about-hero-actions>
-            <button type="button" class="button" data-modal-open="appointment-modal">Book a Consultation <i
-                data-lucide="arrow-right" aria-hidden="true"></i></button>
-            <a href="/doctors" class="button button--secondary">Meet Our Doctors <i data-lucide="users-round"
-                aria-hidden="true"></i></a>
+          <p class="home-hero__badge" data-hero-badge><i data-lucide="sparkles" aria-hidden="true"></i>Welcome to
+            Titanium Roots Dental Clinic</p>
+          <h1 id="about-hero-title" data-hero-heading>Your Smile,<br><span>Our Priority</span></h1>
+          <p class="home-hero__description" data-hero-copy>Where advanced technology meets gentle care. Experience
+            dental excellence in a comfortable, luxurious environment.</p>
+          <div class="home-hero__actions" data-hero-actions>
+            <button class="button button--hero" type="button" data-modal-open="appointment-modal"><span>Book Your
+                Appointment</span><i data-lucide="calendar-days" aria-hidden="true"></i></button>
+            <a class="button button--hero-secondary" href="#" target="_blank" rel="noopener noreferrer"
+              data-whatsapp-link><i data-lucide="message-circle" aria-hidden="true"></i><span>Chat on WhatsApp</span><i
+                data-lucide="arrow-up-right" aria-hidden="true"></i></a>
           </div>
-          <!-- relocated trust metrics to about-statistics -->
+          <ul class="home-hero__features" aria-label="Clinic commitments" data-hero-features>
+            <li><i data-lucide="scan-face" aria-hidden="true"></i><span>Advanced<br>Technology</span></li>
+            <li><i data-lucide="users-round" aria-hidden="true"></i><span>Expert<br>Team</span></li>
+            <li><i data-lucide="heart-handshake" aria-hidden="true"></i><span>Patient First<br>Approach</span></li>
+          </ul>
         </div>
         <div class="about-hero__visual" data-about-hero-visual>
           <div class="about-hero__outline" aria-hidden="true"></div>
-          <div class="about-hero__image-frame">
-            <img src="/assets/images/home/clinic-reception.webp" width="1778" height="888"
-              alt="Titanium Roots clinic reception with seating and architectural lighting">
-          </div>
-          <div class="about-statistics" aria-label="Titanium Roots commitments">
-            <div class="about-stat">
-              <i data-lucide="scan-face" aria-hidden="true"></i>
-              <span>Advanced Dental<br>Technology</span>
-            </div>
-            <div class="about-stat">
-              <i data-lucide="file-check" aria-hidden="true"></i>
-              <span>Personalised Treatment<br>Planning</span>
-            </div>
-            <div class="about-stat">
-              <i data-lucide="heart-handshake" aria-hidden="true"></i>
-              <span>Pain-Conscious<br>Care</span>
-            </div>
-            <div class="about-stat">
-              <i data-lucide="shield-check" aria-hidden="true"></i>
-              <span>Strict Sterilisation<br>Standards</span>
-            </div>
+          <div class="about-hero__image-frame"><img data-website-asset="about_hero_image"
+              src="/assets/images/home/clinic-reception.webp"
+              alt="Titanium Roots clinic reception with seating and architectural lighting" width="1778" height="888">
           </div>
         </div>
+        <div class="about-statistics" aria-label="Clinic highlights"></div>
       </div>
     </section>
 
@@ -86,8 +70,9 @@
         </div>
         <div class="about-story__media" data-about-reveal-image>
           <div class="about-story__image about-story__image--primary">
-            <img class="media-placeholder" src="/assets/images/placeholders/clinic-neutral.svg" width="1200"
-              height="1500" loading="lazy" alt="Patient-care consultation environment">
+            <img class="media-placeholder" data-website-asset="about_story_image"
+              src="/assets/images/placeholders/clinic-neutral.svg" width="1200" height="1500" loading="lazy"
+              alt="Patient-care consultation environment">
           </div>
           <div class="about-pullquote">
             <blockquote>We do not begin with a procedure. We begin by understanding the person behind the smile.

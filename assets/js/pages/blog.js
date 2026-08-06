@@ -8,10 +8,16 @@ import { loadPublicContent, onPublicContent, subscribePublicContent } from '../d
 import { SITE_CONFIG } from '../utils/constants.js';
 
 const placeholder = '/assets/images/placeholders/clinic-neutral.svg';
+const heroStatistics = [
+  { value: '10+', label: 'Years Experience', icon: 'stethoscope' },
+  { value: '5000+', label: 'Happy Patients', icon: 'heart-handshake' },
+  { value: '15+', label: 'Expert Doctors', icon: 'users-round' },
+  { value: '20+', label: 'Treatments', icon: 'badge-plus' },
+];
 const resources = [
-  ['Treatment Information', 'Browse clear information about treatments offered by the clinic.', 'badge-plus', '/treatments.html'],
-  ['Meet the Doctors', 'Learn about the clinic team and their areas of care.', 'users-round', '/doctors.html'],
-  ['Book an Appointment', 'Send your preferred date and consultation details.', 'calendar-days', '/contact.html'],
+  ['Treatment Information', 'Browse clear information about treatments offered by the clinic.', 'badge-plus', '/treatments/'],
+  ['Meet the Doctors', 'Learn about the clinic team and their areas of care.', 'users-round', '/doctors/'],
+  ['Book an Appointment', 'Send your preferred date and consultation details.', 'calendar-days', '/contact/'],
 ];
 let articles = [];
 let activeCategory = 'All Articles';
@@ -40,6 +46,15 @@ export async function initializeBlog() {
   if (document.body.dataset.blogInitialized) return;
   document.body.dataset.blogInitialized = 'true';
   document.querySelector('[data-breadcrumb-current]')?.replaceChildren('Blog');
+
+  const statisticsPanel = document.querySelector('[data-blog-statistics]');
+  if (statisticsPanel && !statisticsPanel.dataset.initialized) {
+    statisticsPanel.dataset.initialized = 'true';
+    statisticsPanel.innerHTML = heroStatistics.map(({ value, label, icon }) =>
+      `<article class="home-stat"><i data-lucide="${icon}" aria-hidden="true"></i><div><strong>${value}</strong><span>${label}</span></div></article>`
+    ).join('');
+  }
+
   try {
     articles = (await loadPublicContent('blogs')).map(normalizeArticle);
   } catch {
@@ -69,13 +84,6 @@ function renderAllContent() {
 }
 
 function renderHero() {
-  const trust = document.querySelector('[data-blog-hero-trust]');
-  if (trust) trust.innerHTML = [
-    ['shield-check', 'Clinic-Published Content'],
-    ['message-circle', 'Clear Patient Education'],
-    ['stethoscope', 'Treatment Guidance'],
-    ['sparkles', 'Useful Information'],
-  ].map(([icon, label]) => `<div><i data-lucide="${icon}" aria-hidden="true"></i><span>${label}</span></div>`).join('');
   const statistics = document.querySelector('[data-blog-statistics]');
   if (statistics) statistics.innerHTML = [
     ['Published Articles', articles.length, 'badge-plus'],
@@ -94,7 +102,7 @@ function articleMeta(article) {
 function articleCard(article) {
   return `<article class="blog-card" id="${safe(article.slug)}">
     <div class="blog-card__media"><img src="${article.featuredImage}" width="1600" height="1000" loading="lazy" alt="${safe(article.imageAlt || article.title)}"></div>
-    <div class="blog-card__body"><p class="blog-card__category">${safe(article.category)}</p><h3>${safe(article.title)}</h3><p>${safe(article.excerpt)}</p><div class="blog-card__meta">${articleMeta(article)}</div><button class="text-link" type="button" data-article-open="${safe(article.id)}">Read Article <i data-lucide="arrow-right" aria-hidden="true"></i></button></div>
+    <div class="blog-card__body"><p class="blog-card__category">${safe(article.category)}</p><h3>${safe(article.title)}</h3><p>${safe(article.excerpt)}</p><div class="blog-card__meta">${articleMeta(article)}</div><a class="text-link" href="/blog/${safe(article.slug)}.html" data-article-open="${safe(article.id)}">Read Article <i data-lucide="arrow-right" aria-hidden="true"></i></a></div>
   </article>`;
 }
 
@@ -104,7 +112,7 @@ function renderFeatured() {
   const article = articles.find((item) => item.featured);
   if (section) section.hidden = !article;
   if (!mount || !article) return;
-  mount.innerHTML = `<article class="blog-featured__card"><div class="blog-featured__content"><p class="section-eyebrow">Featured Article</p><p class="blog-featured__category">${safe(article.category)}</p><h2 id="featured-title">${safe(article.title)}</h2><p>${safe(article.excerpt)}</p><div class="blog-card__meta">${articleMeta(article)}</div><button class="button" type="button" data-article-open="${safe(article.id)}">Read Article <i data-lucide="arrow-right" aria-hidden="true"></i></button></div><div class="blog-featured__media"><img src="${article.featuredImage}" width="1600" height="900" alt="${safe(article.imageAlt || article.title)}"></div></article>`;
+  mount.innerHTML = `<article class="blog-featured__card"><div class="blog-featured__content"><p class="section-eyebrow">Featured Article</p><p class="blog-featured__category">${safe(article.category)}</p><h2 id="featured-title">${safe(article.title)}</h2><p>${safe(article.excerpt)}</p><div class="blog-card__meta">${articleMeta(article)}</div><a class="button" href="/blog/${safe(article.slug)}.html" data-article-open="${safe(article.id)}">Read Article <i data-lucide="arrow-right" aria-hidden="true"></i></a></div><div class="blog-featured__media"><img src="${article.featuredImage}" width="1600" height="900" alt="${safe(article.imageAlt || article.title)}"></div></article>`;
 }
 
 function renderFilters() {
@@ -140,7 +148,7 @@ function renderTrending() {
   const trending = articles.filter((article) => article.trending);
   mount.hidden = !trending.length;
   if (!trending.length) return;
-  mount.innerHTML = `<p class="section-eyebrow">Trending Articles</p><h2>Popular Patient <span>Topics</span></h2><ol>${trending.map((article, index) => `<li><span>${String(index + 1).padStart(2, '0')}</span><button type="button" data-article-open="${safe(article.id)}"><strong>${safe(article.title)}</strong><small>${safe(article.category)}</small></button></li>`).join('')}</ol>`;
+  mount.innerHTML = `<p class="section-eyebrow">Trending Articles</p><h2>Popular Patient <span>Topics</span></h2><ol>${trending.map((article, index) => `<li><span>${String(index + 1).padStart(2, '0')}</span><a href="/blog/${safe(article.slug)}.html" data-article-open="${safe(article.id)}"><strong>${safe(article.title)}</strong><small>${safe(article.category)}</small></a></li>`).join('')}</ol>`;
 }
 
 function renderAuthors() {
@@ -193,9 +201,11 @@ function bindInteractions() {
       renderArticles();
     }
     const trigger = event.target.closest('[data-article-open]');
-    if (trigger) {
+    if (trigger && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
       const article = articles.find((item) => String(item.id) === trigger.dataset.articleOpen);
       if (article) {
+        event.preventDefault();
+        window.history.pushState(null, '', trigger.getAttribute('href'));
         renderArticleModal(article);
         openModal(document.querySelector('#article-detail-modal'), trigger);
       }

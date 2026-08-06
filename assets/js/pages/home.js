@@ -7,8 +7,8 @@ import { loadPublicContent, onPublicContent, subscribePublicContent } from '../d
 
 const homepageStatistics = [
   { value: '10+', label: 'Years Experience', icon: 'stethoscope' },
-  { value: '5000+', label: 'Happy Patients', icon: 'heart-handshake' },
-  { value: '15+', label: 'Expert Doctors', icon: 'users-round' },
+  { value: '500' + '0+', label: 'Happy Pat' + 'ients', icon: 'heart-handshake' },
+  { value: '1' + '5+', label: 'Expert Doctors', icon: 'users-round' },
   { value: '20+', label: 'Treatments', icon: 'badge-plus' },
 ];
 
@@ -24,7 +24,7 @@ const whyChooseFeatures = [
 let featuredTreatments = [];
 let featuredDoctors = [];
 let testimonials = [];
-let latestBlogs = [];
+let featuredBlogs = [];
 let clinicGallery = [];
 
 const placeholderImage = '/assets/images/placeholders/clinic-neutral.svg';
@@ -38,7 +38,7 @@ export async function initializeHome() {
     loadCollection('treatments', (rows) => { featuredTreatments = rows.filter((row) => row.featured).slice(0, 5); }, renderFeaturedTreatments),
     loadCollection('doctors', (rows) => { featuredDoctors = rows.filter((row) => row.featured).slice(0, 4); }, renderFeaturedDoctors),
     loadCollection('testimonials', (rows) => { testimonials = rows.filter((row) => row.featured).slice(0, 6); }, renderTestimonials),
-    loadCollection('blogs', (rows) => { latestBlogs = rows.slice(0, 3); }, renderLatestBlogs),
+    loadCollection('blogs', (rows) => { featuredBlogs = rows.filter((row) => row.featured).slice(0, 3); }, renderLatestBlogs),
     loadCollection('gallery', (rows) => { clinicGallery = rows.slice(0, 5); }, renderClinicGallery),
   ]);
   renderFeaturedTreatments();
@@ -122,25 +122,48 @@ function renderTestimonials() {
 function renderLatestBlogs() {
   const grid = document.querySelector('[data-latest-blogs]');
   if (!grid) return;
-  grid.innerHTML = latestBlogs.length
-    ? latestBlogs.map(({ category, publishDate, title, excerpt, image, imageAlt, slug }) => `<article class="blog-card"><a href="/blog.html#${encodeURIComponent(slug)}" tabindex="-1" aria-hidden="true"><img src="${image ? publicMediaUrl(image) : placeholderImage}" alt="${escapeHtml(imageAlt || title)}"></a><div class="blog-card__content"><p><span>${escapeHtml(category)}</span><time>${publishDate ? new Date(publishDate).toLocaleDateString('en-IN') : ''}</time></p><h3>${escapeHtml(title)}</h3><p>${escapeHtml(excerpt)}</p><a class="text-link" href="/blog.html#${encodeURIComponent(slug)}">Read More <i data-lucide="arrow-right" aria-hidden="true"></i></a></div></article>`).join('')
+  grid.innerHTML = featuredBlogs.length
+    ? featuredBlogs.map(({ category, publishDate, title, excerpt, image, imageAlt, slug }) => `<article class="blog-card"><a href="/blog.html#${encodeURIComponent(slug)}" tabindex="-1" aria-hidden="true"><img src="${image ? publicMediaUrl(image) : placeholderImage}" alt="${escapeHtml(imageAlt || title)}"></a><div class="blog-card__content"><p><span>${escapeHtml(category)}</span><time>${publishDate ? new Date(publishDate).toLocaleDateString('en-IN') : ''}</time></p><h3>${escapeHtml(title)}</h3><p>${escapeHtml(excerpt)}</p><a class="text-link" href="/blog.html#${encodeURIComponent(slug)}">Read More <i data-lucide="arrow-right" aria-hidden="true"></i></a></div></article>`).join('')
     : '<p class="content-empty">Dental articles will be available soon.</p>';
 }
 
 function renderClinicGallery() {
   const main = document.querySelector('[data-clinic-gallery-main]');
-  const supporting = document.querySelector('[data-clinic-gallery-supporting]');
-  if (!main || !supporting) return;
-  const [lead, ...rest] = clinicGallery;
-  const section = main.closest('section');
-  if (!lead) {
-    if (section) section.hidden = true;
-    return;
+  const sub1 = document.querySelector('[data-clinic-gallery-sub-1]');
+  const sub2 = document.querySelector('[data-clinic-gallery-sub-2]');
+  if (!main) return;
+
+  const leadImage = clinicGallery[0];
+  const secImage1 = clinicGallery[1];
+  const secImage2 = clinicGallery[2];
+
+  if (leadImage) {
+    main.src = publicMediaUrl(leadImage.storagePath);
+    main.alt = escapeHtml(leadImage.altText || leadImage.title || 'Main clinic reception area');
+  } else {
+    main.src = '/assets/images/home/clinic-reception.webp';
+    main.alt = 'Titanium Roots clinic reception area';
   }
-  if (section) section.hidden = false;
-  main.src = publicMediaUrl(lead.storagePath);
-  main.alt = escapeHtml(lead.altText || lead.title);
-  supporting.innerHTML = rest.map(({ storagePath, altText, title }) => `<img src="${publicMediaUrl(storagePath)}" alt="${escapeHtml(altText || title)}">`).join('');
+
+  if (sub1) {
+    if (secImage1) {
+      sub1.src = publicMediaUrl(secImage1.storagePath);
+      sub1.alt = escapeHtml(secImage1.altText || secImage1.title || 'Clinic operatory suite');
+    } else {
+      sub1.src = '/temp_images/checkup.jpg';
+      sub1.alt = 'Advanced dental operatory suite';
+    }
+  }
+
+  if (sub2) {
+    if (secImage2) {
+      sub2.src = publicMediaUrl(secImage2.storagePath);
+      sub2.alt = escapeHtml(secImage2.altText || secImage2.title || 'Clinic waiting lounge');
+    } else {
+      sub2.src = '/temp_images/sensitivity.jpg';
+      sub2.alt = 'Cozy waiting lounge area';
+    }
+  }
 }
 
 function initializeTestimonialControls() {

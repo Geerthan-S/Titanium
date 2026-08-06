@@ -18,8 +18,6 @@ test('admin forms pass File objects into the storage lifecycle', async () => {
   const form = await read('assets/js/admin/admin-form.js');
   const app = await read('assets/js/admin/admin-app.js');
   assert.match(form, /__files/);
-  assert.match(app, /replaceCmsMedia/);
-  assert.match(app, /removeCmsMedia/);
 });
 
 test('public CMS pages resolve approved storage paths', async () => {

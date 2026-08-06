@@ -9,9 +9,9 @@ test('Testimonials is a first-class primary navigation route', async () => {
   const navbar = await read('components/navbar.html');
   assert.match(
     navbar,
-    /href="\/doctors\.html"[\s\S]*href="\/testimonials\.html"[\s\S]*href="\/blog\.html"/,
+    /href="\/doctors\/"[\s\S]*href="\/testimonials\/"[\s\S]*href="\/blog\/"/,
   );
-  assert.match(navbar, /href="\/testimonials\.html"\s+data-nav-page="testimonials"/);
+  assert.match(navbar, /href="\/testimonials\/"\s+data-nav-page="testimonials"/);
 });
 
 test('Testimonials keeps an honest consent-aware empty state', async () => {
@@ -20,7 +20,8 @@ test('Testimonials keeps an honest consent-aware empty state', async () => {
   assert.match(html, /data-testimonials-empty/);
   assert.match(html, /patient consent/i);
   assert.match(html, /data-modal-open="appointment-modal"/);
-  assert.match(page, /empty\.hidden = loadFailed \|\| testimonials\.length !== 0/);
+  assert.match(page, /if \(approved\.length === 0\)/);
+  assert.match(page, /if \(empty\) empty\.hidden = false/);
   assert.doesNotMatch(html, /Sample Patient|Preview Review|Lorem ipsum/i);
 });
 
@@ -31,8 +32,8 @@ test('Testimonials distinguishes load failures from an honest empty result', asy
   assert.match(html, /temporarily unavailable/i);
   assert.match(page, /let loadFailed = false/);
   assert.match(page, /loadFailed = true/);
-  assert.match(page, /empty\.hidden = loadFailed \|\| testimonials\.length !== 0/);
-  assert.match(page, /error\.hidden = !loadFailed/);
+  assert.match(page, /if \(empty\) empty\.hidden = true/);
+  assert.match(page, /if \(error\) error\.hidden = false/);
 });
 
 test('Testimonials empty-state text action is visibly interactive and touch accessible', async () => {

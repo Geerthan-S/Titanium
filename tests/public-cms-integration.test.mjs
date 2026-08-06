@@ -24,6 +24,16 @@ test('hard-coded CMS arrays are removed from public page modules', async () => {
   assert.doesNotMatch(treatments, /const treatments = \[/);
 });
 
+test('home preview sections are controlled by CMS featured flags', async () => {
+  const home = await read('assets/js/pages/home.js');
+
+  assert.match(home, /featuredTreatments\s*=\s*rows\.filter\(\(row\) => row\.featured\)\.slice\(0, 5\)/);
+  assert.match(home, /featuredDoctors\s*=\s*rows\.filter\(\(row\) => row\.featured\)\.slice\(0, 4\)/);
+  assert.match(home, /testimonials\s*=\s*rows\.filter\(\(row\) => row\.featured\)\.slice\(0, 6\)/);
+  assert.match(home, /featuredBlogs\s*=\s*rows\.filter\(\(row\) => row\.featured\)\.slice\(0, 3\)/);
+  assert.doesNotMatch(home, /latestBlogs\s*=\s*rows\.slice\(0, 3\)/);
+});
+
 test('the public content store subscribes and cleans up Realtime channels', async () => {
   const source = await read('assets/js/data/public-content-store.js');
   assert.match(source, /postgres_changes/);

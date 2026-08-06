@@ -2,25 +2,39 @@ import { DataError, throwIfError } from './data-errors.js';
 import { requireSupabase } from './supabase-client.js';
 
 export const CMS_TABLES = Object.freeze([
+  'admin_profiles',
   'doctors',
+  'specialties',
   'treatments',
+  'treatment_faqs',
+  'treatment_doctors',
   'blog_posts',
+  'blog_categories',
+  'blog_faqs',
+  'blog_treatments',
   'testimonials',
   'gallery_items',
+  'media_assets',
+  'gallery_collections',
+  'gallery_collection_items',
+  'page_sections',
+  'redirects',
   'seo_pages',
   'site_settings',
   'appointment_requests',
   'analytics_events',
+  'search_console_metrics',
   'cms_audit_log',
 ]);
 
-const WRITABLE_TABLES = new Set(CMS_TABLES.slice(0, 8));
+const WRITABLE_TABLES = new Set(CMS_TABLES.filter((table) => !['analytics_events', 'search_console_metrics', 'cms_audit_log'].includes(table)));
 const USER_COLUMNS = new Set([
   'doctors',
   'treatments',
   'blog_posts',
   'testimonials',
   'gallery_items',
+  'media_assets',
   'seo_pages',
   'site_settings',
 ]);
@@ -76,14 +90,45 @@ export async function saveAdminRecord(table, row, { summary = '' } = {}) {
 export async function deleteAdminRecord(table, id, { summary = '' } = {}) {
   assertTable(table, { writable: true });
   const user = await adminUser();
-  const { error } = await requireSupabase().from(table).delete().eq('id', id);
-  throwIfError(error, `Unable to delete ${table}.`);
+
+  const softDeleteTables = new Set([
+    'appointment_requests',
+    'doctors',
+    'treatments',
+    'blog_posts',
+    'testimonials',
+    'gallery_items',
+    'media_assets'
+  ]);
+
+  if (!softDeleteTables.has(table)) {
+    const { error } = await requireSupabase().from(table).delete().eq('id', id);
+    throwIfError(error, `Unable to delete ${table}.`);
+    await writeAudit({
+      userId: user.id,
+      action: 'delete',
+      table,
+      recordId: id,
+      summary: summary || `Deleted ${table} record`,
+    });
+    return true;
+  }
+
+  const archivedAtTables = new Set(['media_assets', 'testimonials']);
+  const archivePatch = table === 'appointment_requests'
+    ? { status: 'cancelled' }
+    : {
+      status: 'archived',
+      ...(archivedAtTables.has(table) ? { archived_at: new Date().toISOString() } : {}),
+    };
+  const { error } = await requireSupabase().from(table).update(archivePatch).eq('id', id);
+  throwIfError(error, `Unable to archive ${table}.`);
   await writeAudit({
     userId: user.id,
-    action: 'delete',
+    action: 'archive',
     table,
     recordId: id,
-    summary: summary || `Deleted ${table} record`,
+    summary: summary || `Archived ${table} record`,
   });
   return true;
 }

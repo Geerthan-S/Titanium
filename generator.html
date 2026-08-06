@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Treatment Image Generator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .card {
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .loading {
+            color: blue;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Treatment Image Generator (Puter AI)</h1>
+    <button id="startBtn">Start Generation (All)</button>
+    <div id="status">Waiting to start...</div>
+    <div class="grid" id="grid"></div>
+
+    <script src="https://js.puter.com/v2/"></script>
+    <script>
+        document.getElementById('startBtn').addEventListener('click', async () => {
+            document.getElementById('status').innerText = 'Loading treatments...';
+            const btn = document.getElementById('startBtn');
+            btn.disabled = true;
+
+            try {
+                // Fetch the list of treatments
+                const res = await fetch('/treatments_dump.json');
+                const treatments = await res.json();
+
+                const grid = document.getElementById('grid');
+                grid.innerHTML = '';
+
+                document.getElementById('status').innerText = `Loaded ${treatments.length} treatments. Beginning generation...`;
+
+                for (const t of treatments) {
+                    if (t.image_path) {
+                        continue; // Skip if it already has an image path
+                    }
+
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `<h3>${t.name}</h3><div id="status-${t.slug}" class="loading">Generating image...</div>`;
+                    grid.appendChild(card);
+
+                    // 1. Generate Prompt
+                    const prompt = `Photorealistic premium dental clinic photography, landscape, ${t.name} procedure context or appropriate clinical dental setting, clean modern clinic, calm and reassuring atmosphere, titanium-green accents, soft bright lighting. No text. 3:2 landscape.`;
+                    const altText = `Featured image for ${t.name}`;
+
+                    try {
+                        const imgEl = await puter.ai.txt2img(prompt, { model: 'openai/gpt-image-2', quality: 'high' });
+                        card.appendChild(imgEl);
+
+                        document.getElementById(`status-${t.slug}`).innerText = 'Uploading to Server...';
+
+                        // Convert to dataUrl using a canvas
+                        const canvas = document.createElement('canvas');
+                        canvas.width = imgEl.width || 1600;
+                        canvas.height = imgEl.height || 1067;
+
+                        // wait for image to load to draw it safely
+                        await new Promise((resolve) => {
+                            if (imgEl.complete) { resolve(); }
+                            else { imgEl.onload = resolve; }
+                        });
+
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(imgEl, 0, 0, canvas.width, canvas.height);
+                        const dataUrl = canvas.toDataURL('image/png');
+
+                        // Send to server
+                        const saveRes = await fetch('/api/save-image', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                id: t.id,
+                                slug: t.slug,
+                                altText: altText,
+                                dataUrl: dataUrl
+                            })
+                        });
+
+                        if (saveRes.ok) {
+                            document.getElementById(`status-${t.slug}`).className = 'success';
+                            document.getElementById(`status-${t.slug}`).innerText = 'Done!';
+                        } else {
+                            throw new Error('Server returned ' + saveRes.status);
+                        }
+
+                    } catch (err) {
+                        console.error(err);
+                        document.getElementById(`status-${t.slug}`).className = 'error';
+                        document.getElementById(`status-${t.slug}`).innerText = 'Failed: ' + err.message;
+                    }
+                }
+
+                document.getElementById('status').innerText = 'Generation loop complete!';
+            } catch (e) {
+                document.getElementById('status').innerText = 'Error loading treatments: ' + e.message;
+            }
+        });
+    </script>
+</body>
+
+</html>
