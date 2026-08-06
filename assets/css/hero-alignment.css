@@ -1,13 +1,216 @@
 /* Shared hero geometry: mirrors the home-page composition on every inner page. */
-.about-hero, .treatments-hero, .doctors-hero, .blog-hero, .contact-hero { position:relative!important; min-height:760px; overflow:clip; padding:124px 0 56px!important; isolation:isolate; }
-.about-hero__grid, .treatments-hero__grid, .doctors-hero__grid, .blog-hero__grid, .contact-hero__grid { position:relative; display:block!important; min-height:580px; }
-.about-hero__content, .treatments-hero__content, .doctors-hero__content, .blog-hero__content, .contact-hero__grid > div:first-child { position:relative; z-index:2; width:min(44%, 560px)!important; max-width:none!important; padding:60px 0 0 4px!important; }
-.about-hero h1, .treatments-hero h1, .doctors-hero h1, .blog-hero h1, .contact-hero h1 { max-width:560px!important; font-size:clamp(3.25rem, 4.7vw, 4.4rem)!important; line-height:1.01!important; }
-.about-hero__visual, .treatments-hero__visual, .doctors-hero__visual, .blog-hero__visual, .contact-hero__media { position:absolute!important; top:2px!important; right:-4%!important; z-index:1; width:62%!important; height:610px!important; min-height:0!important; max-height:none!important; }
-.contact-hero__media { aspect-ratio:auto!important; }
-.about-hero__image-frame, .treatments-hero__media, .doctors-hero__media, .blog-hero__image-frame, .contact-hero__media { border-radius:48% 0 0 48% / 55% 0 0 55%!important; box-shadow:-16px 24px 44px rgba(39,49,42,.16)!important; }
-.about-hero__outline, .treatments-hero__outline, .doctors-hero__outline { inset:-9px 10px -9px -9px!important; border-radius:48% 0 0 48% / 55% 0 0 55%!important; }
-.about-statistics, .treatments-hero__features, .doctor-statistics, .blog-statistics { right:2%!important; bottom:-2px!important; width:min(56%, 720px)!important; }
-@media (max-width:1180px) { .about-hero, .treatments-hero, .doctors-hero, .blog-hero, .contact-hero { min-height:720px!important; } .about-hero__content, .treatments-hero__content, .doctors-hero__content, .blog-hero__content, .contact-hero__grid > div:first-child { width:45%!important; } .about-hero__visual, .treatments-hero__visual, .doctors-hero__visual, .blog-hero__visual, .contact-hero__media { right:-12%!important; width:66%!important; height:570px!important; } }
-@media (max-width:1023px) { .about-hero, .treatments-hero, .doctors-hero, .blog-hero, .contact-hero { min-height:auto!important; padding:100px 0 52px!important; } .about-hero__grid, .treatments-hero__grid, .doctors-hero__grid, .blog-hero__grid, .contact-hero__grid { display:grid!important; grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr)!important; gap:32px!important; min-height:0!important; } .about-hero__content, .treatments-hero__content, .doctors-hero__content, .blog-hero__content, .contact-hero__grid > div:first-child { width:auto!important; padding-top:36px!important; } .about-hero h1, .treatments-hero h1, .doctors-hero h1, .blog-hero h1, .contact-hero h1 { font-size:clamp(2.75rem,6vw,4.2rem)!important; } .about-hero__visual, .treatments-hero__visual, .doctors-hero__visual, .blog-hero__visual, .contact-hero__media { position:relative!important; top:auto!important; right:auto!important; width:auto!important; height:520px!important; } .about-hero__image-frame, .treatments-hero__media, .doctors-hero__media, .blog-hero__image-frame, .contact-hero__media, .about-hero__outline, .treatments-hero__outline, .doctors-hero__outline { border-radius:34% 0 0 34% / 42% 0 0 42%!important; } }
-@media (max-width:767px) { .about-hero, .treatments-hero, .doctors-hero, .blog-hero, .contact-hero { padding:78px 0 32px!important; } .about-hero__grid, .treatments-hero__grid, .doctors-hero__grid, .blog-hero__grid, .contact-hero__grid { display:flex!important; flex-direction:column!important; gap:28px!important; } .about-hero__content, .treatments-hero__content, .doctors-hero__content, .blog-hero__content, .contact-hero__grid > div:first-child { width:100%!important; padding-top:28px!important; } .about-hero h1, .treatments-hero h1, .doctors-hero h1, .blog-hero h1, .contact-hero h1 { max-width:440px!important; font-size:clamp(2.75rem,13.5vw,4rem)!important; } .about-hero__visual, .treatments-hero__visual, .doctors-hero__visual, .blog-hero__visual, .contact-hero__media { order:2; width:100%!important; height:min(92vw,430px)!important; } .about-hero__image-frame, .treatments-hero__media, .doctors-hero__media, .blog-hero__image-frame, .contact-hero__media, .about-hero__outline, .treatments-hero__outline, .doctors-hero__outline { border-radius:var(--radius-lg)!important; } }
+.about-hero,
+.treatments-hero,
+.doctors-hero,
+.blog-hero {
+    position: relative !important;
+    min-height: 760px;
+    overflow: clip;
+    padding: 124px 0 56px !important;
+    isolation: isolate;
+}
+
+.about-hero__grid,
+.treatments-hero__grid,
+.doctors-hero__grid,
+.blog-hero__grid {
+    position: relative;
+    display: block !important;
+    min-height: 580px;
+}
+
+.about-hero__content,
+.treatments-hero__content,
+.doctors-hero__content,
+.blog-hero__content {
+    position: relative;
+    z-index: 2;
+    width: min(44%, 560px) !important;
+    max-width: none !important;
+    padding: 60px 0 0 4px !important;
+}
+
+.about-hero h1,
+.treatments-hero h1,
+.doctors-hero h1,
+.blog-hero h1 {
+    max-width: 560px !important;
+    font-size: clamp(3.25rem, 4.7vw, 4.4rem) !important;
+    line-height: 1.01 !important;
+}
+
+.about-hero__visual,
+.treatments-hero__visual,
+.doctors-hero__visual,
+.blog-hero__visual {
+    position: absolute !important;
+    top: 2px !important;
+    right: -4% !important;
+    z-index: 1;
+    width: 62% !important;
+    height: 610px !important;
+    min-height: 0 !important;
+    max-height: none !important;
+}
+
+.about-hero__image-frame,
+.treatments-hero__media,
+.doctors-hero__media,
+.blog-hero__image-frame {
+    border-radius: 48% 0 0 48% / 55% 0 0 55% !important;
+    box-shadow: -16px 24px 44px rgba(39, 49, 42, .16) !important;
+}
+
+.about-hero__outline,
+.treatments-hero__outline,
+.doctors-hero__outline,
+.blog-hero__outline {
+    inset: -9px 10px -9px -9px !important;
+    border-radius: 48% 0 0 48% / 55% 0 0 55% !important;
+}
+
+.about-statistics,
+.treatments-hero__features,
+.doctor-statistics,
+.blog-statistics {
+    right: 2% !important;
+    bottom: -2px !important;
+    width: min(56%, 720px) !important;
+}
+
+@media (max-width:1180px) {
+
+    .about-hero,
+    .treatments-hero,
+    .doctors-hero,
+    .blog-hero {
+        min-height: 720px !important;
+    }
+
+    .about-hero__content,
+    .treatments-hero__content,
+    .doctors-hero__content,
+    .blog-hero__content {
+        width: 45% !important;
+    }
+
+    .about-hero__visual,
+    .treatments-hero__visual,
+    .doctors-hero__visual,
+    .blog-hero__visual {
+        right: -12% !important;
+        width: 66% !important;
+        height: 570px !important;
+    }
+}
+
+@media (max-width:1023px) {
+
+    .about-hero,
+    .treatments-hero,
+    .doctors-hero,
+    .blog-hero {
+        min-height: auto !important;
+        padding: 100px 0 52px !important;
+    }
+
+    .about-hero__grid,
+    .treatments-hero__grid,
+    .doctors-hero__grid,
+    .blog-hero__grid {
+        display: grid !important;
+        grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr) !important;
+        gap: 32px !important;
+        min-height: 0 !important;
+    }
+
+    .about-hero__content,
+    .treatments-hero__content,
+    .doctors-hero__content,
+    .blog-hero__content {
+        width: auto !important;
+        padding-top: 36px !important;
+    }
+
+    .about-hero h1,
+    .treatments-hero h1,
+    .doctors-hero h1,
+    .blog-hero h1 {
+        font-size: clamp(2.75rem, 6vw, 4.2rem) !important;
+    }
+
+    .about-hero__visual,
+    .treatments-hero__visual,
+    .doctors-hero__visual,
+    .blog-hero__visual {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        width: auto !important;
+        height: 520px !important;
+    }
+
+    .about-hero__image-frame,
+    .treatments-hero__media,
+    .doctors-hero__media,
+    .blog-hero__image-frame,
+    .about-hero__outline,
+    .treatments-hero__outline,
+    .doctors-hero__outline {
+        border-radius: 34% 0 0 34% / 42% 0 0 42% !important;
+    }
+}
+
+@media (max-width:767px) {
+
+    .about-hero,
+    .treatments-hero,
+    .doctors-hero,
+    .blog-hero {
+        padding: 78px 0 32px !important;
+    }
+
+    .about-hero__grid,
+    .treatments-hero__grid,
+    .doctors-hero__grid,
+    .blog-hero__grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 28px !important;
+    }
+
+    .about-hero__content,
+    .treatments-hero__content,
+    .doctors-hero__content,
+    .blog-hero__content {
+        width: 100% !important;
+        padding-top: 28px !important;
+    }
+
+    .about-hero h1,
+    .treatments-hero h1,
+    .doctors-hero h1,
+    .blog-hero h1 {
+        max-width: 440px !important;
+        font-size: clamp(2.75rem, 13.5vw, 4rem) !important;
+    }
+
+    .about-hero__visual,
+    .treatments-hero__visual,
+    .doctors-hero__visual,
+    .blog-hero__visual {
+        order: 2;
+        width: 100% !important;
+        height: min(92vw, 430px) !important;
+    }
+
+    .about-hero__image-frame,
+    .treatments-hero__media,
+    .doctors-hero__media,
+    .blog-hero__image-frame,
+    .about-hero__outline,
+    .treatments-hero__outline,
+    .doctors-hero__outline {
+        border-radius: var(--radius-lg) !important;
+    }
+}

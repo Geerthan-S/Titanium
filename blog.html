@@ -22,24 +22,28 @@
   <div data-component="navbar"></div>
   <main id="main-content" data-page="blog">
     <section class="blog-hero" aria-labelledby="blog-hero-title">
+      <div class="blog-hero__background" aria-hidden="true"></div>
       <div class="container blog-hero__grid">
         <div class="blog-hero__content">
-          <div class="blog-breadcrumb-shell" data-component="breadcrumb"></div>
-          <p class="section-eyebrow" data-blog-hero-eyebrow>Our Blog</p>
-          <h1 id="blog-hero-title" data-blog-hero-heading>Dental Insights, Expert Guidance and <span>Better-Informed
+          <p class="home-hero__badge" data-blog-hero-eyebrow><i data-lucide="sparkles" aria-hidden="true"></i>Knowledge
+            Center</p>
+          <h1 id="blog-hero-title" data-blog-hero-heading>Dental Insights,<br>Expert Guidance &<br><span>Better-Informed
               Smiles</span></h1>
-          <p data-blog-hero-copy>Explore practical dental guidance, treatment information and oral-health insights
-            prepared for patient education and clinic review.</p>
-          <div class="blog-hero__actions"><a class="button" href="#articles">Explore Articles <i
-                data-lucide="arrow-right" aria-hidden="true"></i></a><a class="button button--secondary" href="#"
-              target="_blank" rel="noopener noreferrer" data-whatsapp-link>Ask Our Team <i data-lucide="message-circle"
-                aria-hidden="true"></i></a></div>
+          <p class="home-hero__description" data-blog-hero-copy>Explore practical dental guidance, treatment information
+            and oral-health insights prepared for patient education and clinic review.</p>
+          <div class="home-hero__actions" data-hero-actions>
+            <a class="button button--hero" href="#articles"><span>Explore Articles</span><i data-lucide="arrow-right"
+                aria-hidden="true"></i></a>
+            <a class="button button--hero-secondary" href="#" target="_blank" rel="noopener noreferrer"
+              data-whatsapp-link><i data-lucide="message-circle" aria-hidden="true"></i><span>Ask Our Team</span><i
+                data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+          </div>
         </div>
         <div class="blog-hero__visual" data-blog-hero-visual>
-          <div class="blog-hero__image-frame"><img class="media-placeholder"
+          <div class="blog-hero__outline" aria-hidden="true"></div>
+          <div class="blog-hero__image-frame"><img data-website-asset="blog_hero_image"
               src="/assets/images/placeholders/clinic-neutral.svg" width="1600" height="1200"
-              alt="Neutral dental education image placeholder pending approved photography"></div>
-          <div class="blog-hero__trust" data-blog-hero-trust></div>
+              alt="Titanium Roots Dental Clinic Knowledge Center and patient resources"></div>
         </div>
         <div class="blog-statistics" data-blog-statistics aria-label="Blog content library status"></div>
       </div>

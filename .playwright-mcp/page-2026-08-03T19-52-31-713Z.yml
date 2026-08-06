@@ -1,0 +1,266 @@
+- generic [active] [ref=f2e1]:
+  - generic:
+    - status:
+      - generic:
+        - paragraph:
+          - text: Titanium Roots
+          - generic: Dental Clinic
+  - generic:
+    - link "Skip to content":
+      - /url: "#main-content"
+    - banner [ref=f2e2]:
+      - generic [ref=f2e3]:
+        - link "Titanium Roots Dental Clinic home" [ref=f2e4] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f2e8]:
+            - text: Titanium Roots
+            - generic [ref=f2e9]: Dental Clinic
+        - navigation "Primary navigation" [ref=f2e10]:
+          - link "Home" [ref=f2e11] [cursor=pointer]:
+            - /url: /
+          - link "About Us" [ref=f2e12] [cursor=pointer]:
+            - /url: /about/
+          - link "Treatments" [ref=f2e13] [cursor=pointer]:
+            - /url: /treatments/
+          - link "Doctors" [ref=f2e14] [cursor=pointer]:
+            - /url: /doctors/
+          - link "Testimonials" [ref=f2e15] [cursor=pointer]:
+            - /url: /testimonials/
+          - link "Knowledge Center" [ref=f2e16] [cursor=pointer]:
+            - /url: /blog/
+          - link "Contact" [ref=f2e17] [cursor=pointer]:
+            - /url: /contact/
+        - button [ref=f2e18] [cursor=pointer]
+  - main [ref=f2e21]:
+    - region [ref=f2e22]:
+      - generic [ref=f2e24]:
+        - paragraph [ref=f2e25]:
+          - text: We’re here to help
+          - generic [ref=f2e26]: ✦
+        - heading "Get in Touch With Us" [level=1] [ref=f2e27]
+        - paragraph [ref=f2e28]: Have questions or need assistance? Our friendly team is here to help you with all your dental care needs.
+    - region "Contact form and clinic information" [ref=f2e43]:
+      - generic [ref=f2e44]:
+        - tablist "Contact Forms" [ref=f2e45]:
+          - tab "Book Appointment" [selected] [ref=f2e46] [cursor=pointer]
+          - tab "General Query" [ref=f2e47] [cursor=pointer]
+          - tab "Treatment Info" [ref=f2e48] [cursor=pointer]
+          - tab "Emergency" [ref=f2e49] [cursor=pointer]
+          - tab "Leave Feedback" [ref=f2e50] [cursor=pointer]
+        - tabpanel "Book Appointment" [ref=f2e51]:
+          - generic [ref=f2e52]:
+            - text: Website
+            - textbox [ref=f2e53]
+          - generic [ref=f2e54]:
+            - heading "Request a Dental Appointment" [level=2] [ref=f2e55]
+            - paragraph [ref=f2e56]: Choose your preferred treatment, doctor, date, and time. Our team will contact you during clinic hours to confirm availability.
+          - generic [ref=f2e57]:
+            - generic [ref=f2e58]:
+              - generic [ref=f2e59]: Full Name *
+              - textbox "Full Name" [ref=f2e60]
+            - generic [ref=f2e61]:
+              - generic [ref=f2e62]: Phone Number *
+              - textbox "Phone Number" [ref=f2e63]
+            - generic [ref=f2e64]:
+              - generic [ref=f2e65]: Email Address
+              - textbox "Email Address" [ref=f2e66]
+            - generic [ref=f2e67]:
+              - generic [ref=f2e68]: Treatment / Service
+              - combobox "Treatment / Service" [ref=f2e69]:
+                - option "Select a service…" [selected]
+            - generic [ref=f2e70]:
+              - generic [ref=f2e71]: Preferred Doctor
+              - combobox "Preferred Doctor" [ref=f2e72]:
+                - option "Any available doctor" [selected]
+            - generic [ref=f2e73]:
+              - generic [ref=f2e74]: Preferred Appointment Date *
+              - textbox "Preferred Appointment Date" [ref=f2e75]
+            - generic [ref=f2e76]:
+              - generic [ref=f2e77]: Preferred Time Slot
+              - combobox "Preferred Time Slot" [ref=f2e78]:
+                - option "Flexible" [selected]
+                - option "Morning"
+                - option "Afternoon"
+                - option "Evening"
+            - generic [ref=f2e79]:
+              - generic [ref=f2e80]: Dental Concern or Message
+              - textbox "Dental Concern or Message" [ref=f2e81]
+          - generic [ref=f2e82]:
+            - checkbox "I consent to Titanium Roots Dental Clinic contacting me regarding this request. The information submitted will be used only to respond to my enquiry." [ref=f2e83]
+            - generic [ref=f2e84]: I consent to Titanium Roots Dental Clinic contacting me regarding this request. The information submitted will be used only to respond to my enquiry.
+          - button "Request Appointment" [ref=f2e85] [cursor=pointer]
+          - paragraph [ref=f2e89]
+      - complementary "Clinic details" [ref=f2e90]:
+        - generic [ref=f2e91]:
+          - heading "Contact Information" [level=2] [ref=f2e92]
+          - generic [ref=f2e93]:
+            - paragraph [ref=f2e98]:
+              - strong [ref=f2e99]: Address
+              - generic [ref=f2e100]: 123, Dental Care Street, Anna Nagar, Chennai, Tamil Nadu - 600001
+            - paragraph [ref=f2e104]:
+              - strong [ref=f2e105]: Phone Numbers
+              - link "+91 98765 43210" [ref=f2e106] [cursor=pointer]:
+                - /url: tel:+919876543210
+              - link "+91 44 2345 6789" [ref=f2e107] [cursor=pointer]:
+                - /url: tel:+914423456789
+            - paragraph [ref=f2e112]:
+              - strong [ref=f2e113]: Email
+              - link "info@titaniumroots.com" [ref=f2e114] [cursor=pointer]:
+                - /url: mailto:info%40titaniumroots.com
+              - link "appointments@titaniumroots.com" [ref=f2e115] [cursor=pointer]:
+                - /url: mailto:appointments%40titaniumroots.com
+            - paragraph [ref=f2e119]:
+              - strong [ref=f2e120]: WhatsApp
+              - link "+91 98765 43210" [ref=f2e121] [cursor=pointer]:
+                - /url: https://wa.me/919876543210
+              - generic [ref=f2e122]: "Avg. response: under 5 minutes"
+        - generic [ref=f2e123]:
+          - heading "Clinic Hours" [level=2] [ref=f2e124]
+          - generic [ref=f2e125]:
+            - generic [ref=f2e126]:
+              - term [ref=f2e127]: Monday – Friday
+              - definition [ref=f2e128]: 9:00 AM – 8:00 PM
+            - generic [ref=f2e129]:
+              - term [ref=f2e130]: Saturday
+              - definition [ref=f2e131]: 9:00 AM – 6:00 PM
+            - generic [ref=f2e132]:
+              - term [ref=f2e133]: Sunday
+              - definition [ref=f2e134]: 10:00 AM – 4:00 PM
+            - generic [ref=f2e135]:
+              - term [ref=f2e136]: Today (Tuesday)
+              - definition [ref=f2e137]:
+                - generic "9:00 AM – 8:00 PM" [ref=f2e138]: Closed Now
+        - generic [ref=f2e139]:
+          - heading "Ready to Transform Your Smile?" [level=2] [ref=f2e140]
+          - paragraph [ref=f2e141]: Book your free consultation and take the first step towards a healthier, more confident smile today.
+          - button "Book Appointment" [ref=f2e142] [cursor=pointer]
+          - link "WhatsApp Us" [ref=f2e145] [cursor=pointer]:
+            - /url: https://wa.me/919876543210
+    - region [ref=f2e148]:
+      - generic [ref=f2e149]:
+        - heading "Find Us on the Map" [level=2] [ref=f2e150]
+        - link "Open in Google Maps" [ref=f2e151] [cursor=pointer]:
+          - /url: https://www.google.com/maps/search/?api=1&query=Anna+Nagar+Chennai
+      - generic [ref=f2e154]:
+        - iframe [ref=f2e155]:
+          
+        - generic [ref=f2e156]:
+          - strong [ref=f2e157]: Titanium Roots Dental Clinic
+          - generic [ref=f2e158]: 123, Dental Care Street, Anna Nagar, Chennai, Tamil Nadu - 600001
+          - link "View larger map" [ref=f2e159] [cursor=pointer]:
+            - /url: https://www.google.com/maps/search/?api=1&query=Anna+Nagar+Chennai
+    - region [ref=f2e160]:
+      - generic [ref=f2e161]:
+        - heading "Got Questions? We Have Answers." [level=2] [ref=f2e162]
+        - paragraph [ref=f2e163]: Everything you need to know before your first visit to Titanium Roots Dental Clinic.
+      - generic [ref=f2e164]:
+        - article [ref=f2e165]:
+          - heading [level=3] [ref=f2e166]:
+            - button "How do I book an appointment?" [ref=f2e167] [cursor=pointer]:
+              - text: How do I book an appointment?
+              - generic [ref=f2e168]: +
+        - article [ref=f2e169]:
+          - heading [level=3] [ref=f2e170]:
+            - button "Do you offer emergency dental services?" [ref=f2e171] [cursor=pointer]:
+              - text: Do you offer emergency dental services?
+              - generic [ref=f2e172]: +
+        - article [ref=f2e173]:
+          - heading [level=3] [ref=f2e174]:
+            - button "What insurance plans do you accept?" [ref=f2e175] [cursor=pointer]:
+              - text: What insurance plans do you accept?
+              - generic [ref=f2e176]: +
+        - article [ref=f2e177]:
+          - heading [level=3] [ref=f2e178]:
+            - button "How long does a typical appointment take?" [ref=f2e179] [cursor=pointer]:
+              - text: How long does a typical appointment take?
+              - generic [ref=f2e180]: +
+        - article [ref=f2e181]:
+          - heading [level=3] [ref=f2e182]:
+            - button "Is parking available at the clinic?" [ref=f2e183] [cursor=pointer]:
+              - text: Is parking available at the clinic?
+              - generic [ref=f2e184]: +
+        - article [ref=f2e185]:
+          - heading [level=3] [ref=f2e186]:
+            - button "Can I get a treatment cost estimate before visiting?" [ref=f2e187] [cursor=pointer]:
+              - text: Can I get a treatment cost estimate before visiting?
+              - generic [ref=f2e188]: +
+  - complementary [ref=f2e190]:
+    - generic [ref=f2e191]:
+      - generic [ref=f2e196]:
+        - heading "Ready to Transform Your Smile?" [level=2] [ref=f2e197]
+        - paragraph [ref=f2e198]: Book your consultation and take the first step towards confident, comfortable dental care.
+      - generic [ref=f2e199]:
+        - button "Book Appointment" [ref=f2e200] [cursor=pointer]
+        - link "Chat on WhatsApp" [ref=f2e203] [cursor=pointer]:
+          - /url: https://wa.me/919876543210?text=Hello%20Titanium%20Roots%20Dental%20Clinic%2C%0A%0AI%20would%20like%20to%20enquire%20about%20booking%20a%20dental%20consultation.%0A%0APlease%20contact%20me%20with%20the%20available%20appointment%20timings.
+  - contentinfo [ref=f2e207]:
+    - generic [ref=f2e208]:
+      - generic [ref=f2e209]:
+        - link "Titanium Roots Dental Clinic home" [ref=f2e210] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f2e214]: Titanium Roots Dental Clinic
+        - paragraph [ref=f2e215]: Clear dental guidance, considered treatment planning and patient-focused care.
+        - paragraph [ref=f2e216]: Educational content on this website is general information and does not replace a clinical consultation.
+        - generic "Social media" [ref=f2e217]:
+          - link "Instagram" [ref=f2e218] [cursor=pointer]:
+            - /url: "#"
+          - link "Facebook" [ref=f2e222] [cursor=pointer]:
+            - /url: "#"
+          - link "LinkedIn" [ref=f2e225] [cursor=pointer]:
+            - /url: "#"
+      - generic [ref=f2e230]:
+        - heading "Quick Links" [level=2] [ref=f2e231]
+        - list [ref=f2e232]:
+          - listitem [ref=f2e233]:
+            - link "Home" [ref=f2e234] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f2e235]:
+            - link "About Us" [ref=f2e236] [cursor=pointer]:
+              - /url: /about/
+          - listitem [ref=f2e237]:
+            - link "Treatments" [ref=f2e238] [cursor=pointer]:
+              - /url: /treatments/
+          - listitem [ref=f2e239]:
+            - link "Doctors" [ref=f2e240] [cursor=pointer]:
+              - /url: /doctors/
+          - listitem [ref=f2e241]:
+            - link "Testimonials" [ref=f2e242] [cursor=pointer]:
+              - /url: /testimonials/
+          - listitem [ref=f2e243]:
+            - link "Knowledge Center" [ref=f2e244] [cursor=pointer]:
+              - /url: /blog/
+          - listitem [ref=f2e245]:
+            - link "Contact" [ref=f2e246] [cursor=pointer]:
+              - /url: /contact/
+      - generic [ref=f2e247]:
+        - heading "Treatments" [level=2] [ref=f2e248]
+        - list [ref=f2e249]:
+          - listitem [ref=f2e250]: Dental Implants
+          - listitem [ref=f2e251]: Root Canal Treatment
+          - listitem [ref=f2e252]: Orthodontics
+          - listitem [ref=f2e253]: Cosmetic Dentistry
+          - listitem [ref=f2e254]: Teeth Whitening
+      - generic [ref=f2e255]:
+        - heading "Contact" [level=2] [ref=f2e256]
+        - list [ref=f2e257]:
+          - listitem [ref=f2e258]:
+            - link "+91 98765 43210" [ref=f2e261] [cursor=pointer]:
+              - /url: tel:+919876543210
+          - listitem [ref=f2e262]:
+            - link "info@titaniumroots.com" [ref=f2e266] [cursor=pointer]:
+              - /url: mailto:info%40titaniumroots.com
+          - listitem [ref=f2e267]:
+            - generic [ref=f2e271]: 123, Dental Care Street, Anna Nagar, Chennai, Tamil Nadu - 600001
+          - listitem [ref=f2e272]:
+            - generic [ref=f2e276]: "Mon – Fri: 9:00 AM – 8:00 PM · Sat: 9:00 AM – 6:00 PM · Sun: 10:00 AM – 4:00 PM"
+    - generic [ref=f2e277]:
+      - paragraph [ref=f2e278]: © 2026 © Titanium Roots Dental Clinic. All rights reserved.
+      - generic [ref=f2e279]:
+        - link "Privacy Policy" [ref=f2e280] [cursor=pointer]:
+          - /url: "#"
+        - link "Terms and Conditions" [ref=f2e281] [cursor=pointer]:
+          - /url: "#"
+  - link "Chat with Titanium Roots on WhatsApp" [ref=f2e283] [cursor=pointer]:
+    - /url: https://wa.me/919876543210?text=Hello%20Titanium%20Roots%20Dental%20Clinic%2C%0A%0AI%20would%20like%20to%20enquire%20about%20booking%20a%20dental%20consultation.%0A%0APlease%20contact%20me%20with%20the%20available%20appointment%20timings.
+    - generic [ref=f2e286]: Chat on WhatsApp
+    - text: Chat on WhatsApp

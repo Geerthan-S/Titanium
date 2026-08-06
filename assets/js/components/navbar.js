@@ -1,12 +1,19 @@
 import { createIcons } from 'lucide';
 import { ICON_SET } from './icons.js';
 
+export function resolveNavigationHref(href, locationLike = window.location) {
+  return href;
+}
+
 export function initializeNavbar() {
   const toggle = document.querySelector('[data-menu-toggle]');
   const navigation = document.querySelector('[data-navigation]');
   if (!toggle || !navigation || toggle.dataset.initialized) return;
 
   toggle.dataset.initialized = 'true';
+  navigation.querySelectorAll('a[href]').forEach((link) => {
+    link.setAttribute('href', resolveNavigationHref(link.getAttribute('href')));
+  });
   const closeMenu = () => { navigation.classList.remove('is-open'); document.body.classList.remove('is-nav-open'); toggle.setAttribute('aria-expanded', 'false'); };
   toggle.addEventListener('click', () => {
     const open = navigation.classList.toggle('is-open');

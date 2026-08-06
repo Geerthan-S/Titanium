@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/fetch-seo.mjs && vite build",
+    "build": "node scripts/generate-static-pages.mjs && vite build",
     "preview": "vite preview",
     "test": "node --test",
     "test:live": "node tests/supabase-live-smoke.mjs",
@@ -14,10 +14,15 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "2.111.0",
+    "body-parser": "^2.3.0",
+    "busboy": "^1.6.0",
     "chart.js": "^4.5.1",
+    "cors": "^2.8.6",
     "dompurify": "3.4.12",
+    "express": "^5.2.1",
     "gsap": "^3.12.7",
     "lucide": "^0.468.0",
+    "sharp": "^0.35.3",
     "swiper": "^14.0.6"
   },
   "devDependencies": {

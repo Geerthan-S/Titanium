@@ -23,19 +23,38 @@ import {
   mapTestimonialToDatabase,
   mapTreatmentFromDatabase,
   mapTreatmentToDatabase,
+  mapWebsiteAssetFromDatabase,
+  mapWebsiteAssetToDatabase,
 } from '../data/record-mappers.js';
+import { BLUEPRINT_TABLES } from './admin-blueprint-config.js';
+import { canArchiveRecord } from './admin-workflows.js';
 
 const TABLES = Object.freeze({
-  appointments: 'appointment_requests',
-  doctors: 'doctors',
-  treatments: 'treatments',
-  blogs: 'blog_posts',
-  testimonials: 'testimonials',
-  gallery: 'gallery_items',
-  seo: 'seo_pages',
-  analytics: 'analytics_events',
-  activity: 'cms_audit_log',
+  adminProfiles: BLUEPRINT_TABLES.adminProfiles,
+  appointments: BLUEPRINT_TABLES.appointments,
+  doctors: BLUEPRINT_TABLES.doctors,
+  specialties: BLUEPRINT_TABLES.specialties,
+  treatments: BLUEPRINT_TABLES.treatments,
+  treatmentFaqs: BLUEPRINT_TABLES.treatmentFaqs,
+  treatmentDoctors: BLUEPRINT_TABLES.treatmentDoctors,
+  blogs: BLUEPRINT_TABLES.blogs,
+  blogCategories: BLUEPRINT_TABLES.blogCategories,
+  blogFaqs: BLUEPRINT_TABLES.blogFaqs,
+  blogTreatments: BLUEPRINT_TABLES.blogTreatments,
+  testimonials: BLUEPRINT_TABLES.testimonials,
+  gallery: BLUEPRINT_TABLES.mediaAssets,
+  mediaAssets: BLUEPRINT_TABLES.mediaAssets,
+  galleryCollections: BLUEPRINT_TABLES.galleryCollections,
+  galleryCollectionItems: BLUEPRINT_TABLES.galleryCollectionItems,
+  pageSections: BLUEPRINT_TABLES.pageSections,
+  redirects: BLUEPRINT_TABLES.redirects,
+  seo: BLUEPRINT_TABLES.seoPages,
+  analytics: BLUEPRINT_TABLES.analyticsEvents,
+  searchConsole: BLUEPRINT_TABLES.searchConsoleMetrics,
+  activity: BLUEPRINT_TABLES.auditLog,
+  websiteAssets: BLUEPRINT_TABLES.websiteAssets,
 });
+
 
 const FROM_DATABASE = Object.freeze({
   appointments: mapAppointmentFromDatabase,
@@ -44,9 +63,21 @@ const FROM_DATABASE = Object.freeze({
   blogs: mapBlogFromDatabase,
   testimonials: mapTestimonialFromDatabase,
   gallery: mapGalleryFromDatabase,
+  mediaAssets: mapGalleryFromDatabase,
   seo: mapSeoFromDatabase,
   analytics: mapAnalyticsFromDatabase,
+  searchConsole: (row = {}) => ({
+    id: row.id,
+    metricDate: row.metric_date,
+    pagePath: row.page_path,
+    query: row.query || '',
+    clicks: row.clicks || 0,
+    impressions: row.impressions || 0,
+    ctr: row.ctr || 0,
+    position: row.position || 0,
+  }),
   activity: mapAuditFromDatabase,
+  websiteAssets: mapWebsiteAssetFromDatabase,
 });
 
 const TO_DATABASE = Object.freeze({
@@ -56,11 +87,15 @@ const TO_DATABASE = Object.freeze({
   blogs: mapBlogToDatabase,
   testimonials: mapTestimonialToDatabase,
   gallery: mapGalleryToDatabase,
+  mediaAssets: mapGalleryToDatabase,
   seo: mapSeoToDatabase,
+  websiteAssets: mapWebsiteAssetToDatabase,
 });
 
 const cache = new Map();
 const clone = (value) => value === undefined ? undefined : JSON.parse(JSON.stringify(value));
+const identity = (row) => row;
+const normalizeStatus = (status) => String(status || '').toLowerCase().replaceAll(' ', '_').replace('appointment_pending', 'contacted').replace('closed', 'cancelled');
 
 function orderFor(collection) {
   if (collection === 'appointments' || collection === 'analytics' || collection === 'activity') {
@@ -79,8 +114,14 @@ function notify(collection) {
 export async function loadCollection(collection, { force = false } = {}) {
   if (!TABLES[collection]) throw new Error(`Unknown admin collection: ${collection}`);
   if (!force && cache.has(collection)) return getCollection(collection);
-  const rows = await listAdminRecords(TABLES[collection], orderFor(collection));
-  const mapped = rows.map(FROM_DATABASE[collection]);
+  let rows = [];
+  try {
+    rows = await listAdminRecords(TABLES[collection], orderFor(collection));
+  } catch (error) {
+    if (!['searchConsole', 'mediaAssets', 'galleryCollections', 'galleryCollectionItems', 'redirects', 'pageSections'].includes(collection)) throw error;
+    rows = [];
+  }
+  const mapped = rows.map(FROM_DATABASE[collection] || identity);
   cache.set(collection, mapped);
   return clone(mapped);
 }
@@ -129,10 +170,24 @@ export async function updateRecord(collection, id, patch, options = {}) {
 
 export async function removeRecord(collection, id) {
   const current = (cache.get(collection) || []).find((record) => record.id === id);
+  console.log('[removeRecord] Deleting:', { collection, id, currentStatus: current?.status });
   await deleteAdminRecord(TABLES[collection], id, {
     summary: `Deleted ${current?.name || current?.title || current?.filename || collection}`,
   });
-  cache.set(collection, (cache.get(collection) || []).filter((record) => record.id !== id));
+  console.log('[removeRecord] DB delete succeeded for', id);
+
+  const archivePlan = canArchiveRecord(collection);
+  console.log('[removeRecord] Archive plan:', archivePlan);
+  if (archivePlan.mode === 'delete') {
+    cache.set(collection, (cache.get(collection) || []).filter((record) => record.id !== id));
+  } else {
+    cache.set(collection, (cache.get(collection) || []).map((record) => (
+      record.id === id ? { ...record, status: archivePlan.mode === 'status' ? archivePlan.status : 'archived' } : record
+    )));
+  }
+
+  const afterDelete = (cache.get(collection) || []).find((r) => r.id === id);
+  console.log('[removeRecord] After cache update:', { id, newStatus: afterDelete?.status, stillInCache: !!afterDelete });
   notify(collection);
   return true;
 }
@@ -273,6 +328,46 @@ function aggregateAnalytics(events, appointments) {
   };
 }
 
+function filterEventsByRange(events, range = 30) {
+  const minTime = Date.now() - Number(range || 30) * 24 * 60 * 60 * 1000;
+  return events.filter((event) => new Date(event.createdAt || event.created_at).getTime() >= minTime);
+}
+
+function buildSeoAudit({ treatments = [], blogs = [], mediaAssets = [] }) {
+  const records = [...treatments, ...blogs];
+  const slugCounts = records.reduce((counts, record) => {
+    if (record.slug) counts[record.slug] = (counts[record.slug] || 0) + 1;
+    return counts;
+  }, {});
+
+  const missingMetadata = records.filter((record) => !record.seoTitle || !record.seoDescription);
+  const duplicateSlug = records.filter((record) => record.slug && slugCounts[record.slug] > 1);
+  const missingReviewer = records.filter((record) => normalizeStatus(record.status) === 'published' && !(record.reviewerDoctorId || record.reviewedByDoctorId));
+  const brokenRelation = records.filter((record) => record.relatedTreatmentIds?.includes(record.id));
+  const missingAlt = mediaAssets.filter((asset) => !asset.alt);
+
+  return { missingMetadata, duplicateSlug, missingReviewer, brokenRelation, missingAlt };
+}
+
+function summarizeAppointments(appointments = []) {
+  const today = new Date().toISOString().slice(0, 10);
+  return {
+    new: appointments.filter((item) => normalizeStatus(item.status) === 'new').length,
+    contacted: appointments.filter((item) => normalizeStatus(item.status) === 'contacted').length,
+    confirmed: appointments.filter((item) => normalizeStatus(item.status) === 'confirmed').length,
+    today: appointments.filter((item) => item.preferredDate === today).length,
+    overdue: appointments.filter((item) => item.preferredDate && item.preferredDate < today && !['completed', 'cancelled', 'spam'].includes(normalizeStatus(item.status))).length,
+  };
+}
+
+function summarizeMediaAlerts(mediaAssets = []) {
+  return {
+    largeAssets: mediaAssets.filter((asset) => Number(asset.bytes || asset.size || 0) > 1_000_000),
+    unusedAssets: mediaAssets.filter((asset) => String(asset.usage || '').startsWith('0 ')),
+    missingAlt: mediaAssets.filter((asset) => !asset.alt),
+  };
+}
+
 export async function getAdminData() {
   const names = [
     'appointments',
@@ -283,21 +378,33 @@ export async function getAdminData() {
     'gallery',
     'seo',
     'analytics',
+    'searchConsole',
     'activity',
+    'websiteAssets',
   ];
   await Promise.all(names.map((name) => loadCollection(name, { force: true })));
   const appointments = getCollection('appointments');
-  const events = getCollection('analytics');
+  const events = filterEventsByRange(getCollection('analytics'), 30);
+  const gallery = getCollection('gallery');
+  const treatments = getCollection('treatments');
+  const blogs = getCollection('blogs');
+  const seoHealth = buildSeoAudit({ treatments, blogs, mediaAssets: gallery });
   return {
     appointments,
     doctors: getCollection('doctors'),
-    treatments: getCollection('treatments'),
-    blogs: getCollection('blogs'),
+    treatments,
+    blogs,
     testimonials: getCollection('testimonials'),
-    gallery: getCollection('gallery'),
+    gallery,
     seo: getCollection('seo'),
+    websiteAssets: getCollection('websiteAssets'),
     settings: await getSettings({ force: true }),
     analytics: aggregateAnalytics(events, appointments),
+    searchConsole: getCollection('searchConsole'),
+    auditLog: getCollection('activity'),
+    appointmentRequests: summarizeAppointments(appointments),
+    seoHealth,
+    mediaAlerts: summarizeMediaAlerts(gallery),
     activity: getCollection('activity').map((item) => ({
       ...item,
       action: item.summary || `${item.action} ${item.tableName}`,

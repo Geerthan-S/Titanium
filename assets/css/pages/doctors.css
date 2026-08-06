@@ -54,127 +54,284 @@ body[data-page="doctors"] main {
 
 .doctors-hero {
     position: relative;
+    min-height: 760px;
     overflow: clip;
-    padding: 34px 0 72px;
-    isolation: isolate
+    padding: 124px 0 56px;
+    background: var(--color-background);
+    isolation: isolate;
+}
+
+@keyframes v6-mesh-drift {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 0.55;
+    }
+
+    50% {
+        transform: translate(4%, 3%) scale(1.15) rotate(3deg);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translate(-2%, -4%) scale(0.95) rotate(-2deg);
+        opacity: 0.65;
+    }
 }
 
 .doctors-hero__background {
     position: absolute;
     inset: 0;
     z-index: -2;
-    background: radial-gradient(circle at 80% 23%, rgba(221, 234, 229, .78), transparent 29%), radial-gradient(circle at 9% 83%, rgba(232, 221, 192, .35), transparent 29%), linear-gradient(118deg, #f8f5ef 6%, #f4f0e9 58%, #e6ece5)
+    background: linear-gradient(118deg, #f8f5ef 4%, #f4f0e9 55%, #e5ece5 100%);
+    overflow: hidden;
 }
 
-.doctors-hero__grid {
+.doctors-hero__background::before {
+    position: absolute;
+    inset: -30%;
+    width: 160%;
+    height: 160%;
+    content: "";
+    background:
+        radial-gradient(circle at 70% 30%, rgba(201, 165, 94, 0.22), transparent 25%),
+        radial-gradient(circle at 20% 70%, rgba(77, 114, 79, 0.16), transparent 35%),
+        radial-gradient(circle at 85% 75%, rgba(221, 234, 229, 0.45), transparent 30%);
+    animation: v6-mesh-drift 20s infinite ease-in-out alternate;
+    pointer-events: none;
+    filter: blur(35px);
+}
+
+.doctors-hero__background::after {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(105deg, transparent 45%, rgba(255, 255, 255, 0.86) 45.1%, transparent 45.3%);
+    content: "";
+    pointer-events: none;
+}
+
+.doctors-hero__container {
     position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, .87fr) minmax(0, 1.13fr);
-    align-items: center;
-    min-height: 590px
+    min-height: 580px;
 }
 
 .doctors-hero__content {
     position: relative;
     z-index: 2;
-    max-width: 550px;
-    padding: 28px 0 88px 4px
+    width: min(44%, 560px);
+    padding: 60px 0 0 4px;
 }
 
 .doctors-hero h1 {
-    max-width: 550px;
-    font-size: clamp(2.95rem, 4.45vw, 4.25rem);
-    line-height: 1.03
+    max-width: 560px;
+    font-size: clamp(3.25rem, 4.7vw, 4.4rem);
+    line-height: 1.01;
+    letter-spacing: 0;
 }
 
 .doctors-hero h1 span,
 .doctors-section-heading h2 span,
 .doctors-availability h2 span,
 .doctors-faq h2 span {
-    color: var(--color-primary)
+    color: var(--color-primary);
+}
+
+.home-hero__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 21px;
+    padding: 7px 11px;
+    border: 1px solid rgba(117, 114, 102, 0.2);
+    border-radius: var(--radius-pill);
+    background: rgba(250, 248, 244, 0.58);
+    box-shadow: var(--shadow-sm);
+    color: var(--color-heading);
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.home-hero__badge svg {
+    width: 14px;
+    color: var(--color-primary);
+}
+
+.home-hero__description {
+    max-width: 440px;
+    margin-top: 22px;
+    font-size: 1rem;
+    line-height: 1.72;
+}
+
+.home-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.button--hero {
+    padding: 0.82rem 1.2rem;
+    box-shadow: 0 8px 18px rgba(7, 86, 71, 0.2);
+}
+
+.button--hero-secondary {
+    border-color: rgba(117, 114, 102, 0.24);
+    background: rgba(250, 248, 244, 0.7);
+    box-shadow: var(--shadow-sm);
+}
+
+.home-stat,
+.home-hero__features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: min(100%, 430px);
+    margin-top: 34px;
+    border: 1px solid rgba(117, 114, 102, 0.16);
+    border-radius: var(--radius-md);
+    background: rgba(250, 248, 244, 0.45);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(9px);
+}
+
+.home-stat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 96px;
+    padding: 14px;
+}
+
+.home-stat+.home-stat {
+    border-left: 1px solid rgba(117, 114, 102, 0.2);
+}
+
+.home-stat svg {
+    flex: 0 0 auto;
+    width: 22px;
+    color: var(--color-primary);
+    stroke-width: 1.45;
+}
+
+.home-stat>div,
+.home-stat strong,
+.home-stat span {
+    display: block;
+}
+
+.home-stat strong {
+    color: var(--color-heading);
+    font-size: 1.25rem;
+    line-height: 1.1;
+}
+
+.home-stat span {
+    margin-top: 3px;
+    color: var(--color-muted);
+    font-size: 0.72rem;
+    font-weight: 750;
+}
+
+.home-hero__features li {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+    padding: 15px 13px;
+    color: var(--color-heading);
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.home-hero__features li+li {
+    border-left: 1px solid rgba(117, 114, 102, 0.2);
+}
+
+.home-hero__features svg {
+    width: 22px;
+    color: var(--color-primary);
+    stroke-width: 1.55;
 }
 
 .doctors-hero__content>p:not(.section-eyebrow) {
-    max-width: 480px;
-    margin-top: 20px;
+    max-width: 440px;
+    margin-top: 22px;
     font-size: 1rem;
-    line-height: 1.7
+    line-height: 1.72;
 }
 
 .doctors-hero__actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin-top: 27px
+    margin-top: 28px;
 }
 
 .doctors-hero__visual {
     position: absolute;
-    top: 18px;
-    right: -4.5%;
-    width: 59%;
-    height: 505px
+    top: 2px;
+    left: 42%;
+    right: calc(50% - 50vw);
+    z-index: 1;
+    height: 610px;
 }
 
+.doctors-hero__image-frame,
 .doctors-hero__media {
     position: absolute;
     inset: 0;
     overflow: hidden;
-    border-radius: 45% 0 0 45% / 48% 0 0 48%;
-    box-shadow: -16px 24px 44px rgba(39, 49, 42, .16)
+    border-radius: 48% 0 0 48% / 55% 0 0 55%;
+    box-shadow: -16px 24px 44px rgba(39, 49, 42, 0.16);
+}
+
+.doctors-hero__image-frame::after,
+.doctors-hero__media::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(7, 86, 71, 0.14), transparent 42%);
+    content: "";
+    pointer-events: none;
+}
+
+.doctors-hero__image-frame img,
+.doctors-hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .doctors-hero__outline {
     position: absolute;
-    inset: -8px 8px -8px -8px;
-    border: 1px solid rgba(178, 151, 99, .72);
-    border-radius: 45% 0 0 45% / 48% 0 0 48%
-}
-
-.doctors-hero__promise {
-    position: absolute;
-    right: 24px;
-    bottom: 25px;
-    z-index: 2;
-    display: grid;
-    gap: 8px;
-    width: min(45%, 250px);
-    padding: 15px;
-    border: 1px solid rgba(255, 255, 255, .68);
-    border-radius: var(--radius-md);
-    background: rgba(250, 248, 244, .84);
-    box-shadow: var(--shadow-md);
-    backdrop-filter: blur(12px)
-}
-
-.doctors-hero__promise div {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--color-heading);
-    font-size: .72rem;
-    font-weight: 750
-}
-
-.doctors-hero__promise svg {
-    width: 19px;
-    color: var(--color-primary)
+    inset: -16px;
+    border-radius: calc(48% + 16px) 0 0 calc(48% + 16px) / calc(55% + 16px) 0 0 calc(55% + 16px);
+    background: linear-gradient(135deg,
+            rgba(108, 117, 125, 0.95) 0%,
+            rgba(148, 156, 165, 0.75) 25%,
+            rgba(189, 195, 199, 0.6) 50%,
+            rgba(148, 156, 165, 0.75) 75%,
+            rgba(108, 117, 125, 0.95) 100%);
+    pointer-events: none;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    padding: 5px;
 }
 
 .doctor-statistics {
     position: absolute;
-    right: 1%;
-    bottom: 0;
+    right: 2%;
+    bottom: -2px;
     z-index: 3;
     display: grid;
     grid-template-columns: repeat(3, minmax(110px, 1fr));
     width: min(70%, 820px);
     overflow: hidden;
-    border: 1px solid rgba(117, 114, 102, .18);
-    border-radius: var(--radius-md);
-    background: rgba(250, 248, 244, .82);
-    box-shadow: var(--shadow-md);
-    backdrop-filter: blur(13px)
+    border: 1px solid rgba(117, 114, 102, 0.2);
+    border-radius: 22px;
+    background: rgba(250, 248, 244, 0.8);
+    box-shadow: 0 16px 35px rgba(43, 48, 42, 0.15);
+    backdrop-filter: blur(15px);
 }
 
 .doctor-statistics article {
@@ -182,34 +339,38 @@ body[data-page="doctors"] main {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    min-height: 77px;
-    padding: 12px
+    min-height: 96px;
+    padding: 14px;
 }
 
 .doctor-statistics article+article {
-    border-left: 1px solid rgba(117, 114, 102, .18)
+    border-left: 1px solid rgba(117, 114, 102, 0.2);
 }
 
 .doctor-statistics svg {
-    width: 20px;
-    color: var(--color-primary)
+    flex: 0 0 auto;
+    width: 22px;
+    color: var(--color-primary);
+    stroke-width: 1.45;
 }
 
 .doctor-statistics strong,
 .doctor-statistics span {
-    display: block
+    display: block;
 }
 
 .doctor-statistics strong {
     color: var(--color-heading);
-    font-size: .76rem
+    font-size: 1.25rem;
+    line-height: 1.1;
 }
 
 .doctor-statistics span {
     margin-top: 3px;
     color: var(--color-muted);
-    font-size: .63rem;
-    line-height: 1.2
+    font-size: 0.67rem;
+    font-weight: 700;
+    line-height: 1.25;
 }
 
 .doctors-section-heading {
@@ -756,8 +917,9 @@ body[data-page="doctors"] main {
 
 @media(max-width:1180px) {
     .doctors-hero__visual {
-        right: -11%;
-        width: 66%;
+        left: 42%;
+        right: calc(50% - 50vw);
+        width: auto;
         height: 490px
     }
 
@@ -796,6 +958,7 @@ body[data-page="doctors"] main {
     .doctors-hero__visual {
         position: relative;
         top: auto;
+        left: auto;
         right: auto;
         width: auto;
         height: 500px
@@ -811,8 +974,13 @@ body[data-page="doctors"] main {
     }
 
     .doctors-hero__media,
-    .doctors-hero__outline {
+    .doctors-hero__image-frame {
         border-radius: 34% 0 0 34% / 42% 0 0 42%
+    }
+
+    .doctors-hero__outline {
+        inset: -16px;
+        border-radius: calc(34% + 16px) 0 0 calc(34% + 16px) / calc(42% + 16px) 0 0 calc(42% + 16px);
     }
 
     .doctor-grid {
@@ -878,17 +1046,20 @@ body[data-page="doctors"] main {
     }
 
     .doctors-hero__visual {
-        width: 100%;
-        height: min(92vw, 430px)
+        width: calc(100vw - 12px);
+        margin: 10px -12px 10px -28px;
+        height: min(95vw, 430px)
     }
 
     .doctors-hero__media,
-    .doctors-hero__outline {
-        border-radius: var(--radius-lg)
+    .doctors-hero__image-frame {
+        border-radius: 0 40px 40px 0
     }
 
     .doctors-hero__outline {
-        inset: -5px
+        inset: -12px;
+        border-radius: 0 52px 52px 0;
+        padding: 4px;
     }
 
     .doctors-hero__promise {

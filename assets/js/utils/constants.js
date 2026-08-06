@@ -9,12 +9,50 @@ export const SITE_CONFIG = Object.freeze({
   footerDescription: 'Thoughtful dental care shaped around comfort, clarity, and every patient visit.',
   social: { instagram: '#', facebook: '#', linkedin: '#' },
   navigation: [
-    { label: 'Home', href: '/index.html', page: 'home' },
-    { label: 'About', href: '/about.html', page: 'about' },
-    { label: 'Treatments', href: '/treatments.html', page: 'treatments' },
-    { label: 'Doctors', href: '/doctors.html', page: 'doctors' },
-    { label: 'Testimonials', href: '/testimonials.html', page: 'testimonials' },
-    { label: 'Blog', href: '/blog.html', page: 'blog' },
-    { label: 'Contact', href: '/contact.html', page: 'contact' },
+    { label: 'Home', href: '/', page: 'home' },
+    { label: 'About', href: '/about/', page: 'about' },
+    { label: 'Treatments', href: '/treatments/', page: 'treatments' },
+    { label: 'Doctors', href: '/doctors/', page: 'doctors' },
+    { label: 'Testimonials', href: '/testimonials/', page: 'testimonials' },
+    { label: 'Knowledge Center', href: '/blog/', page: 'blog' },
+    { label: 'Contact', href: '/contact/', page: 'contact' },
   ],
 });
+
+export const TREATMENT_CATEGORIES = Object.freeze([
+  'General Dentistry',
+  'Preventive Dentistry',
+  'Restorative Dentistry',
+  'Root Canal Treatment',
+  'Cosmetic Dentistry',
+  'Dental Implants',
+  'Crowns and Bridges',
+  'Orthodontics',
+  'Gum Treatments',
+  'Oral Surgery',
+  'Dentures and Prosthodontics',
+  'Paediatric Dentistry',
+  'Full-Mouth Rehabilitation',
+  'TMJ and Bite Treatments',
+  'Laser Dentistry',
+  'Digital Dentistry',
+]);
+
+export const BLOG_CATEGORIES = Object.freeze([
+  'Patient Guides',
+  'Dental Education',
+  'Clinic News',
+  'Treatments',
+  'Oral Health',
+]);
+
+export const GALLERY_CATEGORIES = Object.freeze([
+  'Clinic Interiors',
+  'Equipment',
+  'Treatments',
+  'Doctors',
+  'Testimonials',
+  'Blog',
+  'Branding',
+  'Other',
+]);

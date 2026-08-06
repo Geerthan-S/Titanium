@@ -10,7 +10,7 @@
   <meta property="og:description"
     content="Explore dental treatments available at Titanium Roots Dental Clinic, including implants, root canal care, orthodontics, cosmetic dentistry and preventive dental care.">
   <meta property="og:image" content="/assets/images/placeholders/clinic-neutral.svg">
-  <link rel="canonical" href="https://example.com/treatments.html">
+  <link rel="canonical" href="https://titaniumroots.com/treatments/">
   <title>Dental Treatments | Titanium Roots Dental Clinic</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="/assets/css/global.css">
@@ -26,27 +26,32 @@
       <div class="treatments-hero__background" aria-hidden="true"></div>
       <div class="container treatments-hero__grid">
         <div class="treatments-hero__content">
-          <div class="treatments-breadcrumb-shell" data-component="breadcrumb"></div>
-          <p class="section-eyebrow" data-treatments-hero-eyebrow>Our Treatments</p>
-          <h1 id="treatments-hero-title" data-treatments-hero-heading>Comprehensive Dental Treatments for a Healthier,
-            More <span>Confident Smile</span></h1>
-          <p data-treatments-hero-copy>At Titanium Roots Dental Clinic, we combine modern dental care, thoughtful
-            treatment planning and a patient-first approach to support healthier, more confident smiles.</p>
-          <div class="treatments-hero__actions"><button class="button" type="button" data-modal-open="appointment-modal"
-              data-treatment-interest="General consultation">Book Consultation <i data-lucide="calendar-days"
-                aria-hidden="true"></i></button><a class="button button--secondary" href="#" target="_blank"
-              rel="noopener noreferrer" data-whatsapp-link>WhatsApp Consultation <i data-lucide="message-circle"
-                aria-hidden="true"></i></a></div>
-        </div>
-        <div class="treatments-hero__visual" data-treatments-hero-visual>
-          <div class="treatments-hero__outline" aria-hidden="true"></div>
-          <div class="treatments-hero__media"><img class="media-placeholder"
-              src="/assets/images/placeholders/clinic-neutral.svg" width="1600" height="1200"
-              alt="Placeholder for a dentist consulting an adult patient">
-            <div class="treatments-hero__trust-panel" data-treatments-hero-trust></div>
+          <p class="home-hero__badge" data-hero-badge><i data-lucide="sparkles" aria-hidden="true"></i>Welcome to
+            Titanium Roots Dental Clinic</p>
+          <h1 id="treatments-hero-title" data-hero-heading>Your Smile,<br><span>Our Priority</span></h1>
+          <p class="home-hero__description" data-hero-copy>Where advanced technology meets gentle care. Experience
+            dental excellence in a comfortable, luxurious environment.</p>
+          <div class="home-hero__actions" data-hero-actions>
+            <button class="button button--hero" type="button" data-modal-open="appointment-modal"><span>Book Your
+                Appointment</span><i data-lucide="calendar-days" aria-hidden="true"></i></button>
+            <a class="button button--hero-secondary" href="#" target="_blank" rel="noopener noreferrer"
+              data-whatsapp-link><i data-lucide="message-circle" aria-hidden="true"></i><span>Chat on WhatsApp</span><i
+                data-lucide="arrow-up-right" aria-hidden="true"></i></a>
           </div>
+          <ul class="home-hero__features" aria-label="Clinic commitments" data-hero-features>
+            <li><i data-lucide="scan-face" aria-hidden="true"></i><span>Advanced<br>Technology</span></li>
+            <li><i data-lucide="users-round" aria-hidden="true"></i><span>Expert<br>Team</span></li>
+            <li><i data-lucide="heart-handshake" aria-hidden="true"></i><span>Patient First<br>Approach</span></li>
+          </ul>
         </div>
-        <div class="treatments-hero__features" data-treatments-hero-features aria-label="Treatment commitments"></div>
+        <div class="treatments-hero__visual" data-hero-visual>
+          <div class="treatments-hero__outline" aria-hidden="true"></div>
+          <div class="treatments-hero__media"><img src="/assets/images/home/clinic-reception.webp"
+              alt="Titanium Roots clinic reception with seating and architectural lighting" width="1778" height="888">
+          </div>
+          <div class="treatments-orbit-badge badge-top-left" aria-hidden="true">✦ Laser Precision</div>
+        </div>
+        <div class="treatments-hero__features" data-treatments-hero-features aria-label="Clinic highlights"></div>
       </div>
     </section>
 
@@ -59,6 +64,7 @@
             <h2 id="catalogue-title">Solutions for <span>Every Dental Need</span></h2>
           </div>
         </div>
+        <div class="treatment-filters" data-treatment-filters></div>
         <div class="treatment-grid" data-treatment-grid></div>
       </div>
     </section>
@@ -85,19 +91,18 @@
         <ol class="journey-timeline" data-treatment-journey></ol>
       </div>
     </section>
-    <section class="treatments-transformations treatments-section" aria-labelledby="transformations-title"
+    <section class="treatments-transformations treatments-section" aria-labelledby="transformations-title" hidden
       data-treatments-reveal-section>
       <div class="container">
         <div class="treatments-section-heading">
           <div>
-            <p class="section-eyebrow">Before &amp; After Transformations</p>
-            <h2 id="transformations-title">Real Smiles. <span>Real Confidence.</span></h2>
+            <p class="section-eyebrow">Approved Visual Cases</p>
+            <h2 id="transformations-title">Shared Only With <span>Written Consent</span></h2>
           </div>
         </div>
         <p class="treatments-consent-note">Patient transformation imagery must only be published with written approval.
         </p>
-        <div class="transformation-grid" data-transformations></div><button class="button button--secondary"
-          type="button" disabled>View More Transformations <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+        <div class="transformation-grid" data-transformations></div>
       </div>
     </section>
     <section class="treatments-faq treatments-section" aria-labelledby="faq-title" data-treatments-reveal-section>

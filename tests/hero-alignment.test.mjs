@@ -5,14 +5,13 @@ import test from 'node:test';
 test('inner-page heroes share the home hero alignment rules', async () => {
   const css = await readFile(new URL('../assets/css/hero-alignment.css', import.meta.url), 'utf8');
 
-  for (const hero of ['about', 'treatments', 'doctors', 'blog', 'contact']) {
+  for (const hero of ['about', 'treatments', 'doctors', 'blog']) {
     assert.match(css, new RegExp(`\\.${hero}-hero`));
   }
 
   for (const hero of ['about', 'treatments', 'doctors', 'blog']) {
     assert.match(css, new RegExp(`\\.${hero}-hero__content`));
   }
-  assert.match(css, /\.contact-hero__grid > div:first-child/);
 
   assert.match(css, /min-height:\s*760px/);
   assert.match(css, /width:\s*min\(44%,\s*560px\)/);

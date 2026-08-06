@@ -26,6 +26,22 @@ const phoneHref = (value) => `tel:${String(value || '').replace(/[^\d+]/g, '')}`
 const emailHref = (value) => `mailto:${encodeURIComponent(String(value || '').trim())}`;
 const whatsappHref = (value) => `https://wa.me/${String(value || '').replace(/\D/g, '')}`;
 
+export function applyWebsiteAssets(assets = []) {
+  assets.forEach((asset) => {
+    if (!asset.assetKey || !asset.imagePath) return;
+    const targets = document.querySelectorAll(`[data-website-asset="${asset.assetKey}"]`);
+    targets.forEach((target) => {
+      if (target.tagName.toLowerCase() === 'img') {
+        target.src = asset.imagePath;
+        if (asset.altText) target.alt = asset.altText;
+      } else {
+        target.style.backgroundImage = `url('${asset.imagePath}')`;
+        if (asset.altText) target.setAttribute('aria-label', asset.altText);
+      }
+    });
+  });
+}
+
 export function applyPublicSettings(settings = {}) {
   const identity = settings.clinicIdentity || {};
   const contact = settings.contact || {};
@@ -86,16 +102,16 @@ startApplication().then(async () => {
       try { return document.referrer ? new URL(document.referrer).hostname : ''; } catch { return ''; }
     })(),
   };
-  await recordAnalyticsEvent({ eventType: 'page_view', ...analyticsContext }).catch(() => {});
+  await recordAnalyticsEvent({ eventType: 'page_view', ...analyticsContext }).catch(() => { });
   document.addEventListener('click', (event) => {
     const link = event.target.closest('a[href]');
     if (!link) return;
     if (link.href.startsWith('https://wa.me/')) {
-      recordAnalyticsEvent({ eventType: 'whatsapp_click', ...analyticsContext }).catch(() => {});
+      recordAnalyticsEvent({ eventType: 'whatsapp_click', ...analyticsContext }).catch(() => { });
     } else if (link.protocol === 'tel:') {
-      recordAnalyticsEvent({ eventType: 'phone_click', ...analyticsContext }).catch(() => {});
+      recordAnalyticsEvent({ eventType: 'phone_click', ...analyticsContext }).catch(() => { });
     } else if (event.target.closest('.button, [data-modal-open]')) {
-      recordAnalyticsEvent({ eventType: 'cta_click', ...analyticsContext }).catch(() => {});
+      recordAnalyticsEvent({ eventType: 'cta_click', ...analyticsContext }).catch(() => { });
     }
   }, { passive: true });
   try {
@@ -106,6 +122,17 @@ startApplication().then(async () => {
     subscribePublicContent('settings');
   } catch {
     // Existing component defaults remain available if the data service is temporarily unavailable.
+  }
+
+  try {
+    const assets = await loadPublicContent('websiteAssets');
+    applyWebsiteAssets(assets);
+    onPublicContent('websiteAssets', ({ status, data }) => {
+      if (status === 'ready') applyWebsiteAssets(data);
+    });
+    subscribePublicContent('websiteAssets');
+  } catch (error) {
+    if (import.meta.env.DEV) console.error('Failed to load website assets:', error);
   }
 
   if (document.body.dataset.page === 'home') await initializeHome();
@@ -119,5 +146,5 @@ startApplication().then(async () => {
 });
 
 window.addEventListener('pagehide', () => {
-  disposePublicContent().catch(() => {});
+  disposePublicContent().catch(() => { });
 }, { once: true });

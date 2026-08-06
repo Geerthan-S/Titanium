@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 
 const root = new URL('../', import.meta.url);
-const pages = ['login', 'dashboard', 'appointments', 'doctors', 'treatments', 'blogs', 'testimonials', 'gallery', 'seo', 'settings', 'analytics'];
+const pages = ['login', 'dashboard', 'appointments', 'doctors', 'treatments', 'blogs', 'testimonials', 'gallery', 'seo', 'settings', 'analytics', 'website-images'];
 const modules = ['admin-app', 'admin-auth', 'admin-shell', 'admin-store', 'admin-table', 'admin-form', 'admin-dialog', 'admin-charts', 'admin-editor', 'admin-utils'];
 const components = ['admin-sidebar', 'admin-header', 'admin-mobile-nav', 'admin-confirm-dialog', 'admin-command-bar'];
 

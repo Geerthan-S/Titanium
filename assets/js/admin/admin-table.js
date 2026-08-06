@@ -5,6 +5,18 @@ function valueFor(record, column) {
   return value ?? '—';
 }
 
+function formatOptionLabel(option) {
+  if (!option) return '';
+  const label = typeof option === 'string' ? option : (option.label ?? option.value ?? String(option));
+  if (/^[a-z0-9_-]+$/.test(label)) {
+    return label
+      .split(/[_-]/)
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+  return label;
+}
+
 export function createAdminTable(container, {
   records = [],
   columns = [],
@@ -19,7 +31,17 @@ export function createAdminTable(container, {
     const query = state.query.toLowerCase();
     const result = state.records.filter((record) => {
       const matchesQuery = !query || Object.values(record).some((value) => String(value ?? '').toLowerCase().includes(query));
-      const matchesFilters = Object.entries(state.filters).every(([key, value]) => !value || String(record[key] ?? '') === value);
+      const matchesFilters = filters.every((filter) => {
+        const value = state.filters[filter.key];
+        if (!value) {
+          if (filter.key === 'status') {
+            const statusVal = String(record.status || '').toLowerCase();
+            return statusVal !== 'archived' && statusVal !== 'unpublished' && statusVal !== 'cancelled';
+          }
+          return true;
+        }
+        return String(record[filter.key] ?? '').toLowerCase() === String(value).toLowerCase();
+      });
       return matchesQuery && matchesFilters;
     });
     const column = columns.find(({ key }) => key === state.sortKey);
@@ -42,7 +64,12 @@ export function createAdminTable(container, {
     container.innerHTML = `
       <div class="admin-table-tools">
         <label class="admin-search-field"><i data-lucide="search" aria-hidden="true"></i><span class="visually-hidden">Search records</span><input type="search" placeholder="Search records…" value="${escapeHtml(state.query)}" data-table-search></label>
-        <div class="admin-table-filters">${filters.map((filter) => `<label><span class="visually-hidden">${escapeHtml(filter.label)}</span><select data-table-filter="${filter.key}"><option value="">All ${escapeHtml(filter.label)}</option>${filter.options.map((option) => `<option${state.filters[filter.key] === option ? ' selected' : ''}>${escapeHtml(option)}</option>`).join('')}</select></label>`).join('')}</div>
+        <div class="admin-table-filters">${filters.map((filter) => `<label><span class="visually-hidden">${escapeHtml(filter.label)}</span><select data-table-filter="${filter.key}"><option value="">All ${escapeHtml(filter.label)}</option>${filter.options.map((option) => {
+      const val = typeof option === 'string' ? option : (option.value ?? option);
+      const label = formatOptionLabel(option);
+      const selectedAttr = String(state.filters[filter.key] || '').toLowerCase() === String(val).toLowerCase() ? ' selected' : '';
+      return `<option value="${escapeHtml(val)}"${selectedAttr}>${escapeHtml(label)}</option>`;
+    }).join('')}</select></label>`).join('')}</div>
       </div>
       <div class="admin-table-frame">
         ${visible.length ? `<table><thead><tr>${columns.map((column) => `<th scope="col"><button type="button" data-table-sort="${column.key}">${escapeHtml(column.label)}${state.sortKey === column.key ? `<span aria-hidden="true">${state.sortDirection === 'asc' ? '↑' : '↓'}</span>` : ''}</button></th>`).join('')}<th scope="col"><span class="visually-hidden">Actions</span></th></tr></thead><tbody>${visible.map((record) => `<tr>${columns.map((column) => `<td data-label="${escapeHtml(column.label)}">${renderCell(record, column)}</td>`).join('')}<td class="admin-row-actions">${actions.map((action) => `<button type="button" class="${action.danger ? 'is-danger' : ''}" data-row-action="${action.key}" data-record-id="${record.id}" title="${escapeHtml(typeof action.label === 'function' ? action.label(record) : action.label)}"><i data-lucide="${typeof action.icon === 'function' ? action.icon(record) : (action.icon || 'ellipsis')}" aria-hidden="true"></i><span>${escapeHtml(typeof action.label === 'function' ? action.label(record) : action.label)}</span></button>`).join('')}</td></tr>`).join('')}</tbody></table>` : `<div class="admin-empty-state"><i data-lucide="inbox" aria-hidden="true"></i><h3>No records found</h3><p>${escapeHtml(emptyMessage)}</p></div>`}

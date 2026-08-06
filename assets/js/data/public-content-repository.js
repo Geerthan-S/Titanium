@@ -7,6 +7,7 @@ import {
   mapSettingsFromDatabase,
   mapTestimonialFromDatabase,
   mapTreatmentFromDatabase,
+  mapWebsiteAssetFromDatabase,
 } from './record-mappers.js';
 import { requireSupabase } from './supabase-client.js';
 
@@ -17,6 +18,7 @@ const MAPPERS = Object.freeze({
   testimonials: mapTestimonialFromDatabase,
   gallery: mapGalleryFromDatabase,
   seo: mapSeoFromDatabase,
+  websiteAssets: mapWebsiteAssetFromDatabase,
 });
 
 export async function fetchPublicCollection(name) {
@@ -40,6 +42,7 @@ export async function fetchPublicCollection(name) {
     gallery: () => client.from('gallery_items').select('*').eq('status', 'published').order('sort_order'),
     seo: () => client.from('seo_pages').select('*').order('route'),
     settings: () => client.from('site_settings').select('*').eq('id', 'primary').single(),
+    websiteAssets: () => client.from('website_assets').select('*').eq('status', 'published').order('sort_order'),
   };
   const query = queries[name];
   if (!query) throw new DataError(`Unknown public collection: ${name}`, { code: 'INVALID_COLLECTION' });

@@ -1,0 +1,702 @@
+[
+  {
+    "id": "00cb24d2-21ed-4b68-98e7-c1cbb60f7724",
+    "name": "Gum Surgery",
+    "slug": "gum-surgery",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing gum surgery in an appropriate clinical setting"
+  },
+  {
+    "id": "07963283-bca7-4e56-92a8-1a399bc403d6",
+    "name": "Lingual Braces",
+    "slug": "lingual-braces",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing lingual braces in an appropriate clinical setting"
+  },
+  {
+    "id": "0b3d939c-7da8-42a4-a0ba-ef1ff59c9b8d",
+    "name": "Dental Fillings for Children",
+    "slug": "dental-fillings-for-children",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing dental fillings for children in an appropriate clinical setting"
+  },
+  {
+    "id": "0cad6de3-200a-4452-8a42-667af60f533c",
+    "name": "Gum Disease Treatment",
+    "slug": "gum-disease-treatment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing gum disease treatment in an appropriate clinical setting"
+  },
+  {
+    "id": "0ce8c138-ea53-4fea-a227-2069f1a2940f",
+    "name": "Braces & Orthodontics",
+    "slug": "braces-orthodontics",
+    "image_path": null,
+    "image_alt": ""
+  },
+  {
+    "id": "0d626f3e-b3a8-43b1-9138-d9a6ee697343",
+    "name": "Space Maintainers",
+    "slug": "space-maintainers",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing space maintainers in an appropriate clinical setting"
+  },
+  {
+    "id": "0dbb403c-2211-4d4a-a0f1-3f94fc18d239",
+    "name": "Root Canal Treatment",
+    "slug": "root-canal-treatment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing root canal treatment in an appropriate clinical setting"
+  },
+  {
+    "id": "0e94d4fa-bc26-4626-9b23-3f134e55f1c1",
+    "name": "Dental Inlays and Onlays",
+    "slug": "dental-inlays-onlays",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing dental inlays and onlays in an appropriate clinical setting"
+  },
+  {
+    "id": "15ae19ab-fd9f-4985-86b9-891488b852c6",
+    "name": "Night Guards",
+    "slug": "night-guards",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing night guards in an appropriate clinical setting"
+  },
+  {
+    "id": "16387ea7-fad2-44d9-9808-59704c7c593d",
+    "name": "Denture Repair and Replacement",
+    "slug": "denture-repair-and-replacement",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing denture repair and replacement in an appropriate clinical setting"
+  },
+  {
+    "id": "1c185b00-467f-48ef-8441-12aec447a4c0",
+    "name": "Scaling and Root Planing",
+    "slug": "scaling-and-root-planing",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing scaling and root planing in an appropriate clinical setting"
+  },
+  {
+    "id": "1c9cf167-f488-43ce-84cf-8fcd51e27395",
+    "name": "Dental Bone Grafting",
+    "slug": "dental-bone-grafting",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing dental bone grafting in an appropriate clinical setting"
+  },
+  {
+    "id": "1dd23e50-6d23-45cf-9bd9-6a4784c6c33a",
+    "name": "Smile Designing",
+    "slug": "smile-designing",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing smile designing in an appropriate clinical setting"
+  },
+  {
+    "id": "2019a188-1eea-4fa7-bf0e-5da7ff86ce41",
+    "name": "Partial Dentures",
+    "slug": "partial-dentures",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing partial dentures in an appropriate clinical setting"
+  },
+  {
+    "id": "2119adb1-c926-40b2-9754-70091885073d",
+    "name": "Bite Correction",
+    "slug": "bite-correction",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing bite correction in an appropriate clinical setting"
+  },
+  {
+    "id": "23d31ae6-9d97-4e91-bdda-b1258acfb268",
+    "name": "Crowns & Bridges",
+    "slug": "crowns-bridges",
+    "image_path": null,
+    "image_alt": ""
+  },
+  {
+    "id": "2a90aa96-56f4-4544-8517-787315c34932",
+    "name": "Broken Tooth Repair",
+    "slug": "broken-tooth-repair",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing broken tooth repair in an appropriate clinical setting"
+  },
+  {
+    "id": "2c132cae-e242-41a2-a398-4e7f2603fcd6",
+    "name": "All-on-6 Dental Implants",
+    "slug": "all-on-6-dental-implants",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing all-on-6 dental implants in an appropriate clinical setting"
+  },
+  {
+    "id": "2e7e1c42-0e4b-4c3f-8ca9-eda300d35a66",
+    "name": "Periodontal Treatment",
+    "slug": "periodontal-treatment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing periodontal treatment in an appropriate clinical setting"
+  },
+  {
+    "id": "2f4dc22d-f679-41e2-b4f4-ff703c4bc235",
+    "name": "Post and Core Treatment",
+    "slug": "post-and-core-treatment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing post and core treatment in an appropriate clinical setting"
+  },
+  {
+    "id": "31379997-8be0-447d-8725-3ebcaa832d34",
+    "name": "Chipped Tooth Repair",
+    "slug": "chipped-tooth-repair",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing chipped tooth repair in an appropriate clinical setting"
+  },
+  {
+    "id": "3426191c-0d41-4eb7-b412-56b515034860",
+    "name": "Jaw Alignment Treatment",
+    "slug": "jaw-alignment-treatment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing jaw alignment treatment in an appropriate clinical setting"
+  },
+  {
+    "id": "35ab3cc4-ac28-4d82-ad1d-7c7ef6692356",
+    "name": "Sports Mouth Guards",
+    "slug": "sports-mouth-guards",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing sports mouth guards in an appropriate clinical setting"
+  },
+  {
+    "id": "36736f48-7901-463d-9f1e-d8a99846d4d5",
+    "name": "Dental Crowns",
+    "slug": "dental-crowns",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing dental crowns in an appropriate clinical setting"
+  },
+  {
+    "id": "36f2224d-c2c3-4611-8cfd-b5ad14750892",
+    "name": "Tooth-Coloured Fillings",
+    "slug": "tooth-coloured-fillings",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing tooth-coloured fillings in an appropriate clinical setting"
+  },
+  {
+    "id": "3b4ac0a5-cfa4-4205-941e-c55509562e43",
+    "name": "Dental Crown After Root Canal",
+    "slug": "dental-crown-after-root-canal",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing dental crown after root canal in an appropriate clinical setting"
+  },
+  {
+    "id": "3c88f485-c0e5-4b5e-b2dc-4c51a8831681",
+    "name": "Digital Smile Designing",
+    "slug": "digital-smile-designing",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing digital smile designing in an appropriate clinical setting"
+  },
+  {
+    "id": "3e621c8b-1591-410e-a2c9-5c4da62b8038",
+    "name": "Composite Bonding",
+    "slug": "composite-bonding",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing composite bonding in an appropriate clinical setting"
+  },
+  {
+    "id": "402b79e9-3b02-49e7-b94e-d0e0ae7c5c9d",
+    "name": "Dental Consultation",
+    "slug": "dental-consultation",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing dental consultation in an appropriate clinical setting"
+  },
+  {
+    "id": "4061865b-22d9-4a31-bcf5-96e03d2e8c5b",
+    "name": "Dental Implants",
+    "slug": "dental-implants",
+    "image_path": null,
+    "image_alt": ""
+  },
+  {
+    "id": "459f4337-b85f-43bd-87a2-6806e5323a7e",
+    "name": "Children’s Dental Check-up",
+    "slug": "childrens-dental-check-up",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing children’s dental check-up in an appropriate clinical setting"
+  },
+  {
+    "id": "47a95202-dab3-4519-b3cc-eb6245f5d12f",
+    "name": "Tooth Extraction",
+    "slug": "tooth-extraction",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing tooth extraction in an appropriate clinical setting"
+  },
+  {
+    "id": "487f5dd2-cd87-42bd-9cff-dbb41830a386",
+    "name": "Apicoectomy",
+    "slug": "apicoectomy",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing apicoectomy in an appropriate clinical setting"
+  },
+  {
+    "id": "4b49615d-a0ac-4bab-aa29-ff792a86dadf",
+    "name": "Pediatric Dentistry",
+    "slug": "pediatric-dentistry",
+    "image_path": null,
+    "image_alt": ""
+  },
+  {
+    "id": "4bd24cad-8cfa-4238-b53e-491478cf48d0",
+    "name": "Guided Implant Surgery",
+    "slug": "guided-implant-surgery",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing guided implant surgery in an appropriate clinical setting"
+  },
+  {
+    "id": "4f88695c-d82f-4cb6-8d46-7b3c32a2479d",
+    "name": "Tooth Jewellery",
+    "slug": "tooth-jewellery",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing tooth jewellery in an appropriate clinical setting"
+  },
+  {
+    "id": "51962efe-4eda-4e22-b755-9bcf1ad976c7",
+    "name": "Paediatric Dental Cleaning",
+    "slug": "paediatric-dental-cleaning",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing paediatric dental cleaning in an appropriate clinical setting"
+  },
+  {
+    "id": "5496747a-dd11-4905-aa06-3a1da2c279ce",
+    "name": "Full-Mouth Rehabilitation",
+    "slug": "full-mouth-rehabilitation",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing full-mouth rehabilitation in an appropriate clinical setting"
+  },
+  {
+    "id": "55351039-3d21-4148-8bd2-b0b5a01976a4",
+    "name": "Ceramic Braces",
+    "slug": "ceramic-braces",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing ceramic braces in an appropriate clinical setting"
+  },
+  {
+    "id": "55ecce4e-d1af-4385-9492-c2863bf264fc",
+    "name": "Tooth Reshaping",
+    "slug": "tooth-reshaping",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing tooth reshaping in an appropriate clinical setting"
+  },
+  {
+    "id": "56048200-fb08-4806-98c7-1f8dc01108b8",
+    "name": "Metal-Ceramic Crowns",
+    "slug": "metal-ceramic-crowns",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing metal-ceramic crowns in an appropriate clinical setting"
+  },
+  {
+    "id": "57641146-e2b3-4bd5-9245-4d5a755b2995",
+    "name": "Gum Care & Periodontics",
+    "slug": "gum-care-periodontics",
+    "image_path": null,
+    "image_alt": ""
+  },
+  {
+    "id": "57e01d94-5a11-49f0-a5c7-c13335be0295",
+    "name": "Smile Makeover",
+    "slug": "smile-makeover",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing smile makeover in an appropriate clinical setting"
+  },
+  {
+    "id": "5a3a1f49-15c4-46ae-ab92-b7d7dd09cc57",
+    "name": "Complete Dentures",
+    "slug": "complete-dentures",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing complete dentures in an appropriate clinical setting"
+  },
+  {
+    "id": "5c56bcc8-255a-433e-9204-feac01cb59e6",
+    "name": "Dental Sealants for Children",
+    "slug": "dental-sealants-for-children",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing dental sealants for children in an appropriate clinical setting"
+  },
+  {
+    "id": "60df664a-8739-4d9c-a319-e4b6e78accba",
+    "name": "Wisdom Tooth Assessment & Removal",
+    "slug": "wisdom-tooth-assessment-removal",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing wisdom tooth assessment & removal in an appropriate clinical setting"
+  },
+  {
+    "id": "614d572b-8ca7-46ad-9f04-7e544992813e",
+    "name": "Implant-Supported Crowns",
+    "slug": "implant-supported-crowns",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing implant-supported crowns in an appropriate clinical setting"
+  },
+  {
+    "id": "673a804a-f518-467c-bf3a-8eb757f1f642",
+    "name": "Deep Dental Cleaning",
+    "slug": "deep-dental-cleaning",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing deep dental cleaning in an appropriate clinical setting"
+  },
+  {
+    "id": "69034567-fd5d-4a3e-99b3-a8563da49605",
+    "name": "Frenectomy",
+    "slug": "frenectomy",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing frenectomy in an appropriate clinical setting"
+  },
+  {
+    "id": "6eef9014-bba0-4e32-83f8-3e5e9867641b",
+    "name": "Full-Mouth Dental Implants",
+    "slug": "full-mouth-dental-implants",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing full-mouth dental implants in an appropriate clinical setting"
+  },
+  {
+    "id": "7575496d-eb4a-4728-b72b-2414cc93fbd2",
+    "name": "TMJ Disorder Treatment",
+    "slug": "tmj-disorder-treatment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing tmj disorder treatment in an appropriate clinical setting"
+  },
+  {
+    "id": "75f183a2-41cd-474a-977d-745df3403f84",
+    "name": "Preventive & General Dentistry",
+    "slug": "preventive-general-dentistry",
+    "image_path": null,
+    "image_alt": ""
+  },
+  {
+    "id": "77004fee-0837-43c1-8fdc-4f56a8fe0009",
+    "name": "Dental Veneers",
+    "slug": "dental-veneers",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing dental veneers in an appropriate clinical setting"
+  },
+  {
+    "id": "7cf2e48d-1966-4db1-b7a1-5a91af63098e",
+    "name": "Multiple Missing Teeth Replacement",
+    "slug": "multiple-missing-teeth-replacement",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing multiple missing teeth replacement in an appropriate clinical setting"
+  },
+  {
+    "id": "7d85ad37-49db-4277-8103-3a3897cf31ae",
+    "name": "Root Canal Retreatment",
+    "slug": "root-canal-retreatment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing root canal retreatment in an appropriate clinical setting"
+  },
+  {
+    "id": "8005ef15-7d7f-4af6-8d7b-fcc6c77613b4",
+    "name": "Bite Rehabilitation",
+    "slug": "bite-rehabilitation",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing bite rehabilitation in an appropriate clinical setting"
+  },
+  {
+    "id": "8169c777-2006-4e21-a956-14ced3e1727b",
+    "name": "Surgical Tooth Extraction",
+    "slug": "surgical-tooth-extraction",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing surgical tooth extraction in an appropriate clinical setting"
+  },
+  {
+    "id": "829185a5-93a6-494f-b30b-9c8f83997630",
+    "name": "Immediate Dentures",
+    "slug": "immediate-dentures",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing immediate dentures in an appropriate clinical setting"
+  },
+  {
+    "id": "82a37d63-86ad-4ea0-9bea-aa8196d696d9",
+    "name": "Digital Dental X-Rays",
+    "slug": "digital-dental-x-rays",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing digital dental x-rays in an appropriate clinical setting"
+  },
+  {
+    "id": "83cb28b0-4f1d-4712-91f9-124dd14b6684",
+    "name": "Worn-Down Teeth Restoration",
+    "slug": "worn-down-teeth-restoration",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing worn-down teeth restoration in an appropriate clinical setting"
+  },
+  {
+    "id": "8661a19a-f8e3-4a33-bb76-ba2a9d866a9d",
+    "name": "Professional Teeth Whitening",
+    "slug": "professional-teeth-whitening",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing professional teeth whitening in an appropriate clinical setting"
+  },
+  {
+    "id": "872fd09d-3878-4247-b107-a975dc155993",
+    "name": "Ceramic Crowns",
+    "slug": "ceramic-crowns",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing ceramic crowns in an appropriate clinical setting"
+  },
+  {
+    "id": "8a7da2f3-f951-4287-9cf1-4fe02ce1853e",
+    "name": "Impacted Tooth Removal",
+    "slug": "impacted-tooth-removal",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing impacted tooth removal in an appropriate clinical setting"
+  },
+  {
+    "id": "8b7636e0-80a0-4e3d-b2b5-043e372abb0f",
+    "name": "Dental Sleep Appliances for Snoring and Sleep Apnoea",
+    "slug": "dental-sleep-appliances",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing dental sleep appliances for snoring and sleep apnoea in an appropriate clinical setting"
+  },
+  {
+    "id": "8c1d45a2-795e-4341-9b02-75ef70c0926d",
+    "name": "Child Orthodontic Treatment",
+    "slug": "child-orthodontic-treatment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing child orthodontic treatment in an appropriate clinical setting"
+  },
+  {
+    "id": "8ef9827b-606d-4040-8e83-f2faa396cfc9",
+    "name": "Implant-Supported Bridges",
+    "slug": "implant-supported-bridges",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing implant-supported bridges in an appropriate clinical setting"
+  },
+  {
+    "id": "9279d63f-e03d-46e3-85e4-8027f4846dd8",
+    "name": "Orthodontic Retainers",
+    "slug": "orthodontic-retainers",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing orthodontic retainers in an appropriate clinical setting"
+  },
+  {
+    "id": "98a7c8dd-fa98-4dd5-930d-a3209489f06f",
+    "name": "Metal Braces",
+    "slug": "metal-braces",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing metal braces in an appropriate clinical setting"
+  },
+  {
+    "id": "999e9831-3e6b-44ae-b437-9233a97e1883",
+    "name": "Single-Tooth Dental Implants",
+    "slug": "single-tooth-dental-implants",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing single-tooth dental implants in an appropriate clinical setting"
+  },
+  {
+    "id": "9f517e04-a227-42ec-9c42-5ed6be9bd0fa",
+    "name": "Self-Ligating Braces",
+    "slug": "self-ligating-braces",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing self-ligating braces in an appropriate clinical setting"
+  },
+  {
+    "id": "a5cbee0f-fe25-451d-9ed8-f9dfa443a921",
+    "name": "Routine Dental Check-up",
+    "slug": "routine-dental-check-up",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing routine dental check-up in an appropriate clinical setting"
+  },
+  {
+    "id": "a755b33e-0b08-4e7b-9d86-49672a1600ff",
+    "name": "Occlusal Adjustment",
+    "slug": "occlusal-adjustment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing occlusal adjustment in an appropriate clinical setting"
+  },
+  {
+    "id": "a7ff0c20-1bd5-4be2-b0ea-bb351e96dc8d",
+    "name": "Bad Breath Treatment",
+    "slug": "bad-breath-treatment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing bad breath treatment in an appropriate clinical setting"
+  },
+  {
+    "id": "a849e82c-b124-4da6-aac8-80bd51a6fd0f",
+    "name": "Dental Sealants",
+    "slug": "dental-sealants",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing dental sealants in an appropriate clinical setting"
+  },
+  {
+    "id": "a93006bc-3af4-4549-a150-a9ab6d6fdbf7",
+    "name": "Pulpotomy",
+    "slug": "pulpotomy",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing pulpotomy in an appropriate clinical setting"
+  },
+  {
+    "id": "acc2fa3e-13a0-446b-91c0-1b31848df5d0",
+    "name": "Dental Cyst Removal",
+    "slug": "dental-cyst-removal",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing dental cyst removal in an appropriate clinical setting"
+  },
+  {
+    "id": "b1298376-72a2-41c1-8c8a-851e4fbaf771",
+    "name": "CAD/CAM Dental Restorations",
+    "slug": "cad-cam-dental-restorations",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing cad/cam dental restorations in an appropriate clinical setting"
+  },
+  {
+    "id": "b408cc9b-9a96-40c0-8156-d9a37e732084",
+    "name": "Clear Aligners",
+    "slug": "clear-aligners",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing clear aligners in an appropriate clinical setting"
+  },
+  {
+    "id": "b5bb3a7a-0154-4238-bc61-61d1ce23bde4",
+    "name": "Fluoride Application for Children",
+    "slug": "fluoride-application-for-children",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing fluoride application for children in an appropriate clinical setting"
+  },
+  {
+    "id": "b79b88f1-8c04-4c68-a220-28c92f493a60",
+    "name": "Gum Contouring",
+    "slug": "gum-contouring",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing gum contouring in an appropriate clinical setting"
+  },
+  {
+    "id": "bfffac35-49bb-4a45-ae03-aafc86fd9e5e",
+    "name": "Invisalign Clear Aligners",
+    "slug": "invisalign-clear-aligners",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing invisalign clear aligners in an appropriate clinical setting"
+  },
+  {
+    "id": "c0d6201b-f6b4-4443-897e-9d50f4619b61",
+    "name": "Bleeding Gums Treatment",
+    "slug": "bleeding-gums-treatment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing bleeding gums treatment in an appropriate clinical setting"
+  },
+  {
+    "id": "c2725ddc-9875-42db-93ce-4b855ca3b9a2",
+    "name": "All-on-4 Dental Implants",
+    "slug": "all-on-4-dental-implants",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing all-on-4 dental implants in an appropriate clinical setting"
+  },
+  {
+    "id": "c3521d59-cdf0-4985-b42c-3d252bf45a6f",
+    "name": "Stainless-Steel Crowns for Children",
+    "slug": "stainless-steel-crowns-for-children",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing stainless-steel crowns for children in an appropriate clinical setting"
+  },
+  {
+    "id": "c7cd8777-1073-4a04-b2a6-8991dc5171f7",
+    "name": "Tooth Sensitivity Treatment",
+    "slug": "tooth-sensitivity-treatment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing tooth sensitivity treatment in an appropriate clinical setting"
+  },
+  {
+    "id": "dad35e23-150b-49ff-8a09-6f38797a187b",
+    "name": "Laser Gum Treatment",
+    "slug": "laser-gum-treatment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing laser gum treatment in an appropriate clinical setting"
+  },
+  {
+    "id": "ddd29bc9-4caa-4190-8280-fbbcaf69f7b2",
+    "name": "Habit-Breaking Appliances",
+    "slug": "habit-breaking-appliances",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing habit-breaking appliances in an appropriate clinical setting"
+  },
+  {
+    "id": "de126261-204c-424b-998d-e836afb53b0e",
+    "name": "Dental Fillings",
+    "slug": "dental-fillings",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing dental fillings in an appropriate clinical setting"
+  },
+  {
+    "id": "e1739f12-f935-4ced-aac7-45434128a1df",
+    "name": "Professional Fluoride Treatment",
+    "slug": "professional-fluoride-treatment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing professional fluoride treatment in an appropriate clinical setting"
+  },
+  {
+    "id": "e36af389-5ad2-4b22-9fa8-662370af185b",
+    "name": "Teeth Cleaning and Polishing",
+    "slug": "teeth-cleaning-and-polishing",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing teeth cleaning and polishing in an appropriate clinical setting"
+  },
+  {
+    "id": "e8d139d3-3e09-49ca-8ddd-5fe42ab23682",
+    "name": "Zirconia Crowns",
+    "slug": "zirconia-crowns",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing zirconia crowns in an appropriate clinical setting"
+  },
+  {
+    "id": "e97e9d49-367d-4f31-89e0-8e796b1aa989",
+    "name": "Implant-Supported Dentures",
+    "slug": "implant-supported-dentures",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing implant-supported dentures in an appropriate clinical setting"
+  },
+  {
+    "id": "eb35604a-ebe2-4d10-91d2-fa224c408970",
+    "name": "Dental Bridges",
+    "slug": "dental-bridges",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing dental bridges in an appropriate clinical setting"
+  },
+  {
+    "id": "ebdde557-1392-4f01-9718-6346f831f96c",
+    "name": "Pulpectomy",
+    "slug": "pulpectomy",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing pulpectomy in an appropriate clinical setting"
+  },
+  {
+    "id": "ed4dc2d6-50bd-4514-8714-59b5ffb15717",
+    "name": "Bruxism and Teeth-Grinding Treatment",
+    "slug": "bruxism-teeth-grinding-treatment",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing bruxism and teeth-grinding treatment in an appropriate clinical setting"
+  },
+  {
+    "id": "ee27860a-fe98-4655-86ee-05c20569741b",
+    "name": "Pre-Prosthetic Surgery",
+    "slug": "pre-prosthetic-surgery",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing pre-prosthetic surgery in an appropriate clinical setting"
+  },
+  {
+    "id": "f240eb00-e3a4-4f40-88ae-68c37b00dc64",
+    "name": "Sinus Lift Procedure",
+    "slug": "sinus-lift-procedure",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing sinus lift procedure in an appropriate clinical setting"
+  },
+  {
+    "id": "f2aae229-3bed-47c7-b4bc-8cb530973eb2",
+    "name": "Gum Grafting",
+    "slug": "gum-grafting",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing gum grafting in an appropriate clinical setting"
+  },
+  {
+    "id": "f823f79e-0048-4e5f-b742-df853e07b58d",
+    "name": "Flexible Dentures",
+    "slug": "flexible-dentures",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing flexible dentures in an appropriate clinical setting"
+  },
+  {
+    "id": "fafefe61-fa97-4c6f-86bc-31a6fa745175",
+    "name": "Multiple Dental Implants",
+    "slug": "multiple-dental-implants",
+    "image_path": null,
+    "image_alt": "Dental professional explaining or providing multiple dental implants in an appropriate clinical setting"
+  }
+]

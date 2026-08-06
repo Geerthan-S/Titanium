@@ -54,12 +54,14 @@ import {
   Link,
   ExternalLink,
   CheckCircle,
+  CheckCircle2,
   CircleDashed,
   List,
   Grid2X2,
   RotateCcw,
   Download,
   CalendarCheck,
+  CalendarPlus,
   Globe,
   Globe2,
   GlobeLock,
@@ -72,10 +74,16 @@ import {
   Copy,
   UserPlus,
   MessageSquareHeart,
-  CalendarPlus,
   PhoneForwarded,
   MousePointerClick,
-  Timer
+  Timer,
+  Images,
+  SearchCheck,
+  ChartNoAxesCombined,
+  PanelLeftClose,
+  Info,
+  Folder,
+  FolderPlus
 } from 'lucide';
 
 export const ICON_SET = {
@@ -121,6 +129,7 @@ export const ICON_SET = {
   Plus,
   TriangleAlert,
   Save,
+  AlertTriangle: TriangleAlert,
   ChevronRight,
   ChevronLeft,
   ChevronDown,
@@ -134,6 +143,7 @@ export const ICON_SET = {
   Link,
   ExternalLink,
   CheckCircle,
+  CheckCircle2,
   CircleDashed,
   List,
   Grid2X2,
@@ -155,5 +165,12 @@ export const ICON_SET = {
   CalendarPlus,
   PhoneForwarded,
   MousePointerClick,
-  Timer
+  Timer,
+  Images,
+  SearchCheck,
+  ChartNoAxesCombined,
+  PanelLeftClose,
+  Info,
+  Folder,
+  FolderPlus
 };

@@ -16,9 +16,10 @@ test('CMS access requires an active administrator membership', async () => {
   const auth = await read('assets/js/admin/admin-auth.js');
   const repository = await read('assets/js/data/auth-repository.js');
   for (const source of [auth, repository]) {
-    assert.match(source, /\.from\(['"]cms_admins['"]\)/);
-    assert.match(source, /\.eq\(['"]user_id['"], user\.id\)/);
+    assert.match(source, /\.from\(['"]admin_profiles['"]\)/);
+    assert.match(source, /\.eq\(['"]id['"], user\.id\)/);
     assert.match(source, /\.eq\(['"]is_active['"], true\)/);
+    assert.doesNotMatch(source, /cms_admins/);
     assert.doesNotMatch(source, /function isCmsAdmin\(user\)[\s\S]*return Boolean\(user\)/);
   }
 });
