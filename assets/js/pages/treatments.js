@@ -31,17 +31,29 @@ const faqs = [
   ['Will I need multiple visits?', 'Some treatments need more than one visit. Your dentist will explain the expected visit schedule after assessment.'],
 ];
 let treatments = [];
+let activeTreatmentCategory = 'All Treatments';
+let treatmentSearchTerm = '';
+let showAllTreatments = false;
 
 const safe = (value) => escapeHtml(value || '');
 const listFor = (value) => Array.isArray(value)
   ? value
   : String(value || '').split(/\r?\n|,\s*/).map((item) => item.trim()).filter(Boolean);
+const priorityCategories = ['Implant Dentistry', 'Root Canal', 'Orthodontics', 'Cosmetic Dentistry', 'Pediatric Dentistry', 'Preventive Dentistry', 'Periodontics'];
+const priorityTerms = ['implant', 'root canal', 'aligner', 'braces', 'whitening', 'pediatric', 'check-up', 'cleaning', 'gum'];
+
+function initialTreatmentLimit() {
+  if (window.matchMedia('(max-width: 640px)').matches) return 6;
+  if (window.matchMedia('(max-width: 1023px)').matches) return 8;
+  return 12;
+}
 
 export async function initializeTreatments() {
   if (document.body.dataset.treatmentsInitialized) return;
   document.body.dataset.treatmentsInitialized = 'true';
   document.querySelector('[data-breadcrumb-current]')?.replaceChildren('Treatments');
   renderHero();
+  renderTreatmentFilters();
   renderTreatments();
   renderWhy();
   renderJourney();
@@ -56,11 +68,13 @@ export async function initializeTreatments() {
   onPublicContent('treatments', ({ status, data }) => {
     if (status !== 'ready') return;
     treatments = data;
+    renderTreatmentFilters();
     renderTreatments();
     createIcons({ icons: ICON_SET });
   });
   subscribePublicContent('treatments');
   renderHero();
+  renderTreatmentFilters();
   renderTreatments();
   renderWhy();
   renderJourney();
@@ -102,8 +116,20 @@ function renderHero() {
 function renderTreatments() {
   const grid = document.querySelector('[data-treatment-grid]');
   if (!grid) return;
-  grid.innerHTML = treatments.length
-    ? treatments.map((treatment) => `<article class="treatment-card" id="${safe(treatment.slug)}">
+  const rows = filteredTreatments();
+  const limit = initialTreatmentLimit();
+  const visibleRows = showAllTreatments || activeTreatmentCategory !== 'All Treatments' || treatmentSearchTerm
+    ? rows
+    : rows.slice(0, limit);
+  const summary = document.querySelector('[data-treatment-results]');
+  if (summary) {
+    const suffix = rows.length === visibleRows.length ? '' : ` Showing ${visibleRows.length} priority treatments first.`;
+    summary.textContent = rows.length ? `${rows.length} treatment${rows.length === 1 ? '' : 's'} available.${suffix}` : 'No matching treatments found.';
+  }
+  const loadMore = document.querySelector('[data-treatment-load-more]');
+  if (loadMore) loadMore.hidden = rows.length <= visibleRows.length;
+  grid.innerHTML = visibleRows.length
+    ? visibleRows.map((treatment) => `<article class="treatment-card" id="${safe(treatment.slug)}">
       <div class="treatment-card__media"><img src="${treatment.image ? publicMediaUrl(treatment.image) : placeholder}" data-media-fallback="treatment" width="1200" height="900" loading="lazy" alt="${safe(treatment.imageAlt || treatment.name)}"></div>
       <div class="treatment-card__content"><p class="treatment-card__category">${safe(treatment.category)}</p><h3>${safe(treatment.name)}</h3><p>${safe(treatment.shortDescription)}</p>
         <dl><div><dt>Duration</dt><dd>${cardDuration(treatment)}</dd></div><div><dt>Visits</dt><dd>${cardVisits(treatment)}</dd></div><div><dt>Price</dt><dd>${priceLabel(treatment)}</dd></div></dl>
@@ -111,6 +137,39 @@ function renderTreatments() {
       </div>
     </article>`).join('')
     : '<p class="content-empty">No matching treatments were found. Adjust the filters or contact the clinic for guidance.</p>';
+  createIcons({ icons: ICON_SET });
+}
+
+function renderTreatmentFilters() {
+  const mount = document.querySelector('[data-treatment-filters]');
+  if (!mount) return;
+  const categories = ['All Treatments', ...new Set(treatments.map((treatment) => treatment.category).filter(Boolean))];
+  const ordered = [
+    'All Treatments',
+    ...priorityCategories.filter((category) => categories.includes(category)),
+    ...categories.filter((category) => category !== 'All Treatments' && !priorityCategories.includes(category)).sort(),
+  ];
+  if (!ordered.includes(activeTreatmentCategory)) activeTreatmentCategory = 'All Treatments';
+  mount.innerHTML = ordered.map((category) => `<button type="button" data-treatment-filter="${safe(category)}" aria-pressed="${category === activeTreatmentCategory}">${safe(category)}</button>`).join('');
+}
+
+function filteredTreatments() {
+  const term = treatmentSearchTerm;
+  return [...treatments]
+    .sort((a, b) => treatmentPriorityScore(b) - treatmentPriorityScore(a))
+    .filter((treatment) => {
+      const categoryMatch = activeTreatmentCategory === 'All Treatments' || treatment.category === activeTreatmentCategory;
+      const text = `${treatment.name || ''} ${treatment.category || ''} ${treatment.shortDescription || ''} ${treatment.fullDescription || ''}`.toLowerCase();
+      const searchMatch = !term || text.includes(term);
+      return categoryMatch && searchMatch;
+    });
+}
+
+function treatmentPriorityScore(treatment) {
+  const text = `${treatment.name || ''} ${treatment.category || ''}`.toLowerCase();
+  const termScore = priorityTerms.some((term) => text.includes(term)) ? 10 : 0;
+  const featuredScore = treatment.featured ? 20 : 0;
+  return featuredScore + termScore;
 }
 
 function renderWhy() {
@@ -185,6 +244,25 @@ function initializeInteractions() {
 
     const faqButton = event.target.closest('.faq-item button');
     if (faqButton) toggleFaq(faqButton);
+
+    const filter = event.target.closest('[data-treatment-filter]');
+    if (filter) {
+      activeTreatmentCategory = filter.dataset.treatmentFilter;
+      showAllTreatments = false;
+      renderTreatmentFilters();
+      renderTreatments();
+    }
+
+    if (event.target.closest('[data-treatment-show-all]')) {
+      showAllTreatments = true;
+      renderTreatments();
+    }
+  });
+
+  document.querySelector('[data-treatment-search]')?.addEventListener('input', (event) => {
+    treatmentSearchTerm = event.target.value.trim().toLowerCase();
+    showAllTreatments = false;
+    renderTreatments();
   });
 }
 

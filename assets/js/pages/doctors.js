@@ -30,6 +30,7 @@ const faqs = [
 let doctors = [];
 let activeFilter = 'All Doctors';
 let searchTerm = '';
+let showAllDoctors = false;
 
 const safe = (value) => escapeHtml(value || '');
 const specialtiesFor = (doctor) => String(doctor.specialties || '')
@@ -121,8 +122,8 @@ function doctorCard(doctor, featured = false) {
         <span class="doctor-card__experience" style="margin:0;"><i data-lucide="clock" aria-hidden="true"></i>${availabilityText}</span>
       </div>
       <div class="doctor-card__actions">
-        <a class="text-link" href="/doctors/${safe(doctor.slug)}.html">View Profile <i data-lucide="arrow-right" aria-hidden="true"></i></a>
         <button class="button" type="button" data-modal-open="appointment-modal" data-doctor-selection="${safe(doctor.name)}" data-treatment-interest="General consultation">Book Appointment <i data-lucide="calendar-days" aria-hidden="true"></i></button>
+        <a class="text-link" href="/doctors/${safe(doctor.slug)}.html">View Profile <i data-lucide="arrow-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </article>`;
@@ -143,10 +144,19 @@ function renderDirectory() {
     (activeFilter === 'All Doctors' || specialtiesFor(doctor).includes(activeFilter))
     && `${doctor.name} ${doctor.specialization}`.toLowerCase().includes(searchTerm)
   ));
+  const initialLimit = window.matchMedia('(max-width: 640px)').matches ? 6 : 8;
+  const visibleDoctors = showAllDoctors || activeFilter !== 'All Doctors' || searchTerm
+    ? filtered
+    : filtered.slice(0, initialLimit);
   const grid = document.querySelector('[data-doctor-grid]');
-  if (grid) grid.innerHTML = filtered.map((doctor) => doctorCard(doctor)).join('');
+  if (grid) grid.innerHTML = visibleDoctors.map((doctor) => doctorCard(doctor)).join('');
   const count = document.querySelector('[data-doctor-count]');
-  if (count) count.textContent = `${filtered.length} doctor${filtered.length === 1 ? '' : 's'}`;
+  if (count) {
+    const suffix = filtered.length === visibleDoctors.length ? '' : `, showing ${visibleDoctors.length} first`;
+    count.textContent = `${filtered.length} doctor${filtered.length === 1 ? '' : 's'}${suffix}`;
+  }
+  const loadMore = document.querySelector('[data-doctor-load-more]');
+  if (loadMore) loadMore.hidden = filtered.length <= visibleDoctors.length;
   const empty = document.querySelector('[data-doctor-empty]');
   if (empty) empty.hidden = filtered.length !== 0;
   createIcons({ icons: ICON_SET });
@@ -187,15 +197,21 @@ function bindInteractions() {
     const filter = event.target.closest('[data-doctor-filter]');
     if (filter) {
       activeFilter = filter.dataset.doctorFilter;
+      showAllDoctors = false;
       renderFilters();
       renderDirectory();
     }
     if (event.target.closest('[data-doctor-reset]')) {
       activeFilter = 'All Doctors';
       searchTerm = '';
+      showAllDoctors = false;
       const search = document.querySelector('[data-doctor-search]');
       if (search) search.value = '';
       renderFilters();
+      renderDirectory();
+    }
+    if (event.target.closest('[data-doctor-show-all]')) {
+      showAllDoctors = true;
       renderDirectory();
     }
     const faq = event.target.closest('.doctors-faq .faq-item button');
@@ -203,6 +219,7 @@ function bindInteractions() {
   });
   document.querySelector('[data-doctor-search]')?.addEventListener('input', (event) => {
     searchTerm = event.target.value.trim().toLowerCase();
+    showAllDoctors = false;
     renderDirectory();
   });
 

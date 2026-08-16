@@ -1228,13 +1228,18 @@ body[data-page="doctors"] .doctors-why__grid svg {
 
 /* Doctor profiles are text-only until approved clinic portraits are added. */
 body[data-page="doctors"] .doctors-hero__grid {
-    grid-template-columns: minmax(0, 1fr);
-    min-height: 0;
+    display: grid !important;
+    grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.62fr) !important;
+    gap: 28px 54px !important;
+    align-items: end !important;
+    min-height: 0 !important;
 }
 
 body[data-page="doctors"] .doctors-hero__content {
-    max-width: 760px;
-    padding-bottom: 40px;
+    grid-row: 1 / span 2 !important;
+    width: auto !important;
+    max-width: 700px !important;
+    padding-bottom: 40px !important;
 }
 
 body[data-page="doctors"] .doctors-hero__visual,
@@ -1246,16 +1251,16 @@ body[data-page="doctors"] .doctor-modal__media {
 }
 
 body[data-page="doctors"] .doctors-hero__promise--inline {
-    position: static;
-    width: min(100%, 760px);
-    margin: 0 0 28px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    grid-template-columns: 1fr !important;
 }
 
 body[data-page="doctors"] .doctor-statistics {
-    position: static;
-    width: min(100%, 760px);
-    margin-top: 12px;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
 }
 
 body[data-page="doctors"] .featured-doctor-card,
@@ -1265,6 +1270,17 @@ body[data-page="doctors"] .doctor-card {
 
 body[data-page="doctors"] .doctor-card__content {
     min-height: 100%;
+}
+
+@media (max-width: 900px) {
+    body[data-page="doctors"] .doctors-hero__grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    body[data-page="doctors"] .doctors-hero__content {
+        grid-row: auto !important;
+        max-width: 100% !important;
+    }
 }
 
 @media (max-width: 720px) {

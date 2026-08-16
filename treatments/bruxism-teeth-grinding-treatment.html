@@ -56,10 +56,17 @@
         <div class="treatments-section-heading">
           <div>
             <p class="section-eyebrow">Our Treatments</p>
-            <h2 id="catalogue-title">Solutions for <span>Every Dental Need</span></h2>
+            <h2 id="catalogue-title">Find the Right Treatment <span>for Your Concern</span></h2>
+            <p class="treatments-section-intro">Start with priority care paths, filter by speciality, or search directly for the treatment you need.</p>
           </div>
         </div>
+        <div class="treatment-finder" aria-label="Find dental treatments">
+          <label class="treatment-search"><span class="visually-hidden">Search treatments</span><i data-lucide="search" aria-hidden="true"></i><input type="search" placeholder="Search treatments, symptoms or categories" data-treatment-search></label>
+          <div class="treatment-filter-list" role="group" aria-label="Filter treatments by category" data-treatment-filters></div>
+        </div>
+        <p class="treatment-results-summary" data-treatment-results aria-live="polite"></p>
         <div class="treatment-grid" data-treatment-grid></div>
+        <div class="treatment-load-more" data-treatment-load-more hidden><button class="button button--secondary" type="button" data-treatment-show-all>View All Treatments <i data-lucide="arrow-right" aria-hidden="true"></i></button></div>
       </div>
     </section>
     <section class="treatments-why treatments-section" aria-labelledby="why-title" data-treatments-reveal-section>

@@ -16,11 +16,9 @@
   <div data-component="page-loader"></div>
   <div data-component="navbar"></div>
   <main id="main-content">
-    <!-- 1. TESTIMONIALS HERO -->
     <section class="testimonials-hero" aria-labelledby="testimonials-hero-title">
       <div class="container testimonials-hero__grid">
 
-        <!-- Left: Content -->
         <div class="testimonials-hero__content">
           <p class="section-eyebrow">PATIENT EXPERIENCES</p>
           <h1 id="testimonials-hero-title">Care Built on Comfort, Clarity and <span class="text-trust">Trust.</span>
@@ -33,13 +31,10 @@
               data-treatment-interest="General consultation">
               Book a Consultation <i data-lucide="calendar-days" aria-hidden="true"></i>
             </button>
-            <a class="button button--secondary" href="#share-feedback">
-              Share Your Experience <i data-lucide="plus-square" aria-hidden="true"></i>
-            </a>
+            <a class="button button--secondary" href="/contact.html">Share Feedback <i data-lucide="plus-square" aria-hidden="true"></i></a>
           </div>
         </div>
 
-        <!-- Right: Image with Floating Glass Cards -->
         <div class="testimonials-hero__art">
           <div class="testimonials-hero__image-wrapper">
             <img src="/assets/images/stock/patient-story.jpg" data-media-fallback="patient"
@@ -66,7 +61,14 @@
       </div>
     </section>
 
-    <!-- 2. PATIENT STORIES COLLECTION (Conditional) -->
+    <section class="testimonials-trust-strip" aria-label="Testimonial publishing standards">
+      <div class="container testimonials-trust-strip__grid">
+        <article><i data-lucide="shield-check" aria-hidden="true"></i><strong>Consent First</strong><span>Only reviewed patient-approved stories are published.</span></article>
+        <article><i data-lucide="lock" aria-hidden="true"></i><strong>Privacy Respected</strong><span>Patients decide what can be shared publicly.</span></article>
+        <article><i data-lucide="message-square" aria-hidden="true"></i><strong>Experience Led</strong><span>Stories focus on communication, comfort and care.</span></article>
+      </div>
+    </section>
+
     <section class="container testimonials-page" aria-labelledby="testimonials-title" data-testimonials-collection
       hidden>
       <div class="section-heading">
@@ -75,7 +77,6 @@
           reflect the communication, care, and individual attention provided throughout the Titanium Roots experience.
         </p>
       </div>
-      <!-- Grid used by testimonials.js -->
       <div class="testimonials-page__grid" data-testimonials-grid></div>
       <section class="testimonials-error" data-testimonials-error hidden role="status"
         aria-labelledby="testimonials-error-title">
@@ -86,7 +87,6 @@
       </section>
     </section>
 
-    <!-- 3. VIDEO TESTIMONIALS (Conditional) -->
     <section class="testimonials-video" data-testimonials-videos hidden aria-labelledby="videos-title">
       <div class="container">
         <div class="section-heading">
@@ -98,8 +98,6 @@
       </div>
     </section>
 
-    <!-- 4. LAUNCH EMPTY STATE (Conditional) -->
-    <!-- Display this only when there are no approved written or video testimonials. -->
     <section class="container testimonials-empty" data-testimonials-empty aria-labelledby="testimonials-empty-title">
       <div class="testimonials-empty__content" style="text-align:center; padding:4rem 0;">
         <span class="testimonials-empty__mark" aria-hidden="true"
@@ -120,7 +118,6 @@
       </div>
     </section>
 
-    <!-- 6. WHAT PATIENTS CAN EXPECT -->
     <section class="testimonials-principles" aria-labelledby="principles-title">
       <div class="container">
         <div class="section-heading">
@@ -153,70 +150,7 @@
       </div>
     </section>
 
-    <!-- 7. BEFORE-AND-AFTER TRANSFORMATIONS -->
-    <section class="treatments-transformations" hidden>
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-eyebrow">SMILE TRANSFORMATIONS</p>
-          <h2 style="margin-top:0.5rem;">Real results. Shared with consent.</h2>
-        </div>
-
-        <div class="transformations-grid" data-transformations></div>
-      </div>
-    </section>
-
-    <!-- 8. BOTTOM INFO PANELS -->
-    <section class="bottom-panels">
-      <div class="container panels-grid">
-        <!-- Share Panel -->
-        <div class="panel-card panel-share">
-          <p class="section-eyebrow" style="color:rgba(255,255,255,0.7);">SHARE YOUR EXPERIENCE</p>
-          <h2>Your story can inspire and help others.</h2>
-          <p>Whether it's a few kind words or a detailed story, we'd love to hear about your experience.</p>
-          <div class="panel-actions">
-            <a href="/contact.html" class="button">Share Your Feedback</a>
-            <a class="button button--secondary" href="/contact.html" style="background:white; color:var(--color-heading);">
-              <i data-lucide="star"></i> Leave a Review
-            </a>
-          </div>
-        </div>
-
-        <!-- Privacy Panel -->
-        <div class="panel-card panel-privacy">
-          <div class="icon-circle"><i data-lucide="shield"></i></div>
-          <p class="section-eyebrow">CONSENT & PRIVACY</p>
-          <h2>We respect your privacy at every step.</h2>
-          <p>Testimonials, photos and videos are published only with your permission. You decide what we share—and what
-            we don't.</p>
-          <a href="/privacy-policy.html" class="read-story-link">Learn more about our privacy practices <i
-              data-lucide="arrow-right"></i></a>
-        </div>
-
-        <!-- FAQ Panel -->
-        <div class="panel-card panel-faq">
-          <p class="section-eyebrow">FREQUENTLY ASKED QUESTIONS</p>
-          <div class="mini-accordion">
-            <details>
-              <summary>How are testimonials published? <i data-lucide="plus"></i></summary>
-              <div>Only after verification and written consent.</div>
-            </details>
-            <details>
-              <summary>Can I request to remove my testimonial? <i data-lucide="plus"></i></summary>
-              <div>Yes, you can request removal at any time.</div>
-            </details>
-            <details>
-              <summary>Are before & after photos always shown? <i data-lucide="plus"></i></summary>
-              <div>No, images are strictly optional.</div>
-            </details>
-          </div>
-          <a href="/contact.html#contact-faq" class="read-story-link" style="margin-top:1rem;">View all FAQs <i
-              data-lucide="arrow-right"></i></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 11. FINAL CONSULTATION CTA -->
-    <section class="final-cta" aria-labelledby="cta-title" style="padding:4rem 0; text-align:center;">
+    <section class="final-cta testimonials-final-cta" aria-labelledby="cta-title">
       <div class="container cta-panel">
         <h2 id="cta-title" style="margin-bottom:1rem;">Begin Your Care Journey with <span>Confidence.</span></h2>
         <p style="margin:0 auto 2rem; max-width:600px; color:var(--color-text);">Speak with our dental team, discuss

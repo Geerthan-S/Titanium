@@ -256,11 +256,309 @@ body[data-page="home"] .doctor-card>img {
     display: none !important;
 }
 
+body[data-page="treatments"] .treatments-hero__grid {
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+}
+
+body[data-page="treatments"] .treatments-hero__content {
+    max-width: 500px;
+}
+
+body[data-page="treatments"] .treatments-hero h1 {
+    max-width: 500px;
+    font-size: clamp(2.55rem, 3.62vw, 3.55rem);
+    text-wrap: balance;
+}
+
+body[data-page="treatments"] .treatments-hero__content>p:not(.section-eyebrow) {
+    max-width: 450px;
+}
+
+.doctors-section-intro {
+    max-width: 680px;
+    margin-top: 10px;
+    color: var(--color-body);
+    line-height: 1.7;
+}
+
+.doctor-router {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 18px;
+    align-items: center;
+    margin: -8px 0 22px;
+    padding: 20px;
+    border: 1px solid rgba(47, 95, 73, 0.16);
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(47, 95, 73, 0.08), rgba(255, 255, 255, 0.92));
+    box-shadow: var(--shadow-sm);
+}
+
+.doctor-router>div:first-child {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.doctor-router svg {
+    width: 22px;
+}
+
+.doctor-router h3 {
+    color: var(--color-heading);
+    font-family: var(--font-heading);
+    font-size: 1.34rem;
+}
+
+.doctor-router p {
+    margin-top: 4px;
+    color: var(--color-body);
+    font-size: 0.9rem;
+    line-height: 1.58;
+}
+
+body[data-page="doctors"] .doctor-card__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: auto;
+}
+
+body[data-page="doctors"] .doctor-card__actions .button {
+    width: 100%;
+}
+
+body[data-page="doctors"] .doctor-card__actions .text-link {
+    justify-content: center;
+    min-height: 40px;
+}
+
+body[data-page="doctors"] .doctors-hero__grid {
+    grid-template-columns: minmax(0, 0.95fr) minmax(340px, 0.62fr);
+    gap: 28px 54px;
+    align-items: end;
+}
+
+body[data-page="doctors"] .doctors-hero__content {
+    grid-row: 1 / span 2;
+    max-width: 700px;
+}
+
+body[data-page="doctors"] .doctors-hero__promise--inline,
+body[data-page="doctors"] .doctor-statistics {
+    width: 100%;
+    margin: 0;
+}
+
+body[data-page="doctors"] .doctors-hero__promise--inline {
+    grid-template-columns: 1fr;
+}
+
+.doctor-load-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+.doctor-load-more[hidden] {
+    display: none;
+}
+
 body[data-page="testimonials"] .section-heading,
 body[data-page="testimonials"] .testimonials-page .section-heading,
 body[data-page="testimonials"] .testimonials-video .section-heading {
     justify-content: flex-start;
     text-align: left;
+}
+
+body[data-page="testimonials"] .consultation-banner {
+    display: none;
+}
+
+.testimonials-trust-strip {
+    padding: 0 0 28px;
+    background: var(--color-background);
+}
+
+.testimonials-trust-strip__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.testimonials-trust-strip article {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 12px;
+    row-gap: 4px;
+    align-items: center;
+    padding: 18px;
+    border: 1px solid var(--premium-line);
+    border-radius: 18px;
+    background: var(--premium-panel-strong);
+    box-shadow: var(--shadow-sm);
+}
+
+.testimonials-trust-strip svg {
+    grid-row: 1 / span 2;
+    width: 24px;
+    color: var(--color-primary);
+}
+
+.testimonials-trust-strip strong {
+    color: var(--color-heading);
+    font-size: 0.9rem;
+}
+
+.testimonials-trust-strip span {
+    color: var(--color-body);
+    font-size: 0.8rem;
+    line-height: 1.45;
+}
+
+.testimonials-final-cta {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, var(--color-primary), #203c32);
+    color: #fff;
+    text-align: left !important;
+}
+
+.testimonials-final-cta .cta-panel {
+    display: grid;
+    justify-items: start;
+}
+
+.testimonials-final-cta h2,
+.testimonials-final-cta h2 span,
+.testimonials-final-cta p {
+    color: #fff !important;
+}
+
+.testimonials-final-cta p {
+    margin-inline: 0 !important;
+    opacity: 0.84;
+}
+
+.testimonials-final-cta .cta-actions {
+    justify-content: flex-start !important;
+}
+
+.testimonials-final-cta .button {
+    background: #fff;
+    color: var(--color-primary);
+}
+
+.testimonials-final-cta .button--secondary {
+    border-color: rgba(255, 255, 255, 0.48);
+    background: transparent;
+    color: #fff;
+}
+
+.treatments-section-intro {
+    max-width: 680px;
+    margin-top: 10px;
+    color: var(--color-body);
+    line-height: 1.7;
+}
+
+.treatment-finder {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.42fr) minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+    margin: -10px 0 20px;
+    padding: 16px;
+    border: 1px solid var(--premium-line);
+    border-radius: 20px;
+    background: var(--premium-panel-strong);
+    box-shadow: var(--shadow-sm);
+}
+
+.treatment-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.treatment-search svg {
+    position: absolute;
+    left: 14px;
+    width: 18px;
+    color: var(--color-primary);
+    pointer-events: none;
+}
+
+.treatment-search input {
+    width: 100%;
+    min-height: 48px;
+    padding: 0 14px 0 42px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    background: #fff;
+    color: var(--color-heading);
+    font: inherit;
+}
+
+.treatment-filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.treatment-filter-list button {
+    min-height: 40px;
+    padding: 0 14px;
+    border: 1px solid rgba(47, 95, 73, 0.2);
+    border-radius: var(--radius-pill);
+    background: #fff;
+    color: var(--color-primary);
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.treatment-filter-list button[aria-pressed="true"] {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.treatment-results-summary {
+    margin: 0 0 18px;
+    color: var(--color-muted);
+    font-size: 0.84rem;
+}
+
+.treatment-load-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+.treatment-load-more[hidden] {
+    display: none;
+}
+
+body[data-page="treatments"] .treatment-card__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+body[data-page="treatments"] .treatment-card__actions .button {
+    width: 100%;
+}
+
+body[data-page="treatments"] .treatment-card__booking {
+    background: transparent;
+    color: var(--color-primary);
+    box-shadow: none;
+}
+
+body[data-page="treatments"] .treatment-card__booking:hover {
+    background: var(--color-primary);
+    color: #fff;
 }
 
 body[data-page="testimonials"] .section-heading h2,
@@ -311,6 +609,41 @@ body[data-page="testimonials"] .section-heading p {
     .home-conversion__actions {
         justify-content: flex-start;
     }
+
+    .treatment-finder {
+        grid-template-columns: 1fr;
+    }
+
+    body[data-page="treatments"] .treatments-hero__grid {
+        grid-template-columns: 1fr;
+    }
+
+    body[data-page="treatments"] .treatments-hero__content,
+    body[data-page="treatments"] .treatments-hero h1,
+    body[data-page="treatments"] .treatments-hero__content>p:not(.section-eyebrow) {
+        max-width: 100%;
+    }
+
+    .doctor-router {
+        grid-template-columns: 1fr;
+    }
+
+    .doctor-router .button {
+        width: 100%;
+    }
+
+    body[data-page="doctors"] .doctors-hero__grid {
+        grid-template-columns: 1fr;
+    }
+
+    body[data-page="doctors"] .doctors-hero__content {
+        grid-row: auto;
+        max-width: 100%;
+    }
+
+    .testimonials-trust-strip__grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 640px) {
@@ -345,5 +678,14 @@ body[data-page="testimonials"] .section-heading p {
 
     .home-conversion__actions .button {
         width: 100%;
+    }
+
+    body[data-page="treatments"] .treatments-hero h1 {
+        font-size: clamp(2rem, 9.4vw, 2.7rem);
+        line-height: 1.05;
+    }
+
+    body[data-page="treatments"] .treatments-hero__content {
+        min-width: 0;
     }
 }
