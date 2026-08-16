@@ -1,0 +1,6 @@
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; top: 16px; left: 16px; z-index: calc(var(--z-loader) + 1); padding: var(--space-3) var(--space-4); background: var(--color-heading); color: var(--color-surface); opacity: 0; pointer-events: none; transform: translateY(-180%); transition: opacity var(--transition-fast), transform var(--transition-fast); }
+.skip-link:focus { opacity: 1; pointer-events: auto; transform: translateY(0); transition: none; }
+.is-scroll-locked, .is-loader-active, .is-nav-open { overflow: hidden; }
+@media (max-width: 767px) { .hide-mobile { display: none !important; } }
+@media (min-width: 768px) { .show-mobile { display: none !important; } }

@@ -1,0 +1,50 @@
+:root {
+  --color-primary: #5A7665;
+  --color-primary-dark: #415A4C;
+  --color-primary-light: #DFE8E3;
+  --color-background: #F9F7F1;
+  --color-background-soft: #FCFBF8;
+  --color-surface: #ffffff;
+  --color-surface-soft: #F4F1EA;
+  --color-heading: #1B241F;
+  --color-body: #555F5A;
+  --color-muted: #8B948E;
+  --color-border: rgba(72, 85, 78, 0.14);
+  --color-border-strong: rgba(72, 85, 78, 0.28);
+  --color-silver: #D2D5D0;
+  --color-success: #527A60;
+  --color-warning: #C9A86A;
+  --color-error: #B15E5E;
+
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "Inter", Arial, sans-serif;
+  --container-width: 1280px;
+  --section-space: 112px;
+  --header-height: 80px;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 36px;
+  --radius-pill: 999px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --shadow-sm: 0 2px 8px rgba(21, 26, 24, 0.06);
+  --shadow-md: 0 12px 32px rgba(21, 26, 24, 0.1);
+  --shadow-lg: 0 24px 56px rgba(21, 26, 24, 0.14);
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 500;
+  --z-toast: 600;
+  --z-loader: 700;
+}

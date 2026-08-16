@@ -1,0 +1,134 @@
+<section class="modal modal--multi-tab" id="appointment-modal" role="dialog" aria-modal="true" aria-hidden="true"
+  aria-labelledby="appointment-modal-title" hidden data-modal>
+  <div class="modal__dialog card" role="document">
+    <button class="modal__close" type="button" aria-label="Close dialog" data-modal-close><i data-lucide="x"
+        aria-hidden="true"></i></button>
+    <p class="modal__eyebrow">Titanium Roots</p>
+    <h2 id="appointment-modal-title">How can we help you?</h2>
+
+    <div class="modal__tabs" role="tablist">
+      <button class="tab-button active" role="tab" aria-selected="true" data-tab-target="form-book">Book
+        Appointment</button>
+      <button class="tab-button" role="tab" aria-selected="false" data-tab-target="form-query">General Query</button>
+      <button class="tab-button" role="tab" aria-selected="false" data-tab-target="form-treatment">Treatment
+        Info</button>
+      <button class="tab-button" role="tab" aria-selected="false" data-tab-target="form-emergency">Emergency</button>
+      <button class="tab-button" role="tab" aria-selected="false" data-tab-target="form-feedback">Leave
+        Feedback</button>
+    </div>
+
+    <!-- 1. Book Appointment -->
+    <form class="appointment-form tab-content active" id="form-book" data-appointment-form novalidate>
+      <input type="hidden" name="inquiry_type" value="Book Appointment">
+      <input type="hidden" name="doctor">
+      <label class="form-honeypot" aria-hidden="true">Website<input name="website" tabindex="-1"
+          autocomplete="off"></label>
+      <label>Patient name<input name="name" autocomplete="name" required></label>
+      <label>Mobile number<input name="phone" type="tel" autocomplete="tel" required inputmode="tel"></label>
+      <label>Treatment interest<select name="treatment" required>
+          <option value="">Select an interest</option>
+          <option>General consultation</option>
+          <option>Dental Implants</option>
+          <option>Root Canal Treatment</option>
+          <option>Orthodontics</option>
+          <option>Cosmetic Dentistry</option>
+          <option>Teeth Whitening</option>
+          <option>Crowns and Bridges</option>
+          <option>Pediatric Dentistry</option>
+          <option>Gum Treatment</option>
+          <option>Restorative treatment</option>
+        </select></label>
+      <label>Preferred date<input name="date" type="date" required></label>
+      <label>Message<textarea name="message" rows="3"></textarea></label>
+      <label class="contact-consent"><input name="consent" type="checkbox" required><span>I consent to the clinic
+          contacting me about this request.</span></label>
+      <p class="form-status" aria-live="polite" data-form-status></p>
+      <p class="modal__reply-note">We’ll reply on WhatsApp within 5 minutes.</p>
+      <button class="button" type="submit">Request appointment <i data-lucide="arrow-right"
+          aria-hidden="true"></i></button>
+    </form>
+
+    <!-- 2. General Query -->
+    <form class="appointment-form tab-content" id="form-query" data-appointment-form hidden novalidate>
+      <input type="hidden" name="inquiry_type" value="General Query">
+      <label class="form-honeypot" aria-hidden="true">Website<input name="website" tabindex="-1"
+          autocomplete="off"></label>
+      <label>Name<input name="name" autocomplete="name" required></label>
+      <label>Mobile number<input name="phone" type="tel" autocomplete="tel" required inputmode="tel"></label>
+      <label>Email address<input name="email" type="email" autocomplete="email"></label>
+      <label>Your question<textarea name="message" rows="4" required></textarea></label>
+      <label class="contact-consent"><input name="consent" type="checkbox" required><span>I consent to the clinic
+          contacting me about this request.</span></label>
+      <p class="form-status" aria-live="polite" data-form-status></p>
+      <button class="button" type="submit">Submit query <i data-lucide="mail" aria-hidden="true"></i></button>
+    </form>
+
+    <!-- 3. Treatment Info -->
+    <form class="appointment-form tab-content" id="form-treatment" data-appointment-form hidden novalidate>
+      <input type="hidden" name="inquiry_type" value="Treatment Info">
+      <label class="form-honeypot" aria-hidden="true">Website<input name="website" tabindex="-1"
+          autocomplete="off"></label>
+      <label>Name<input name="name" autocomplete="name" required></label>
+      <label>Mobile number<input name="phone" type="tel" autocomplete="tel" required inputmode="tel"></label>
+      <label>Regarding Treatment<select name="treatment" required>
+          <option value="">Select a treatment</option>
+          <option>General Dentistry</option>
+          <option>Dental Implants</option>
+          <option>Root Canal Treatment</option>
+          <option>Orthodontics</option>
+          <option>Cosmetic Dentistry</option>
+          <option>Teeth Whitening</option>
+        </select></label>
+      <label>What would you like to know?<textarea name="message" rows="3" required></textarea></label>
+      <label class="contact-consent"><input name="consent" type="checkbox" required><span>I consent to the clinic
+          contacting me about this request.</span></label>
+      <p class="form-status" aria-live="polite" data-form-status></p>
+      <button class="button" type="submit">Request details <i data-lucide="info" aria-hidden="true"></i></button>
+    </form>
+
+    <!-- 4. Emergency -->
+    <form class="appointment-form tab-content" id="form-emergency" data-appointment-form hidden novalidate>
+      <input type="hidden" name="inquiry_type" value="Emergency">
+      <div class="emergency-banner"
+        style="background:#fff5f5; color:#c53030; padding:12px; border-radius:6px; margin-bottom:1rem; border:1px solid #fed7d7; font-size:0.875rem;">
+        <strong>Immediate Assistance</strong><br>For life-threatening emergencies, call 108 immediately. For severe
+        dental pain or swelling, submit this form.
+      </div>
+      <label class="form-honeypot" aria-hidden="true">Website<input name="website" tabindex="-1"
+          autocomplete="off"></label>
+      <label>Patient name<input name="name" autocomplete="name" required></label>
+      <label>Mobile number<input name="phone" type="tel" autocomplete="tel" required inputmode="tel"></label>
+      <label>Describe your emergency<textarea name="message" rows="3" required
+          placeholder="Nature of injury, pain, or swelling"></textarea></label>
+      <label class="contact-consent"><input name="consent" type="checkbox" required><span>I consent to be contacted
+          urgently.</span></label>
+      <p class="form-status" aria-live="polite" data-form-status></p>
+      <button class="button" type="submit" style="background:#e53e3e; border-color:#e53e3e;">Request urgent callback <i
+          data-lucide="phone" aria-hidden="true"></i></button>
+    </form>
+
+    <!-- 5. Leave Feedback -->
+    <form class="appointment-form tab-content" id="form-feedback" data-appointment-form hidden novalidate>
+      <input type="hidden" name="inquiry_type" value="Leave Feedback">
+      <label class="form-honeypot" aria-hidden="true">Website<input name="website" tabindex="-1"
+          autocomplete="off"></label>
+      <label>Name<input name="name" autocomplete="name" required></label>
+      <label>Mobile number<input name="phone" type="tel" autocomplete="tel" required inputmode="tel"></label>
+      <label>Experience rating (1-5)<select name="rating" required>
+          <option value="5">5 - Excellent</option>
+          <option value="4">4 - Very Good</option>
+          <option value="3">3 - Good</option>
+          <option value="2">2 - Fair</option>
+          <option value="1">1 - Poor</option>
+        </select></label>
+      <label>Your feedback<textarea name="message" rows="4" required
+          placeholder="Tell us about your visit..."></textarea></label>
+      <label class="contact-consent"><input name="consent" type="checkbox" required><span>I consent to providing this
+          feedback to the clinic administration.</span></label>
+      <p class="form-status" aria-live="polite" data-form-status></p>
+      <button class="button" type="submit">Submit feedback <i data-lucide="message-square"
+          aria-hidden="true"></i></button>
+    </form>
+
+  </div>
+</section>

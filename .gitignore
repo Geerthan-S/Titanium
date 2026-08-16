@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.cache/
+.agents/
+.audit/
+.audit-screenshots/
+.review-screenshots/
+strix_runs/
+*.bak

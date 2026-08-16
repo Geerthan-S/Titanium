@@ -1,0 +1,24 @@
+<header class="admin-header">
+    <div class="admin-header__identity">
+        <button class="admin-icon-button admin-header__menu" type="button" data-admin-menu
+            aria-controls="admin-sidebar" aria-expanded="false" aria-label="Open admin navigation"><i
+                data-lucide="menu" aria-hidden="true"></i></button>
+        <div>
+            <nav class="admin-breadcrumb" aria-label="Breadcrumb"><a href="/admin/dashboard.html">Admin</a><span
+                    aria-hidden="true">/</span><span data-admin-breadcrumb>Dashboard</span></nav>
+            <h1 data-admin-page-title>Dashboard</h1>
+        </div>
+    </div>
+    <div class="admin-header__actions">
+        <button class="admin-command-trigger" type="button" data-command-open><i data-lucide="search"
+                aria-hidden="true"></i><span>Search modules</span><kbd>Ctrl K</kbd></button>
+        <a class="admin-button admin-button--quiet" href="/index.html" target="_blank" rel="noopener"><i
+                data-lucide="external-link" aria-hidden="true"></i><span>View website</span></a>
+        <details class="admin-profile-menu">
+            <summary aria-label="Open profile menu"><span class="admin-avatar" aria-hidden="true">TR</span><i
+                    data-lucide="chevron-down" aria-hidden="true"></i></summary>
+            <div><strong>Clinic Administrator</strong><small data-admin-identity>Authorized account</small><button type="button"
+                    data-admin-logout><i data-lucide="log-out" aria-hidden="true"></i>Logout</button></div>
+        </details>
+    </div>
+</header>

@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description"
+        content="Contact Titanium Roots Dental Clinic in Anna Nagar, Chennai. Request an appointment or reach our team by phone, email, or WhatsApp.">
+    <link rel="canonical" href="https://titaniumroots.com/contact.html">
+    <meta property="og:title" content="Contact Titanium Roots Dental Clinic">
+    <meta property="og:description" content="We are here to help with appointments, treatments, and dental questions.">
+    <meta property="og:image" content="/assets/images/stock/clinic-gallery.webp">
+    <title>Contact Us | Titanium Roots Dental Clinic</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/global.css">
+    <link rel="stylesheet" href="/assets/css/pages/contact.css">
+</head>
+
+<body data-page="contact">
+    <div data-component="page-loader"></div>
+    <div data-component="navbar"></div>
+
+    <main id="main-content">
+        <section class="contact-hero" aria-labelledby="contact-title">
+            <div class="container contact-hero__grid">
+                <div class="contact-hero__copy">
+                    <p class="contact-eyebrow">We’re here to help <span aria-hidden="true">✦</span></p>
+                    <h1 id="contact-title">Get in Touch With Us</h1>
+                    <p>Have questions or need assistance? Our friendly team is here to help you with all your dental
+                        care needs.</p>
+                </div>
+                <div class="contact-hero__art" aria-hidden="true">
+                    <svg class="contact-hero__branch" viewBox="0 0 230 170" focusable="false">
+                        <path
+                            d="M22 156C71 128 76 79 108 17M75 108C54 93 45 70 43 51M92 67C119 60 137 43 149 22M61 128C47 120 32 119 18 123M104 37C89 30 79 18 75 4"
+                            fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" />
+                        <g fill="currentColor">
+                            <ellipse cx="43" cy="50" rx="4" ry="8" transform="rotate(-30 43 50)" />
+                            <ellipse cx="18" cy="123" rx="4" ry="8" transform="rotate(72 18 123)" />
+                            <ellipse cx="76" cy="4" rx="4" ry="8" transform="rotate(-34 76 4)" />
+                            <ellipse cx="149" cy="22" rx="4" ry="8" transform="rotate(48 149 22)" />
+                            <ellipse cx="137" cy="43" rx="4" ry="8" transform="rotate(65 137 43)" />
+                        </g>
+                    </svg>
+                    <div class="contact-hero__vase"></div>
+                    <div class="contact-hero__halo"></div>
+                    <svg class="contact-hero__tooth" viewBox="0 0 120 140" focusable="false">
+                        <path
+                            d="M28 20C43 10 50 19 60 19s17-9 32 1c16 11 13 38 7 53-5 13-7 48-17 48-8 0-8-30-22-30s-14 30-22 30c-10 0-12-35-17-48-6-15-9-42 7-53Z"
+                            fill="currentColor" />
+                        <path d="M33 28c10-7 18 0 27 0s17-7 27 0" fill="none" stroke="#fff" stroke-linecap="round"
+                            stroke-opacity=".72" stroke-width="4" />
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <section class="container contact-workspace" aria-label="Contact form and clinic information">
+            <div class="contact-form-card">
+
+                <div class="modal__tabs" role="tablist" aria-label="Contact Forms">
+                    <button type="button" class="tab-button active" role="tab" aria-selected="true"
+                        aria-controls="form-appointment" id="tab-appointment" data-tab-target="form-appointment">Book
+                        Appointment</button>
+                    <button type="button" class="tab-button" role="tab" aria-selected="false"
+                        aria-controls="form-general" id="tab-general" data-tab-target="form-general">General
+                        Query</button>
+                    <button type="button" class="tab-button" role="tab" aria-selected="false"
+                        aria-controls="form-treatment" id="tab-treatment" data-tab-target="form-treatment">Treatment
+                        Info</button>
+                    <button type="button" class="tab-button" role="tab" aria-selected="false"
+                        aria-controls="form-emergency" id="tab-emergency"
+                        data-tab-target="form-emergency">Emergency</button>
+                    <button type="button" class="tab-button" role="tab" aria-selected="false"
+                        aria-controls="form-feedback" id="tab-feedback" data-tab-target="form-feedback">Leave
+                        Feedback</button>
+                </div>
+
+                <!-- FORM 1: BOOK APPOINTMENT -->
+                <form id="form-appointment" class="tab-content active" role="tabpanel" aria-labelledby="tab-appointment"
+                    data-contact-form="appointment" novalidate>
+                    <label class="form-honeypot" aria-hidden="true">Website<input name="website" tabindex="-1"
+                            autocomplete="off"></label>
+                    <div class="form-header">
+                        <h2>Request a Dental Appointment</h2>
+                        <p>Choose your preferred treatment, doctor, date, and time. Our team will contact you during
+                            clinic hours to confirm availability.</p>
+                    </div>
+                    <div class="contact-form-grid">
+                        <label><span>Full Name <b aria-hidden="true">*</b></span><input name="patientName"
+                                autocomplete="name" required></label>
+                        <label><span>Phone Number <b aria-hidden="true">*</b></span><input name="mobile" type="tel"
+                                autocomplete="tel" pattern="\+?[0-9\s]{10,18}" required></label>
+                        <label><span>Email Address</span><input name="email" type="email" autocomplete="email"></label>
+                        <label>
+                            <span>Treatment / Service</span>
+                            <select name="service" data-contact-treatment-select>
+                                <option value="">Select a service…</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>Preferred Doctor</span>
+                            <select name="doctor" data-contact-doctor-select>
+                                <option value="">Any available doctor</option>
+                            </select>
+                        </label>
+                        <label><span>Preferred Appointment Date <b aria-hidden="true">*</b></span><input
+                                name="preferredDate" type="date" required></label>
+                        <label><span>Preferred Time Slot</span>
+                            <select name="timeSlot">
+                                <option value="">Flexible</option>
+                                <option value="Morning">Morning</option>
+                                <option value="Afternoon">Afternoon</option>
+                                <option value="Evening">Evening</option>
+                            </select>
+                        </label>
+                        <label class="contact-form-grid__wide"><span>Dental Concern or Message</span><textarea
+                                name="message" rows="3"></textarea></label>
+                    </div>
+                    <label class="contact-consent">
+                        <input name="consent" type="checkbox" required>
+                        <span>I consent to Titanium Roots Dental Clinic contacting me regarding this request. The
+                            information submitted will be used only to respond to my enquiry.</span>
+                    </label>
+                    <button class="contact-submit button" type="submit"><i data-lucide="send" aria-hidden="true"></i>
+                        Request Appointment</button>
+                    <p class="contact-form-status" data-form-status aria-live="polite"></p>
+                </form>
+
+                <!-- FORM 2: GENERAL QUERY -->
+                <form id="form-general" class="tab-content" role="tabpanel" aria-labelledby="tab-general"
+                    data-contact-form="general" hidden novalidate>
+                    <label class="form-honeypot" aria-hidden="true">Website<input name="website" tabindex="-1"
+                            autocomplete="off"></label>
+                    <div class="form-header">
+                        <h2>How Can We Help?</h2>
+                        <p>Send us your question about the clinic, appointments, location, payment options, or general
+                            dental information.</p>
+                    </div>
+                    <div class="contact-form-grid">
+                        <label><span>Full Name <b aria-hidden="true">*</b></span><input name="patientName"
+                                autocomplete="name" required></label>
+                        <label><span>Email Address <b aria-hidden="true">*</b></span><input name="email" type="email"
+                                autocomplete="email" required></label>
+                        <label><span>Phone Number</span><input name="mobile" type="tel" autocomplete="tel"></label>
+                        <label>
+                            <span>Query Category <b aria-hidden="true">*</b></span>
+                            <select name="category" required>
+                                <option value="">Select a category</option>
+                                <option>Clinic Information</option>
+                                <option>Appointment Information</option>
+                                <option>Opening Hours</option>
+                                <option>Location</option>
+                                <option>Payment Information</option>
+                                <option>General Dental Question</option>
+                                <option>Other</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>Preferred Contact Method</span>
+                            <select name="contactMethod">
+                                <option value="Email">Email</option>
+                                <option value="Phone">Phone</option>
+                                <option value="WhatsApp">WhatsApp</option>
+                            </select>
+                        </label>
+                        <label class="contact-form-grid__wide"><span>Message <b aria-hidden="true">*</b></span><textarea
+                                name="message" rows="4" required></textarea></label>
+                    </div>
+                    <label class="contact-consent">
+                        <input name="consent" type="checkbox" required>
+                        <span>I consent to Titanium Roots Dental Clinic contacting me regarding this request. The
+                            information submitted will be used only to respond to my enquiry.</span>
+                    </label>
+                    <button class="contact-submit button" type="submit"><i data-lucide="send" aria-hidden="true"></i>
+                        Send Query</button>
+                    <p class="contact-form-status" data-form-status aria-live="polite"></p>
+                </form>
+
+                <!-- FORM 3: TREATMENT INFO -->
+                <form id="form-treatment" class="tab-content" role="tabpanel" aria-labelledby="tab-treatment"
+                    data-contact-form="treatment_information" hidden novalidate>
+                    <label class="form-honeypot" aria-hidden="true">Website<input name="website" tabindex="-1"
+                            autocomplete="off"></label>
+                    <div class="form-header">
+                        <h2>Request Treatment Information</h2>
+                        <p>Tell us which treatment you are interested in, and our team will help you understand the
+                            available consultation options.</p>
+                    </div>
+                    <div class="contact-form-grid">
+                        <label><span>Full Name <b aria-hidden="true">*</b></span><input name="patientName"
+                                autocomplete="name" required></label>
+                        <label><span>Phone Number <b aria-hidden="true">*</b></span><input name="mobile" type="tel"
+                                autocomplete="tel" required></label>
+                        <label><span>Email Address</span><input name="email" type="email" autocomplete="email"></label>
+                        <label>
+                            <span>Treatment Interested In <b aria-hidden="true">*</b></span>
+                            <select name="service" data-contact-treatment-select required>
+                                <option value="">Select a treatment…</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>Preferred Doctor</span>
+                            <select name="doctor" data-contact-doctor-select>
+                                <option value="">Any available doctor</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>Consulted a Dentist Before?</span>
+                            <select name="consultedBefore">
+                                <option value="">Select...</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                                <option>Prefer not to say</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>Preferred Contact Method</span>
+                            <select name="contactMethod">
+                                <option value="Phone">Phone</option>
+                                <option value="WhatsApp">WhatsApp</option>
+                                <option value="Email">Email</option>
+                            </select>
+                        </label>
+                        <label class="contact-form-grid__wide"><span>Questions or Describe Your Concern <b
+                                    aria-hidden="true">*</b></span><textarea name="message" rows="4"
+                                required></textarea></label>
+                    </div>
+                    <label class="contact-consent">
+                        <input name="consent" type="checkbox" required>
+                        <span>I consent to Titanium Roots Dental Clinic contacting me regarding this request. The
+                            information submitted will be used only to respond to my enquiry.</span>
+                    </label>
+                    <button class="contact-submit button" type="submit"><i data-lucide="send" aria-hidden="true"></i>
+                        Request Treatment Information</button>
+                    <p class="contact-form-status" data-form-status aria-live="polite"></p>
+                </form>
+
+                <!-- FORM 4: EMERGENCY -->
+                <form id="form-emergency" class="tab-content" role="tabpanel" aria-labelledby="tab-emergency"
+                    data-contact-form="emergency" hidden novalidate>
+                    <label class="form-honeypot" aria-hidden="true">Website<input name="website" tabindex="-1"
+                            autocomplete="off"></label>
+                    <div class="form-header">
+                        <h2>Need Urgent Dental Assistance?</h2>
+                        <div class="emergency-notice">
+                            <strong>Medical Emergency Notice:</strong> For severe bleeding, major facial trauma,
+                            breathing difficulty, loss of consciousness, or a life-threatening emergency, contact local
+                            emergency medical services immediately.<br><br>
+                            For urgent dental concerns, call or WhatsApp Titanium Roots during available clinic hours.
+                        </div>
+                    </div>
+                    <div class="emergency-actions-banner">
+                        <a class="button button--secondary" data-setting-phone href="tel:+919876543210"><i
+                                data-lucide="phone"></i> Call Clinic Now</a>
+                        <a class="button button--secondary" data-setting-whatsapp href="https://wa.me/919876543210"><i
+                                data-lucide="message-circle"></i> Chat on WhatsApp</a>
+                    </div>
+
+                    <div class="contact-form-grid">
+                        <label><span>Patient Name <b aria-hidden="true">*</b></span><input name="patientName"
+                                required></label>
+                        <label><span>Phone Number <b aria-hidden="true">*</b></span><input name="mobile" type="tel"
+                                required></label>
+                        <label><span>Emergency Type <b aria-hidden="true">*</b></span>
+                            <select name="emergencyType" required>
+                                <option value="">Select...</option>
+                                <option>Severe Tooth Pain</option>
+                                <option>Broken or Knocked-Out Tooth</option>
+                                <option>Facial Swelling</option>
+                                <option>Dental Bleeding</option>
+                                <option>Lost Filling or Crown</option>
+                                <option>Post-Treatment Concern</option>
+                                <option>Dental Injury</option>
+                                <option>Other</option>
+                            </select>
+                        </label>
+                        <label><span>When Did It Begin?</span><input name="beganString" type="text"
+                                placeholder="e.g. 2 hours ago"></label>
+                        <label><span>Urgency Level</span>
+                            <select name="urgency">
+                                <option value="Moderate">Moderate</option>
+                                <option value="Urgent">Urgent</option>
+                                <option value="Severe">Severe</option>
+                            </select>
+                        </label>
+                        <label><span>Is Bleeding Present?</span><select name="bleeding">
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select></label>
+                        <label><span>Is Swelling Present?</span><select name="swelling">
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select></label>
+                        <label><span>Has a Dental Injury Occurred?</span><select name="injury">
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select></label>
+                        <label class="contact-form-grid__wide"><span>Brief Description <b
+                                    aria-hidden="true">*</b></span><textarea name="message" rows="3" required
+                                placeholder="Quickly describe what happened..."></textarea></label>
+                    </div>
+                    <label class="contact-consent">
+                        <input name="consent" type="checkbox" required>
+                        <span>I consent to Titanium Roots Dental Clinic contacting me regarding this request. The
+                            information submitted will be used only to respond to my enquiry.</span>
+                    </label>
+                    <button class="contact-submit button" type="submit" style="background:var(--color-primary);"><i
+                            data-lucide="phone-call" aria-hidden="true"></i> Request an Urgent Callback</button>
+                    <p class="contact-form-status" data-form-status aria-live="polite"></p>
+                </form>
+
+                <!-- FORM 5: LEAVE FEEDBACK -->
+                <form id="form-feedback" class="tab-content" role="tabpanel" aria-labelledby="tab-feedback"
+                    data-contact-form="feedback" hidden novalidate>
+                    <label class="form-honeypot" aria-hidden="true">Website<input name="website" tabindex="-1"
+                            autocomplete="off"></label>
+                    <div class="form-header">
+                        <h2>Share Your Experience</h2>
+                        <p>Your feedback helps Titanium Roots understand the patient experience and continue improving
+                            its care and communication.</p>
+                    </div>
+                    <div class="contact-form-grid">
+                        <label><span>Patient Name</span><input name="patientName" placeholder="For our records"></label>
+                        <label><span>Submit Anonymously</span>
+                            <select name="anonymous">
+                                <option value="false">No, submit under my name</option>
+                                <option value="true">Yes, hide my real identity</option>
+                            </select>
+                        </label>
+                        <label><span>Phone or Email</span><input name="contactString" type="text"></label>
+                        <label><span>Visit Date</span><input name="preferredDate" type="date"></label>
+                        <label>
+                            <span>Doctor Consulted</span>
+                            <select name="doctor" data-contact-doctor-select>
+                                <option value="">Select a doctor</option>
+                            </select>
+                        </label>
+                        <label>
+                            <span>Treatment Category</span>
+                            <select name="service" data-contact-treatment-select>
+                                <option value="">Select a treatment</option>
+                            </select>
+                        </label>
+                        <label class="contact-form-grid__wide">
+                            <span>Private Rating</span>
+                            <select name="rating">
+                                <option value="5">Excellent — 5/5</option>
+                                <option value="4">Good — 4/5</option>
+                                <option value="3">Okay — 3/5</option>
+                                <option value="2">Poor — 2/5</option>
+                                <option value="1">Unacceptable — 1/5</option>
+                            </select>
+                        </label>
+
+                        <label class="contact-form-grid__wide"><span>Your Experience <b
+                                    aria-hidden="true">*</b></span><textarea name="message" rows="4"
+                                required></textarea></label>
+
+                        <label class="contact-form-grid__wide">
+                            <span>Feedback Visibility <b aria-hidden="true">*</b></span>
+                            <select name="visibility" required>
+                                <option value="Keep My Feedback Private">Keep My Feedback Private</option>
+                                <option value="Allow the Clinic to Contact Me">Allow the Clinic to Contact Me</option>
+                                <option value="Allow Publication After Review">Allow Publication After Review</option>
+                            </select>
+                        </label>
+                        <label><span>Preferred Public Display Name</span><input name="displayName"
+                                placeholder="e.g. R. Sharma (if allowing publication)"></label>
+                        <label><span>Permission to Use Testimonial</span><select name="permTestimonial">
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select></label>
+                        <label><span>Permission to Use Photo</span><select name="permPhoto">
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select></label>
+                        <label><span>Permission to Use Video</span><select name="permVideo">
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select></label>
+                    </div>
+                    <label class="contact-consent">
+                        <input name="consent" type="checkbox" required>
+                        <span>I understand that my feedback will remain private unless I explicitly grant permission for
+                            publication after clinic review.</span>
+                    </label>
+                    <button class="contact-submit button" type="submit"><i data-lucide="message-square"
+                            aria-hidden="true"></i> Submit Feedback</button>
+                    <p class="contact-form-status" data-form-status aria-live="polite"></p>
+                </form>
+            </div>
+
+            <aside class="contact-sidebar" aria-label="Clinic details">
+                <section class="contact-info-card">
+                    <h2>Contact Information</h2>
+                    <div class="contact-info-list">
+                        <div>
+                            <i data-lucide="map-pin" aria-hidden="true"></i>
+                            <p><strong>Address</strong><span data-setting-address>123, Dental Care Street, Anna Nagar, Chennai, Tamil Nadu – 600001</span></p>
+                        </div>
+                        <div>
+                            <i data-lucide="phone" aria-hidden="true"></i>
+                            <p><strong>Phone Numbers</strong><a data-setting-phone href="tel:+919876543210">+91 98765 43210</a><a data-setting-alternate-phone href="tel:+914423456789">+91 44 2345 6789</a></p>
+                        </div>
+                        <div>
+                            <i data-lucide="mail" aria-hidden="true"></i>
+                            <p><strong>Email</strong><a data-setting-email
+                                    href="mailto:info@titaniumroots.com">info@titaniumroots.com</a><a
+                                    data-setting-appointment-email
+                                    href="mailto:appointments@titaniumroots.com">appointments@titaniumroots.com</a></p>
+                        </div>
+                        <div>
+                            <i data-lucide="message-circle" aria-hidden="true"></i>
+                            <p><strong>WhatsApp</strong><a data-setting-whatsapp href="https://wa.me/919876543210"
+                                    target="_blank" rel="noopener noreferrer">+91 98765 43210</a><span>Avg. response:
+                                    under 5
+                                    minutes</span></p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="clinic-hours-card">
+                    <h2>Clinic Hours</h2>
+                    <dl>
+                        <div>
+                            <dt>Monday – Friday</dt>
+                            <dd data-clinic-hours="monday">9:00 AM – 8:00 PM</dd>
+                        </div>
+                        <div>
+                            <dt>Saturday</dt>
+                            <dd data-clinic-hours="saturday">9:00 AM – 6:00 PM</dd>
+                        </div>
+                        <div>
+                            <dt>Sunday</dt>
+                            <dd data-clinic-hours="sunday">10:00 AM – 4:00 PM</dd>
+                        </div>
+                        <div class="clinic-hours-card__today">
+                            <dt data-clinic-today>Today</dt>
+                            <dd><span class="clinic-status" data-clinic-status>Checking…</span></dd>
+                        </div>
+                    </dl>
+                </section>
+
+                <section class="contact-cta-card">
+                    <h2>Ready to Transform Your Smile?</h2>
+                    <p>Book your free consultation and take the first step towards a healthier, more confident smile
+                        today.</p>
+                    <button type="button" data-modal-open="appointment-modal">
+                        <i data-lucide="calendar-days" aria-hidden="true"></i> Book Appointment
+                    </button>
+                    <a data-setting-whatsapp href="https://wa.me/919876543210" target="_blank"
+                        rel="noopener noreferrer">
+                        <i data-lucide="message-circle" aria-hidden="true"></i> WhatsApp Us
+                    </a>
+                </section>
+            </aside>
+        </section>
+
+        <section class="container contact-map" aria-labelledby="map-title">
+            <div class="contact-section-heading">
+                <h2 id="map-title">Find Us on the Map</h2>
+                <a data-setting-directions href="https://www.google.com/maps/search/?api=1&query=Anna+Nagar+Chennai"
+                    target="_blank" rel="noopener noreferrer">Open in Google Maps <i data-lucide="arrow-right"
+                        aria-hidden="true"></i></a>
+            </div>
+            <div class="contact-map__frame">
+                <iframe data-setting-map title="Map showing Titanium Roots Dental Clinic in Anna Nagar, Chennai"
+                    src="https://www.google.com/maps?q=Anna%20Nagar%20Chennai&z=15&output=embed" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="contact-map__label">
+                    <strong data-setting-clinic-name>Titanium Roots Dental Clinic</strong>
+                    <span data-setting-address>123, Dental Care Street, Anna Nagar, Chennai, Tamil Nadu – 600001</span>
+                    <a data-setting-directions href="https://www.google.com/maps/search/?api=1&query=Anna+Nagar+Chennai"
+                        target="_blank" rel="noopener noreferrer">View larger map</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="container contact-faq" aria-labelledby="faq-title">
+            <div class="contact-faq__intro">
+                <h2 id="faq-title">Got Questions? We Have Answers.</h2>
+                <p>Everything you need to know before your first visit to Titanium Roots Dental Clinic.</p>
+            </div>
+            <div class="contact-faq__list">
+                <article>
+                    <h3><button type="button" aria-expanded="false" aria-controls="faq-answer-1" data-faq-button>How do
+                            I book an appointment?<span aria-hidden="true" data-faq-icon>+</span></button></h3>
+                    <div id="faq-answer-1" class="contact-faq__answer" hidden>Use the form above, call our clinic, or
+                        message us on WhatsApp. Our team will confirm the available date and time.</div>
+                </article>
+                <article>
+                    <h3><button type="button" aria-expanded="false" aria-controls="faq-answer-2" data-faq-button>Do you
+                            offer emergency dental services?<span aria-hidden="true" data-faq-icon>+</span></button>
+                    </h3>
+                    <div id="faq-answer-2" class="contact-faq__answer" hidden>Yes. Select “Emergency” in the form or
+                        call
+                        the clinic directly so our team can guide you promptly.</div>
+                </article>
+                <article>
+                    <h3><button type="button" aria-expanded="false" aria-controls="faq-answer-3" data-faq-button>What
+                            insurance plans do you accept?<span aria-hidden="true" data-faq-icon>+</span></button></h3>
+                    <div id="faq-answer-3" class="contact-faq__answer" hidden>Coverage varies by provider. Share your
+                        insurance details with our team and we will help verify the available benefits.</div>
+                </article>
+                <article>
+                    <h3><button type="button" aria-expanded="false" aria-controls="faq-answer-4" data-faq-button>How
+                            long does a typical appointment take?<span aria-hidden="true"
+                                data-faq-icon>+</span></button></h3>
+                    <div id="faq-answer-4" class="contact-faq__answer" hidden>A first consultation typically takes 30–45
+                        minutes, depending on the examination and any diagnostic needs.</div>
+                </article>
+                <article>
+                    <h3><button type="button" aria-expanded="false" aria-controls="faq-answer-5" data-faq-button>Is
+                            parking available at the clinic?<span aria-hidden="true" data-faq-icon>+</span></button>
+                    </h3>
+                    <div id="faq-answer-5" class="contact-faq__answer" hidden>Limited parking is available nearby. Call
+                        before your visit and our reception team will share the easiest access option.</div>
+                </article>
+                <article>
+                    <h3><button type="button" aria-expanded="false" aria-controls="faq-answer-6" data-faq-button>Can I
+                            get a treatment cost estimate before visiting?<span aria-hidden="true"
+                                data-faq-icon>+</span></button></h3>
+                    <div id="faq-answer-6" class="contact-faq__answer" hidden>We can share a general range, but an
+                        accurate estimate follows a clinical examination and treatment discussion.</div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <div data-component="consultation-banner"></div>
+    <div data-component="footer"></div>
+    <div data-component="appointment-modal"></div>
+    <div data-component="floating-contact"></div>
+    <script type="module" src="/assets/js/app.js"></script>
+</body>
+
+</html>

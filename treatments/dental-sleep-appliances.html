@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Explore dental treatments available at Titanium Roots Dental Clinic, including implants, root canal care, orthodontics, cosmetic dentistry and preventive dental care.">
+  <meta property="og:title" content="Dental Treatments | Titanium Roots Dental Clinic">
+  <meta property="og:description"
+    content="Explore dental treatments available at Titanium Roots Dental Clinic, including implants, root canal care, orthodontics, cosmetic dentistry and preventive dental care.">
+  <meta property="og:image" content="/assets/images/stock/treatment-care.jpg">
+  <link rel="canonical" href="https://titaniumroots.com/treatments.html">
+  <title>Dental Treatments | Titanium Roots Dental Clinic</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/assets/css/global.css">
+  <link rel="stylesheet" href="/assets/css/pages/treatments.css">
+</head>
+
+<body data-page="treatments">
+  <div data-component="page-loader"></div>
+  <div data-component="navbar"></div>
+  <main id="main-content" data-page="treatments">
+
+    <section class="treatments-hero" aria-labelledby="treatments-hero-title">
+      <div class="treatments-hero__background" aria-hidden="true"></div>
+      <div class="container treatments-hero__grid">
+        <div class="treatments-hero__content">
+          <div class="treatments-breadcrumb-shell" data-component="breadcrumb"></div>
+          <p class="section-eyebrow" data-treatments-hero-eyebrow>Our Treatments</p>
+          <h1 id="treatments-hero-title" data-treatments-hero-heading>Comprehensive Dental Treatments for a Healthier,
+            More <span>Confident Smile</span></h1>
+          <p data-treatments-hero-copy>At Titanium Roots Dental Clinic, we combine modern dental care, thoughtful
+            treatment planning and a patient-first approach to support healthier, more confident smiles.</p>
+          <div class="treatments-hero__actions"><button class="button" type="button" data-modal-open="appointment-modal"
+              data-treatment-interest="General consultation">Book Consultation <i data-lucide="calendar-days"
+                aria-hidden="true"></i></button><a class="button button--secondary" href="https://wa.me/919876543210" target="_blank"
+              rel="noopener noreferrer" data-whatsapp-link>WhatsApp Consultation <i data-lucide="message-circle"
+                aria-hidden="true"></i></a></div>
+        </div>
+        <div class="treatments-hero__visual" data-treatments-hero-visual>
+          <div class="treatments-hero__outline" aria-hidden="true"></div>
+          <div class="treatments-hero__media"><img class="media-placeholder"
+              src="/assets/images/stock/treatment-care.jpg" data-media-fallback="treatment" width="1600" height="1200"
+              alt="Dental consultation and treatment care at Titanium Roots">
+            <div class="treatments-hero__trust-panel" data-treatments-hero-trust></div>
+          </div>
+        </div>
+        <div class="treatments-hero__features" data-treatments-hero-features aria-label="Treatment commitments"></div>
+      </div>
+    </section>
+
+    <section class="treatments-catalogue treatments-section" aria-labelledby="catalogue-title"
+      data-treatments-reveal-section>
+      <div class="container">
+        <div class="treatments-section-heading">
+          <div>
+            <p class="section-eyebrow">Our Treatments</p>
+            <h2 id="catalogue-title">Solutions for <span>Every Dental Need</span></h2>
+          </div>
+        </div>
+        <div class="treatment-grid" data-treatment-grid></div>
+      </div>
+    </section>
+    <section class="treatments-why treatments-section" aria-labelledby="why-title" data-treatments-reveal-section>
+      <div class="container">
+        <div class="treatments-section-heading">
+          <div>
+            <p class="section-eyebrow">Why Choose Titanium Roots</p>
+            <h2 id="why-title">Thoughtful Care. <span>Confident Results.</span></h2>
+          </div>
+        </div>
+        <div class="treatments-why__grid" data-treatments-why></div>
+      </div>
+    </section>
+    <section class="treatments-journey treatments-section" aria-labelledby="journey-title"
+      data-treatments-reveal-section>
+      <div class="container">
+        <div class="treatments-section-heading">
+          <div>
+            <p class="section-eyebrow">Our Treatment Process</p>
+            <h2 id="journey-title">Your Smile Journey <span>With Us</span></h2>
+          </div>
+        </div>
+        <ol class="journey-timeline" data-treatment-journey></ol>
+      </div>
+    </section>
+    <section class="treatments-transformations treatments-section" aria-labelledby="transformations-title"
+      data-treatments-reveal-section>
+      <div class="container">
+        <div class="treatments-section-heading">
+          <div>
+            <p class="section-eyebrow">Before &amp; After Transformations</p>
+            <h2 id="transformations-title">Real Smiles. <span>Real Confidence.</span></h2>
+          </div>
+        </div>
+        <p class="treatments-consent-note">Patient transformation imagery must only be published with written approval.
+        </p>
+        <div class="transformation-grid" data-transformations></div><button class="button button--secondary"
+          type="button" disabled>View More Transformations <i data-lucide="arrow-right" aria-hidden="true"></i></button>
+      </div>
+    </section>
+    <section class="treatments-faq treatments-section" aria-labelledby="faq-title" data-treatments-reveal-section>
+      <div class="container">
+        <div class="treatments-section-heading">
+          <div>
+            <p class="section-eyebrow">Frequently Asked Questions</p>
+            <h2 id="faq-title">Your Questions, <span>Answered</span></h2>
+          </div>
+        </div>
+        <div class="treatments-faq__grid">
+          <div class="faq-list" data-treatment-faq></div>
+          <aside class="whatsapp-help"><i data-lucide="message-circle" aria-hidden="true"></i>
+            <h3>Still Have Questions?</h3>
+            <p>Our team can help you understand the consultation and appointment process.</p><a
+              class="button button--secondary" href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer"
+              data-whatsapp-link>Chat on WhatsApp <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section class="modal treatment-detail-modal" id="treatment-detail-modal" role="dialog" aria-modal="true"
+    aria-hidden="true" aria-labelledby="treatment-detail-title" hidden data-modal>
+    <div class="modal__dialog treatment-modal__dialog card" role="document"><button class="modal__close" type="button"
+        aria-label="Close treatment details" data-modal-close><i data-lucide="x" aria-hidden="true"></i></button>
+      <div data-treatment-modal-content></div>
+    </div>
+  </section>
+  <div data-component="consultation-banner"></div>
+  <div data-component="footer"></div>
+  <div data-component="appointment-modal"></div>
+  <div data-component="floating-contact"></div>
+  <script type="module" src="/assets/js/app.js"></script>
+</body>
+
+</html>
