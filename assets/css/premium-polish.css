@@ -47,11 +47,19 @@ img {
     backdrop-filter: blur(14px);
 }
 
-.button--hero-secondary {
+body[data-page="home"] .home-hero__actions .button--hero-secondary {
+    border-color: rgba(47, 95, 73, 0.22);
+    background: rgba(255, 255, 255, 0.88);
     color: var(--color-primary);
 }
 
-.button--hero-secondary svg {
+body[data-page="home"] .home-hero__actions .button--hero-secondary:hover {
+    background: #ffffff;
+    color: var(--color-primary);
+}
+
+body[data-page="home"] .home-hero__actions .button--hero-secondary svg,
+body[data-page="home"] .home-hero__actions .button--hero-secondary span {
     color: currentColor;
 }
 
