@@ -126,17 +126,21 @@ function renderJourney() {
 function renderTransformations() {
   const mount = document.querySelector('[data-transformations]');
   const section = mount?.closest('section');
-  const withImages = treatments.filter((treatment) => treatment.image).slice(0, 5);
+  const withImages = treatments.filter((treatment) => {
+    const status = String(treatment.status || '').toLowerCase();
+    return ['published', 'active'].includes(status) && treatment.image && treatment.beforeImage && treatment.consentStatus === 'confirmed';
+  }).slice(0, 5);
   if (section) section.hidden = !withImages.length;
 
   if (mount) mount.innerHTML = withImages.map((treatment) => {
-    const src = publicMediaUrl(treatment.image);
+    const beforeSrc = publicMediaUrl(treatment.beforeImage);
+    const afterSrc = publicMediaUrl(treatment.image);
     const alt = safe(treatment.imageAlt || treatment.name);
     return `
     <article class="transformation-card">
       <div class="transformation-slider" data-before-after>
-        <img class="transformation-slider__before" src="${src}" width="1200" height="900" loading="lazy" alt="Before ${alt}">
-        <img class="transformation-slider__after" src="${src}" width="1200" height="900" loading="lazy" alt="After ${alt}">
+        <img class="transformation-slider__before" src="${beforeSrc}" width="1200" height="900" loading="lazy" alt="Before ${alt}">
+        <img class="transformation-slider__after" src="${afterSrc}" width="1200" height="900" loading="lazy" alt="After ${alt}">
         <input type="range" min="0" max="100" value="50" class="transformation-slider__range" aria-label="Compare before and after">
         <div class="transformation-slider__divider"></div>
         <div class="transformation-labels">

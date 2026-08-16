@@ -1,0 +1,337 @@
+/* Premium deployment polish: conversion-first layout, stable media, and mobile consistency. */
+:root {
+    --premium-panel: rgba(255, 255, 255, 0.72);
+    --premium-panel-strong: rgba(255, 255, 255, 0.9);
+    --premium-line: rgba(38, 65, 55, 0.12);
+}
+
+img {
+    max-width: 100%;
+}
+
+.section-intro {
+    max-width: 620px;
+    margin-top: 10px;
+    color: var(--color-body);
+    font-size: 0.98rem;
+    line-height: 1.7;
+}
+
+.section-heading {
+    align-items: flex-end;
+}
+
+.section-heading h2 {
+    text-wrap: balance;
+}
+
+.home-hero__background {
+    background:
+        linear-gradient(90deg, rgba(248, 245, 239, 0.96) 0%, rgba(248, 245, 239, 0.74) 38%, rgba(248, 245, 239, 0.18) 70%),
+        url("../images/home/clinic-reception.webp") center / cover no-repeat,
+        var(--color-background);
+}
+
+.home-hero__background::before {
+    opacity: 0.08;
+}
+
+.home-hero__badge,
+.home-hero__features,
+.home-hero__statistics,
+.treatment-card,
+.doctor-card,
+.testimonial-card,
+.blog-card,
+.difference-card {
+    backdrop-filter: blur(14px);
+}
+
+.button--hero-secondary {
+    color: var(--color-primary);
+}
+
+.button--hero-secondary svg {
+    color: currentColor;
+}
+
+.treatment-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.treatment-card,
+.doctor-card,
+.testimonial-card,
+.blog-card,
+.difference-card {
+    border-color: var(--premium-line);
+    background: var(--premium-panel);
+}
+
+.treatment-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.treatment-card>img {
+    aspect-ratio: 5 / 4;
+}
+
+.treatment-card__category {
+    display: inline-flex;
+    width: fit-content;
+    padding: 5px 9px;
+    border-radius: var(--radius-pill);
+    background: rgba(7, 86, 71, 0.08);
+    color: var(--color-primary);
+    font-size: 0.66rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.treatment-card__content,
+.blog-card__content,
+.doctor-card__content {
+    flex: 1;
+}
+
+.difference-section {
+    background: linear-gradient(180deg, var(--color-background-soft), #ffffff);
+}
+
+.difference-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.difference-card {
+    min-height: 0;
+    padding: 26px;
+}
+
+.difference-card h3 {
+    font-size: 1.18rem;
+}
+
+.difference-card p {
+    color: var(--color-body);
+    font-size: 0.88rem;
+}
+
+.clinic-gallery {
+    grid-template-columns: minmax(0, 1.35fr) minmax(180px, 0.65fr);
+    height: clamp(360px, 31vw, 460px);
+}
+
+.clinic-gallery__main,
+.clinic-gallery__supporting img,
+.story-collage>img,
+.story-collage__secondary img,
+.blog-card,
+.treatment-card,
+.doctor-card,
+.testimonial-card {
+    border-radius: 18px;
+}
+
+.clinic-gallery__supporting {
+    grid-template-columns: 1fr;
+}
+
+.clinic-gallery__supporting img {
+    min-height: 0;
+    object-fit: cover;
+}
+
+.doctor-card {
+    min-height: 100%;
+}
+
+.doctor-card__content {
+    gap: 10px;
+    padding: 22px;
+}
+
+.doctor-card h3 {
+    font-size: 1.34rem;
+}
+
+.doctor-card__content>p {
+    color: var(--color-body);
+    font-size: 0.86rem;
+    line-height: 1.55;
+}
+
+.doctor-card .button {
+    margin-top: 10px;
+}
+
+.testimonial-card {
+    min-height: 278px;
+    padding: 26px;
+}
+
+.testimonial-card>p {
+    font-size: 1.08rem;
+}
+
+.testimonial-card__meta img {
+    display: none;
+}
+
+.testimonial-card__initials {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 900;
+}
+
+.home-conversion {
+    background: linear-gradient(135deg, var(--color-primary), #203c32);
+}
+
+.home-conversion__panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 32px;
+    color: #fff;
+}
+
+.home-conversion .section-eyebrow,
+.home-conversion h2,
+.home-conversion p {
+    color: #fff;
+}
+
+.home-conversion h2 {
+    max-width: 760px;
+    font-size: clamp(2rem, 3.5vw, 3.2rem);
+}
+
+.home-conversion p {
+    max-width: 620px;
+    margin-top: 10px;
+    opacity: 0.82;
+}
+
+.home-conversion__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.home-conversion .button {
+    background: #fff;
+    color: var(--color-primary);
+}
+
+.home-conversion .button--secondary {
+    border-color: rgba(255, 255, 255, 0.46);
+    background: transparent;
+    color: #fff;
+}
+
+body[data-page="doctors"] img[src*="doctor-profile"],
+body[data-page="doctors"] .doctor-card>img,
+body[data-page="home"] .doctor-card>img {
+    display: none !important;
+}
+
+body[data-page="testimonials"] .section-heading,
+body[data-page="testimonials"] .testimonials-page .section-heading,
+body[data-page="testimonials"] .testimonials-video .section-heading {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+body[data-page="testimonials"] .section-heading h2,
+body[data-page="testimonials"] .section-heading p {
+    margin-inline: 0;
+    text-align: left;
+}
+
+@media (max-width: 1180px) {
+    .treatment-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .home-hero__background {
+        background:
+            linear-gradient(180deg, rgba(248, 245, 239, 0.95) 0%, rgba(248, 245, 239, 0.82) 55%, rgba(248, 245, 239, 0.42) 100%),
+            url("../images/home/clinic-reception.webp") center / cover no-repeat,
+            var(--color-background);
+    }
+
+    .difference-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .clinic-gallery {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+
+    .clinic-gallery__main {
+        aspect-ratio: 16 / 10;
+    }
+
+    .clinic-gallery__supporting {
+        grid-template-columns: repeat(4, minmax(130px, 1fr));
+    }
+
+    .clinic-gallery__supporting img {
+        aspect-ratio: 4 / 3;
+    }
+
+    .home-conversion__panel {
+        grid-template-columns: 1fr;
+    }
+
+    .home-conversion__actions {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 640px) {
+    .section-intro {
+        font-size: 0.92rem;
+    }
+
+    .treatment-grid,
+    .difference-grid,
+    .doctor-grid,
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .treatment-card,
+    .doctor-card,
+    .testimonial-card,
+    .blog-card,
+    .difference-card {
+        border-radius: 16px;
+    }
+
+    .clinic-gallery__supporting {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        overflow: visible;
+    }
+
+    .home-conversion__actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .home-conversion__actions .button {
+        width: 100%;
+    }
+}

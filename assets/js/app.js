@@ -2,6 +2,7 @@ import '../css/global.css';
 import '../css/hero-alignment.css';
 import '../css/treatment-card-rules.css';
 import '../css/treatment-catalogue-polish.css';
+import '../css/premium-polish.css';
 import { gsap } from 'gsap';
 import Swiper from 'swiper';
 import { startApplication } from './main.js';
