@@ -52,6 +52,7 @@ export async function initializeTreatments() {
   if (document.body.dataset.treatmentsInitialized) return;
   document.body.dataset.treatmentsInitialized = 'true';
   document.querySelector('[data-breadcrumb-current]')?.replaceChildren('Treatments');
+  updateImplantRouteContent();
   renderHero();
   renderTreatmentFilters();
   renderTreatments();
@@ -87,6 +88,7 @@ export async function initializeTreatments() {
 
 function initializeHistoryNavigation() {
   const checkPath = () => {
+    updateImplantRouteContent();
     const match = window.location.pathname.match(/^\/treatments\/([^./]+)\.html$/);
     if (!match) return;
     const slug = match[1];
@@ -100,6 +102,13 @@ function initializeHistoryNavigation() {
   window.addEventListener('popstate', checkPath);
   setTimeout(checkPath, 50);
   window.__checkTreatmentPath = checkPath;
+}
+
+function updateImplantRouteContent() {
+  const isImplantRoute = /\/treatments\/[^/]*implant[^/]*\.html$/i.test(window.location.pathname);
+  document.querySelectorAll('[data-implant-route-section]').forEach((section) => {
+    section.hidden = !isImplantRoute;
+  });
 }
 
 function renderHero() {

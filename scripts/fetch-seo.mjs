@@ -64,8 +64,8 @@ function treatmentSeo(treatment) {
   const lower = `${name} ${treatment.slug || ''}`.toLowerCase();
   if (lower.includes('implant')) {
     return {
-      title: `${name} in Chennai | Titanium Roots`,
-      description: `${name} planned with prosthodontic precision, biocompatible titanium roots, digital diagnostics and clear consultation at Titanium Roots Dental Clinic.`,
+      title: `${name} in Karapakkam OMR | Titanium Roots`,
+      description: `${name} planned with biocompatible titanium roots, prosthodontic precision, AI diagnostics and Digital Smile Design at Titanium Roots.`,
     };
   }
   if (lower.includes('denture') || lower.includes('crown') || lower.includes('bridge')) {

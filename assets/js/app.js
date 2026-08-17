@@ -28,6 +28,13 @@ const phoneHref = (value) => `tel:${String(value || '').replace(/[^\d+]/g, '')}`
 const emailHref = (value) => `mailto:${encodeURIComponent(String(value || '').trim())}`;
 const whatsappHref = (value) => `https://wa.me/${String(value || '').replace(/\D/g, '')}`;
 const mediaFallbacks = stockMedia;
+const APPROVED_ADDRESS = 'Karapakkam, OMR, Chennai. Exact landmark shared during appointment confirmation.';
+
+function approvedAddress(value) {
+  const text = String(value || '').trim();
+  if (!text || /Anna Nagar|Dental Care Street/i.test(text)) return APPROVED_ADDRESS;
+  return text;
+}
 
 function fallbackForImage(image) {
   const explicit = image.dataset.mediaFallback;
@@ -76,7 +83,7 @@ export function applyPublicSettings(settings = {}) {
     target.href = whatsappHref(contact.whatsapp);
   });
   document.querySelectorAll('[data-setting-address]').forEach((target) => {
-    target.textContent = contact.address || '';
+    target.textContent = approvedAddress(contact.address);
   });
   document.querySelectorAll('[data-setting-directions]').forEach((target) => {
     if (contact.directionsUrl) target.href = contact.directionsUrl;

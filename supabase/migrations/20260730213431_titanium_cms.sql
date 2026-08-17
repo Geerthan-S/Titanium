@@ -452,9 +452,9 @@ insert into public.site_settings (
 ) values (
   'primary',
   '{"clinicName":"Titanium Roots Dental Clinic","shortName":"Titanium Roots"}',
-  '{"primaryPhone":"+91 98765 43210","alternatePhone":"+91 44 2345 6789","whatsapp":"+91 98765 43210","email":"info@titaniumroots.com","appointmentEmail":"appointments@titaniumroots.com","address":"123, Dental Care Street, Anna Nagar, Chennai, Tamil Nadu - 600001"}',
+  '{"primaryPhone":"+91 98765 43210","alternatePhone":"+91 44 2345 6789","whatsapp":"+91 98765 43210","email":"info@titaniumroots.com","appointmentEmail":"appointments@titaniumroots.com","address":"Karapakkam, OMR, Chennai. Exact landmark shared during appointment confirmation."}',
   '{}',
-  '{"Monday":"9:00 AM - 8:00 PM","Tuesday":"9:00 AM - 8:00 PM","Wednesday":"9:00 AM - 8:00 PM","Thursday":"9:00 AM - 8:00 PM","Friday":"9:00 AM - 8:00 PM","Saturday":"9:00 AM - 6:00 PM","Sunday":"10:00 AM - 4:00 PM"}',
+  '{"Monday":"10:00 AM - 8:00 PM","Tuesday":"10:00 AM - 8:00 PM","Wednesday":"10:00 AM - 8:00 PM","Thursday":"10:00 AM - 8:00 PM","Friday":"10:00 AM - 8:00 PM","Saturday":"10:00 AM - 8:00 PM","Sunday":"By appointment only"}',
   '{"appointment":"Hello, I would like to book a dental appointment.","enquiry":"Hello, I have a question about dental care."}',
   '{"featuredTreatmentCount":6,"featuredDoctorCount":4}',
   '{"description":"Advanced dental care in a comfortable environment. Your smile is our passion.","copyright":"© Titanium Roots Dental Clinic. All rights reserved."}',
@@ -483,10 +483,10 @@ insert into public.seo_pages (
   (
     '/',
     'Titanium Roots Dental Clinic',
-    'Advanced, patient-focused dental care at Titanium Roots Dental Clinic in Anna Nagar, Chennai.',
+    'Advanced prosthodontics and implant dentistry at Titanium Roots Dental Clinic in Karapakkam, OMR, Chennai.',
     'https://titaniumroots.com/',
     'Titanium Roots Dental Clinic',
-    'Advanced, patient-focused dental care in Anna Nagar, Chennai.'
+    'Advanced prosthodontics and implant dentistry in Karapakkam, OMR, Chennai.'
   ),
   (
     '/about.html',
@@ -531,7 +531,7 @@ insert into public.seo_pages (
   (
     '/contact.html',
     'Contact Titanium Roots Dental Clinic',
-    'Contact Titanium Roots Dental Clinic in Anna Nagar, Chennai, or request a dental appointment online.',
+    'Contact Titanium Roots Dental Clinic in Karapakkam, OMR, Chennai, or request a dental appointment online.',
     'https://titaniumroots.com/contact.html',
     'Contact Titanium Roots Dental Clinic',
     'Contact our clinic or request a dental appointment online.'
@@ -598,15 +598,15 @@ insert into public.treatments (
     'Dental Implants',
     'dental-implants',
     'Restorative dentistry',
-    'A treatment option for replacing missing teeth with a stable, natural-looking result.',
-    'Dental implants are discussed after a clinical assessment to understand your oral health, treatment goals and suitable restorative options.',
+    'Advanced titanium root implant planning for replacing missing teeth with a stable, natural-looking result.',
+    'Dental implants replace the missing root as well as the visible tooth. At Titanium Roots, implant consultations combine prosthodontic planning, AI-assisted diagnostics and Digital Smile Design to plan single titanium roots, implant-supported crowns and full-mouth rehabilitation.',
     'Timeline discussed after consultation',
     'Visits depend on treatment plan',
     'consultation_required',
-    'Supports replacement of missing teeth, individual planning and clearly explained restorative options',
-    'Suitability is confirmed after a clinical examination and treatment planning discussion.',
-    'Assessment, planning, treatment stages and restoration are discussed with your dentist.',
-    'Aftercare and recovery guidance depend on the treatment plan and are explained during consultation.',
+    'Biocompatible titanium roots, bone preservation support and prosthodontic precision for the final restoration',
+    'Suitability is confirmed after a clinical examination, bone assessment and prosthodontic treatment planning discussion.',
+    'Assessment, diagnostics, implant planning, healing review and final crown or prosthetic restoration are discussed with your dentist.',
+    'Aftercare, healing timelines and maintenance guidance depend on the treatment plan and are explained during consultation.',
     true,
     'published',
     3

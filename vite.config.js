@@ -48,12 +48,15 @@ function clinicData(cache = {}) {
   const settings = cache.siteSettings || {};
   const identity = settings.clinic_identity || {};
   const contact = settings.contact || {};
+  const address = String(contact.address || '').trim();
   return {
     name: identity.clinicName || identity.shortName || 'Titanium Roots Dental Clinic',
     description: identity.description || 'Dental implant, prosthodontic, smile design and general dental care.',
     phone: contact.primaryPhone || contact.phone || '+91 98765 43210',
     email: contact.email || contact.appointmentEmail || 'info@titaniumroots.com',
-    address: contact.address || '123, Dental Care Street, Anna Nagar, Chennai, Tamil Nadu 600001',
+    address: !address || /Anna Nagar|Dental Care Street/i.test(address)
+      ? 'Karapakkam, OMR, Chennai. Exact landmark shared during appointment confirmation.'
+      : address,
     mapsUrl: contact.mapsUrl || contact.directionsUrl || '',
   };
 }

@@ -1,3 +1,4 @@
+html:has(body[data-page="home"]),
 body[data-page="home"] {
     overflow-x: clip;
 }
@@ -1313,6 +1314,88 @@ body[data-page="home"] .doctor-card__content {
     min-height: 100%;
 }
 
+.implant-foundation {
+    background: linear-gradient(180deg, #fbfaf6 0%, #f3eee3 100%);
+}
+
+.implant-foundation__grid {
+    display: grid;
+    grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr);
+    gap: clamp(28px, 5vw, 72px);
+    align-items: start;
+}
+
+.implant-foundation__copy {
+    position: sticky;
+    top: 116px;
+}
+
+.implant-foundation h2 {
+    max-width: 620px;
+    margin: 0 0 20px;
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 5vw, 5rem);
+    line-height: .96;
+}
+
+.implant-foundation h2 span {
+    color: var(--color-primary);
+}
+
+.implant-foundation__copy p:not(.section-eyebrow) {
+    max-width: 610px;
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+.implant-foundation__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+}
+
+.implant-foundation__cards {
+    display: grid;
+    gap: 16px;
+}
+
+.implant-foundation__cards article {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 6px 18px;
+    padding: clamp(22px, 3vw, 34px);
+    border: 1px solid rgba(47, 95, 73, .14);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .72);
+    box-shadow: 0 20px 44px rgba(47, 95, 73, .08);
+}
+
+.implant-foundation__cards svg {
+    grid-row: span 2;
+    width: 42px;
+    height: 42px;
+    padding: 10px;
+    border-radius: 999px;
+    color: var(--color-primary);
+    background: rgba(47, 95, 73, .1);
+}
+
+.implant-foundation__cards h3 {
+    margin: 0;
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+}
+
+.implant-foundation__cards p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.65;
+}
+
 @media (max-width: 430px) {
     .home-hero {
         padding-top: 72px;
@@ -1345,5 +1428,30 @@ body[data-page="home"] .doctor-card__content {
     .clinic-gallery__supporting {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         overflow: visible;
+    }
+}
+
+@media (max-width: 900px) {
+    .implant-foundation__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .implant-foundation__copy {
+        position: static;
+    }
+}
+
+@media (max-width: 560px) {
+    .implant-foundation__actions .button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .implant-foundation__cards article {
+        grid-template-columns: 1fr;
+    }
+
+    .implant-foundation__cards svg {
+        grid-row: auto;
     }
 }

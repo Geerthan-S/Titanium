@@ -1178,3 +1178,120 @@ body[data-page="treatments"] .treatments-why__item>svg {
 body[data-page="treatments"] .transformation-card {
     text-align: left;
 }
+
+.implant-detail {
+    background: linear-gradient(180deg, #fbfaf6 0%, #f4efe5 100%);
+}
+
+.implant-detail__grid {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    gap: clamp(28px, 5vw, 68px);
+    align-items: start;
+}
+
+.implant-detail__copy h2 {
+    max-width: 650px;
+    margin: 0 0 20px;
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: clamp(2.35rem, 4.8vw, 4.9rem);
+    line-height: .96;
+}
+
+.implant-detail__copy h2 span {
+    color: var(--color-primary);
+}
+
+.implant-detail__copy p:not(.section-eyebrow) {
+    max-width: 640px;
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+.implant-detail__cards {
+    display: grid;
+    gap: 16px;
+}
+
+.implant-detail__cards article {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 6px 18px;
+    padding: clamp(22px, 3vw, 32px);
+    border: 1px solid rgba(47, 95, 73, .14);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .78);
+    box-shadow: 0 18px 42px rgba(47, 95, 73, .08);
+}
+
+.implant-detail__cards svg {
+    grid-row: span 2;
+    width: 42px;
+    height: 42px;
+    padding: 10px;
+    border-radius: 999px;
+    color: var(--color-primary);
+    background: rgba(47, 95, 73, .1);
+}
+
+.implant-detail__cards h3,
+.titanium-root-faq__grid h3 {
+    margin: 0;
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 1.32rem;
+}
+
+.implant-detail__cards p,
+.titanium-root-faq__grid p {
+    margin: 0;
+    color: var(--color-muted);
+    line-height: 1.65;
+}
+
+.titanium-root-faq {
+    background: #fff;
+}
+
+.titanium-root-faq__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.titanium-root-faq__grid article {
+    display: grid;
+    gap: 12px;
+    padding: clamp(22px, 3vw, 32px);
+    border: 1px solid rgba(47, 95, 73, .13);
+    border-radius: 8px;
+    background: #fbfaf6;
+}
+
+.titanium-root-faq__grid article:first-child {
+    background: var(--color-primary);
+}
+
+.titanium-root-faq__grid article:first-child h3,
+.titanium-root-faq__grid article:first-child p {
+    color: #fff;
+}
+
+@media (max-width: 900px) {
+    .implant-detail__grid,
+    .titanium-root-faq__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .implant-detail__cards article {
+        grid-template-columns: 1fr;
+    }
+
+    .implant-detail__cards svg {
+        grid-row: auto;
+    }
+}

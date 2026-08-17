@@ -1272,6 +1272,95 @@ body[data-page="doctors"] .doctor-card__content {
     min-height: 100%;
 }
 
+.prosthodontist-spotlight {
+    background: #f7f2e8;
+}
+
+.prosthodontist-spotlight__grid {
+    display: grid;
+    grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr);
+    gap: clamp(28px, 5vw, 68px);
+    align-items: stretch;
+}
+
+.prosthodontist-spotlight__intro {
+    padding: clamp(28px, 4vw, 48px);
+    border-radius: 8px;
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.prosthodontist-spotlight__intro .section-eyebrow,
+.prosthodontist-spotlight__intro h2,
+.prosthodontist-spotlight__intro p {
+    color: #fff;
+}
+
+.prosthodontist-spotlight__intro h2 {
+    margin: 0 0 14px;
+    font-family: var(--font-display);
+    font-size: clamp(2.3rem, 4.6vw, 4.6rem);
+    line-height: .98;
+}
+
+.prosthodontist-spotlight__lead {
+    margin: 0 0 18px;
+    font-weight: 800;
+}
+
+.prosthodontist-spotlight__intro p:last-child {
+    margin-bottom: 0;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, .86);
+}
+
+.prosthodontist-spotlight__panel {
+    display: grid;
+    gap: 16px;
+}
+
+.prosthodontist-spotlight__panel article {
+    padding: clamp(22px, 3vw, 32px);
+    border: 1px solid rgba(47, 95, 73, .14);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, .78);
+    box-shadow: 0 18px 44px rgba(47, 95, 73, .08);
+}
+
+.prosthodontist-spotlight__panel svg {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 16px;
+    border-radius: 999px;
+    color: var(--color-primary);
+    background: rgba(47, 95, 73, .1);
+}
+
+.prosthodontist-spotlight__panel h3 {
+    margin: 0 0 10px;
+    color: var(--color-ink);
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+}
+
+.prosthodontist-spotlight__panel p,
+.prosthodontist-spotlight__panel li {
+    color: var(--color-muted);
+    line-height: 1.65;
+}
+
+.prosthodontist-spotlight__panel p,
+.prosthodontist-spotlight__panel ul {
+    margin: 0;
+}
+
+.prosthodontist-spotlight__panel ul {
+    display: grid;
+    gap: 8px;
+    padding-left: 18px;
+}
+
 @media (max-width: 900px) {
     body[data-page="doctors"] .doctors-hero__grid {
         grid-template-columns: 1fr !important;
@@ -1280,6 +1369,12 @@ body[data-page="doctors"] .doctor-card__content {
     body[data-page="doctors"] .doctors-hero__content {
         grid-row: auto !important;
         max-width: 100% !important;
+    }
+}
+
+@media (max-width: 900px) {
+    .prosthodontist-spotlight__grid {
+        grid-template-columns: 1fr;
     }
 }
 

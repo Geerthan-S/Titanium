@@ -7,13 +7,22 @@ import { canSubmitPublicForm, markPublicFormSubmitted, publicFormCooldownSeconds
 import { loadPublicContent, onPublicContent, subscribePublicContent } from '../data/public-content-store.js';
 
 const CLINIC_HOURS = Object.freeze({
-  Monday: { opens: 9 * 60, closes: 20 * 60, label: '9:00 AM – 8:00 PM' },
-  Tuesday: { opens: 9 * 60, closes: 20 * 60, label: '9:00 AM – 8:00 PM' },
-  Wednesday: { opens: 9 * 60, closes: 20 * 60, label: '9:00 AM – 8:00 PM' },
-  Thursday: { opens: 9 * 60, closes: 20 * 60, label: '9:00 AM – 8:00 PM' },
-  Friday: { opens: 9 * 60, closes: 20 * 60, label: '9:00 AM – 8:00 PM' },
-  Saturday: { opens: 9 * 60, closes: 18 * 60, label: '9:00 AM – 6:00 PM' },
-  Sunday: { opens: 10 * 60, closes: 16 * 60, label: '10:00 AM – 4:00 PM' },
+  Monday: { opens: 10 * 60, closes: 20 * 60, label: '10:00 AM – 8:00 PM' },
+  Tuesday: { opens: 10 * 60, closes: 20 * 60, label: '10:00 AM – 8:00 PM' },
+  Wednesday: { opens: 10 * 60, closes: 20 * 60, label: '10:00 AM – 8:00 PM' },
+  Thursday: { opens: 10 * 60, closes: 20 * 60, label: '10:00 AM – 8:00 PM' },
+  Friday: { opens: 10 * 60, closes: 20 * 60, label: '10:00 AM – 8:00 PM' },
+  Saturday: { opens: 10 * 60, closes: 20 * 60, label: '10:00 AM – 8:00 PM' },
+  Sunday: { opens: 0, closes: 0, label: 'By appointment only' },
+});
+const APPROVED_CLINIC_HOURS = Object.freeze({
+  Monday: '10:00 AM – 8:00 PM',
+  Tuesday: '10:00 AM – 8:00 PM',
+  Wednesday: '10:00 AM – 8:00 PM',
+  Thursday: '10:00 AM – 8:00 PM',
+  Friday: '10:00 AM – 8:00 PM',
+  Saturday: '10:00 AM – 8:00 PM',
+  Sunday: 'By appointment only',
 });
 
 export function getClinicStatus(date = new Date(), timeZone = 'Asia/Kolkata') {
@@ -206,7 +215,12 @@ function bindContactForms() {
 }
 
 function applyContactSettings(settings = {}) {
-  const hours = settings.clinicHours || {};
+  const hours = { ...settings.clinicHours };
+  Object.entries(hours).forEach(([day, value]) => {
+    if (/9:00 AM|6:00 PM|10:00 AM – 4:00 PM|10:00 AM - 4:00 PM/i.test(String(value))) {
+      hours[day] = APPROVED_CLINIC_HOURS[day] || value;
+    }
+  });
   Object.entries(hours).forEach(([day, value]) => {
     const row = document.querySelector(`[data-clinic-hours="${day.toLowerCase()}"]`);
     if (row) row.textContent = value;
